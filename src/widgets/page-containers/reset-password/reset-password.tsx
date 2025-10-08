@@ -14,11 +14,12 @@ const ResetPasswordPageContainer: FC = () => {
 
   return (
     <Box>
-      <Typography variant="body2">{t("auth_credential_update_content_title_password")}</Typography>
+      <Typography variant="body2">{t("reset_password_title")}</Typography>
+      <Typography>{t("reset_password_sub_title")}</Typography>
       <ResetPasswordForm />
       <Stack>
         <Typography variant="body2">
-          {t("auth_have_account")}? <Link href={AppRoutes.login}>{t("auth_login")}</Link>
+          {t("remembered_password")} <Link href={AppRoutes.login}>{t("login")}</Link>
         </Typography>
       </Stack>
     </Box>

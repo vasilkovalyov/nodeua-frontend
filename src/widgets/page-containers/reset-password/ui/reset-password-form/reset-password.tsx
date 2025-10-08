@@ -30,14 +30,14 @@ const ResetPasswordForm: FC = () => {
     <RootForm methods={methods} onSubmit={onSubmit}>
       <Stack>
         <FieldBox
-          labelTranslationKey="auth_password_label"
-          placeholderTranslationKey="auth_password_placeholder"
+          labelTranslationKey="new_password_label"
+          placeholderTranslationKey="password_placeholder"
           name="password"
           type="password"
           fieldType="password-field"
         />
-        <Button aria-label="login button" type="submit" loading={isLoading}>
-          {t("auth_login")}
+        <Button variant="contained" aria-label={t("reset_password_button_text")} type="submit" loading={isLoading}>
+          {t("reset_password_button_text")}
         </Button>
       </Stack>
     </RootForm>

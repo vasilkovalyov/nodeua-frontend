@@ -1,6 +1,8 @@
 import { FC, ReactNode } from "react";
 import { Box, Container } from "@mui/material";
-import { AppLogo } from "@/src/shared/ui";
+import { HeaderLogin } from "@/src/widgets/components";
+
+import "./login-layout.scss";
 
 type PageLayoutProps = {
   children: ReactNode;
@@ -8,11 +10,15 @@ type PageLayoutProps = {
 
 const LoginLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
-    <Box>
-      <Container>
-        <AppLogo />
+    <Box className="login-layout">
+      <Container className="login-layout__container">
+        <HeaderLogin />
         <Box component="main">
-          <Box>{children}</Box>
+          <Box component="section">
+            <Box maxWidth="500px" mx="auto">
+              {children}
+            </Box>
+          </Box>
         </Box>
       </Container>
     </Box>

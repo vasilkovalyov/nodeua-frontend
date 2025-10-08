@@ -1,15 +1,16 @@
 "use client";
 
-import { FC, InputHTMLAttributes, ReactElement } from "react";
+import { FC, InputHTMLAttributes, ReactElement, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
-import { FormLabel, Typography } from "@mui/material";
+import { FormLabel, Stack, Typography } from "@mui/material";
 import TextField from "../text-field/text-field";
 import PasswordField from "../password-field/password-field";
 
 type FieldBoxProps = {
   labelTranslationKey?: string;
-  placeholderTranslationKey: string;
+  additionalText?: ReactNode;
+  placeholderTranslationKey?: string;
   className?: string;
   name: string;
   type: InputHTMLAttributes<unknown>["type"];
@@ -19,6 +20,7 @@ type FieldBoxProps = {
 
 const FieldBox: FC<FieldBoxProps> = ({
   labelTranslationKey,
+  additionalText,
   placeholderTranslationKey,
   name,
   type,
@@ -36,7 +38,7 @@ const FieldBox: FC<FieldBoxProps> = ({
             name={name}
             type={type}
             aria-label={ariaLabel}
-            placeholder={t(placeholderTranslationKey)}
+            placeholder={placeholderTranslationKey && t(placeholderTranslationKey)}
           />
         );
       case "password-field":
@@ -46,7 +48,7 @@ const FieldBox: FC<FieldBoxProps> = ({
             name={name}
             type={type}
             aria-label={ariaLabel}
-            placeholder={t(placeholderTranslationKey)}
+            placeholder={placeholderTranslationKey && t(placeholderTranslationKey)}
           />
         );
       default:
@@ -56,7 +58,7 @@ const FieldBox: FC<FieldBoxProps> = ({
             name={name}
             type={type}
             aria-label={ariaLabel}
-            placeholder={t(placeholderTranslationKey)}
+            placeholder={placeholderTranslationKey && t(placeholderTranslationKey)}
           />
         );
     }
@@ -64,7 +66,10 @@ const FieldBox: FC<FieldBoxProps> = ({
 
   return (
     <FormLabel>
-      {labelTranslationKey && <Typography>{t(labelTranslationKey)}</Typography>}
+      <Stack direction="row" gap="10px" justifyContent="space-between">
+        {labelTranslationKey && <Typography variant="caption">{t(labelTranslationKey)}</Typography>}
+        {additionalText && additionalText}
+      </Stack>
       {getField()}
     </FormLabel>
   );

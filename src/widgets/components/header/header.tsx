@@ -43,7 +43,7 @@ const HeaderProfile: FC = () => {
           notAuth={
             <Box>
               <Button href={AppRoutes.login} component={Link} fullWidth>
-                {t("auth_login")}
+                {t("login")}
               </Button>
             </Box>
           }

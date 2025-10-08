@@ -1,0 +1,11 @@
+.login-layout {
+  padding-block: 40px;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    &.MuiContainer-root {
+      display: grid;
+    }
+  }
+}

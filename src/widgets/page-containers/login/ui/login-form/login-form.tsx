@@ -47,30 +47,27 @@ const LoginForm: FC = () => {
     <RootForm methods={methods} onSubmit={onSubmit}>
       <Stack>
         <FieldBox
-          labelTranslationKey="auth_email_label"
-          placeholderTranslationKey="auth_email_placeholder"
+          labelTranslationKey="email_label"
+          placeholderTranslationKey="email_placeholder"
           name="email"
           type="email"
           fieldType={"text-field"}
         />
         <FieldBox
-          labelTranslationKey="auth_password_label"
-          placeholderTranslationKey="auth_password_placeholder"
+          labelTranslationKey="password_label"
+          placeholderTranslationKey="password_placeholder"
+          additionalText={
+            <Typography variant="caption">
+              <Link href={AppRoutes.forgotPassword}>{t("forgot_your_password")}</Link>
+            </Typography>
+          }
           name="password"
           type="password"
           fieldType={"text-field"}
         />
-        <Button aria-label="login button" type="submit" loading={isLoading}>
-          {t("auth_login")}
+        <Button variant="contained" aria-label={t("login")} type="submit" loading={isLoading}>
+          {t("login")}
         </Button>
-        <Stack>
-          <Typography variant="body2">
-            {t("auth_forgot_password")}? <Link href={AppRoutes.forgotPassword}>{t("auth_forgot_password")}</Link>
-          </Typography>
-          <Typography variant="body2">
-            {t("auth_no_account")}? <Link href={AppRoutes.registration}>{t("auth_sign_up")}</Link>
-          </Typography>
-        </Stack>
         {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
       </Stack>
     </RootForm>

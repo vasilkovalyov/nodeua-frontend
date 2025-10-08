@@ -17,7 +17,7 @@ const PasswordValidationPanel: FC<PasswordValidationPanelProps> = ({ isError = f
         "password-validation-panel--has-error": isError
       })}
     >
-      <Typography variant="caption">{t("auth_password_requirements")} !@#$%^&*()_+/\.-~</Typography>
+      <Typography variant="caption">{t("password_requirements")} !@#$%^&*()_+/\.-~</Typography>
     </Box>
   );
 };

@@ -30,14 +30,14 @@ const ForgotPasswordForm: FC = () => {
     <RootForm methods={methods} onSubmit={onSubmit}>
       <Stack>
         <FieldBox
-          labelTranslationKey="auth_email_label"
-          placeholderTranslationKey="auth_email_placeholder"
+          labelTranslationKey="email_label"
+          placeholderTranslationKey="email_placeholder"
           name="email"
           type="email"
           fieldType={"text-field"}
         />
-        <Button aria-label="login button" type="submit" loading={isLoading}>
-          {t("auth_login")}
+        <Button variant="contained" aria-label={t("send_reset_email_button_text")} type="submit" loading={isLoading}>
+          {t("send_reset_email_button_text")}
         </Button>
       </Stack>
     </RootForm>
