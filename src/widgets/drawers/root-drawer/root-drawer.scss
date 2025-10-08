@@ -1,4 +1,7 @@
 @use "@/styles/mixins.scss" as mixins;
 
 .drawer {
+  &__inner {
+    width: 320px;
+  }
 }

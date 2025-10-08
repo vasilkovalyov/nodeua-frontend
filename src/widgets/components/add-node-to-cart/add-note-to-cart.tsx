@@ -41,8 +41,8 @@ const AddNodeToCart: FC<AddNodeToCartProps> = ({ isSoldout, node }) => {
   }
 
   return (
-    <Button onClick={onHandleClick} disabled={isDisable}>
-      {t("add_cart")}
+    <Button variant="contained" size="small" onClick={onHandleClick} disabled={isDisable || isSoldout}>
+      {isSoldout ? t("sold_out") : t("add_cart")}
     </Button>
   );
 };

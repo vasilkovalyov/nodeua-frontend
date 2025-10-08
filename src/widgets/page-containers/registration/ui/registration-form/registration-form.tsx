@@ -48,6 +48,13 @@ const RegistrationForm: FC = () => {
           fieldType="password-field"
           placeholderTranslationKey="create_password_placeholder"
         />
+        <FieldBox
+          labelTranslationKey="confirm_password_label"
+          placeholderTranslationKey="confirm_password_placeholder"
+          name="confirm_password"
+          type="password"
+          fieldType="password-field"
+        />
         <Button variant="contained" type="submit" loading={isLoading}>
           {t("register")}
         </Button>

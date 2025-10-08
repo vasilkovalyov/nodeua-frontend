@@ -11,7 +11,7 @@ const initialState: DrawerState = {
   drawerName: null,
   isDrawerOpened: false,
   dialogProps: {
-    direction: "right"
+    direction: "left"
   }
 };
 

@@ -30,12 +30,12 @@ const CartOrder: FC = () => {
           return (
             <ListItemText key={node._id}>
               {node.name} x {node.quantity} | {node.duration} {node.duration > 1 ? "months" : "month"} $
-              {(node.price_per_month * (node.duration * node.quantity)).toFixed(2)}
+              {getFormatedCurrency(node.price_per_month * (node.duration * node.quantity))}
             </ListItemText>
           );
         })}
       </List>
-      <Typography>$ {getTotal(nodes)}</Typography>
+      <Typography>{getTotal(nodes)}</Typography>
     </Box>
   );
 };

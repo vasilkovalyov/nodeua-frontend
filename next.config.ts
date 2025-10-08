@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "xnode.fra1.cdn.digitaloceanspaces.com"
+      }
+    ]
   }
 };
 

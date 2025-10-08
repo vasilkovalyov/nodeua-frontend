@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function NotFound(): ReactElement {
   return (
     <PageLayout>
-      <NotFoundPageContainer />;
+      <NotFoundPageContainer />
     </PageLayout>
   );
 }

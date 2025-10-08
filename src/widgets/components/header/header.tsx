@@ -5,51 +5,44 @@ import { useTranslations } from "next-intl";
 
 import { Box, Button, Link, Skeleton, Stack } from "@mui/material";
 
-import useDrawer from "@/src/shared/hooks/use-drawer";
+import { AuthContainer, AuthUserPanel, Navigation, UserBalance } from "@/src/widgets/components";
+import { AppRoutes } from "@/src/shared/routes";
 import { navigationList } from "@/src/shared/hooks/use-header-navigation";
-import { AuthContainer, AuthUserPanel, MenuToggler, Navigation, UserBalance } from "@/src/widgets/components";
 import { AppLogo } from "@/src/shared/ui";
+import LogoutButton from "../logout-button/logout-button";
 
 import "./header.scss";
-import { AppRoutes } from "@/src/shared/routes";
 
-const HeaderProfile: FC = () => {
+const Header: FC = () => {
   const t = useTranslations();
 
-  const { onOpenDrawer, isOpenDrawer } = useDrawer();
-  const isOpen = isOpenDrawer("BASE_NAVIGATION_DRAWER");
-
-  function openMenu(): void {
-    onOpenDrawer("BASE_NAVIGATION_DRAWER");
-  }
-
   return (
-    <Stack component="header" className="header">
-      <Box>
+    <Stack component="header" className="header" p="14px" gap="20px">
+      <Stack direction="row" justifyContent="center">
         <AppLogo />
-        <MenuToggler active={isOpen} onClick={openMenu} />
-      </Box>
+      </Stack>
       <Box>
         <Navigation items={navigationList} />
       </Box>
-      <Stack>
+      <Stack marginBlockStart="auto">
         <AuthContainer
           auth={
-            <Box>
+            <Stack gap="10px">
               <AuthUserPanel />
               <UserBalance />
-            </Box>
+              <LogoutButton />
+            </Stack>
           }
           notAuth={
-            <Box>
-              <Button href={AppRoutes.login} component={Link} fullWidth>
-                {t("login")}
-              </Button>
-            </Box>
+            <Button variant="contained" size="small" href={AppRoutes.login} component={Link} fullWidth>
+              {t("login")}
+            </Button>
           }
           loader={
-            <Stack>
-              <Skeleton />
+            <Stack gap="10px">
+              <Skeleton sx={{ height: "40px", transform: "none" }} />
+              <Skeleton sx={{ height: "54px", transform: "none" }} />
+              <Skeleton sx={{ height: "36px", transform: "none" }} />
             </Stack>
           }
         />
@@ -58,4 +51,4 @@ const HeaderProfile: FC = () => {
   );
 };
 
-export default HeaderProfile;
+export default Header;

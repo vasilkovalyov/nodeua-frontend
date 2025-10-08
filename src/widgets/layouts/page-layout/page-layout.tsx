@@ -1,6 +1,8 @@
 import { FC, ReactNode } from "react";
 import { Box, Container } from "@mui/material";
-import { Header } from "@/src/widgets/components";
+import { Header, HeaderMobile } from "@/src/widgets/components";
+
+import "./page-layout.scss";
 
 type PageLayoutProps = {
   children: ReactNode;
@@ -8,10 +10,11 @@ type PageLayoutProps = {
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
-    <Box>
+    <Box className="page-layout">
       <Header />
-      <Box component="main">
-        <Box component="section">
+      <HeaderMobile />
+      <Box component="main" className="page-layout__main">
+        <Box component="section" py="40px">
           <Container>{children}</Container>
         </Box>
       </Box>

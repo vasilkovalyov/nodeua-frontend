@@ -43,5 +43,9 @@
   "active_node_category": "Deploy a Node",
   "soldout_node_category": "Ended Nodes",
   "tba_node_category": "Awaiting Nodes",
-  "add_cart": "Add card"
+  "add_cart": "Add card",
+  "announced": "To Be Announced",
+  "logout": "Log out",
+  "go_to_home_page_button_text": "Go To Home Page",
+  "sold_out": "Sold out"
 }

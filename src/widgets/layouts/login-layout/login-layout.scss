@@ -1,13 +1,22 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
 .login-layout {
   padding-block: 40px;
-  display: flex;
-  flex-direction: column;
+
+  @include mixins.media(breakpoints.$mobile_breakpoint_min) {
+    padding-block: 100px 40px;
+  }
 
   &__container {
     &.MuiContainer-root {
       display: flex;
       flex-direction: column;
       flex: 1;
+
+      @include mixins.media(breakpoints.$mobile_breakpoint_min) {
+        max-width: 480px;
+      }
     }
   }
 

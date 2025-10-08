@@ -8,3 +8,4 @@ export { default as CartList } from "./cart-list/cart-list";
 export { default as CartOrder } from "./cart-order/cart-order";
 export { default as Header } from "./header/header";
 export { default as HeaderLogin } from "./header-login/header-login";
+export { default as HeaderMobile } from "./header-mobile/header-mobile";

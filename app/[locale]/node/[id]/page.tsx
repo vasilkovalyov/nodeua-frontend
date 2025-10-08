@@ -32,7 +32,7 @@ export default async function NodePage({ params }: { params: Promise<{ id: strin
     <Box>
       <Box>
         <Typography variant="h1">{name}</Typography>
-        <Typography>Price per Month: $ {getFormatedCurrency(price_per_month)}</Typography>
+        <Typography>Price per Month: {getFormatedCurrency(price_per_month)}</Typography>
         <AddNodeToCart
           isSoldout={is_soldout}
           node={{

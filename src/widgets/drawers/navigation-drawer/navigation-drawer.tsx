@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import { Box, Divider } from "@mui/material";
+import { Stack, Box, Divider } from "@mui/material";
 
 import { AppLogo } from "@/src/shared/ui";
 import { Navigation } from "@/src/widgets/components";
@@ -17,7 +17,7 @@ type NavigationDrawerProps = {
 
 const NavigationDrawer: FC<NavigationDrawerProps> = ({ children, navigationList }) => {
   return (
-    <>
+    <Stack gap="20px">
       <DrawerHeader>
         <AppLogo />
       </DrawerHeader>
@@ -28,7 +28,7 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({ children, navigationList 
         </Box>
         {children}
       </DrawerBody>
-    </>
+    </Stack>
   );
 };
 

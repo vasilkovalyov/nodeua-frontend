@@ -49,7 +49,7 @@ const Navigation: FC<NavigationProps> = ({ items }) => {
         {items.map(({ path, nameTranslationKey, icon, className, target, isPublic }) => {
           if (!isDisplayMenuLink(isPublic)) return null;
           return (
-            <ListItem key={nameTranslationKey}>
+            <ListItem key={nameTranslationKey} className="navigation__item">
               <Link
                 href={path}
                 className={cn("navigation__link", { active: pathname === path }, className)}
@@ -58,11 +58,9 @@ const Navigation: FC<NavigationProps> = ({ items }) => {
               >
                 <Box component="span">{ICONS[icon]}</Box>
                 <Typography variant="caption">{t(nameTranslationKey)}</Typography>
-                <Box>
-                  {nameTranslationKey === "page_name_cart" && cardNodesLength !== 0 ? (
-                    <Box>{cardNodesLength}</Box>
-                  ) : null}
-                </Box>
+                {nameTranslationKey === "page_name_cart" && cardNodesLength !== 0 ? (
+                  <Box className="navigation__badge">{cardNodesLength}</Box>
+                ) : null}
               </Link>
             </ListItem>
           );

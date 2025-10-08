@@ -1,0 +1,18 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.header-mobile {
+  position: fixed;
+  z-index: 10;
+  inset-block-start: 0;
+  inset-inline: 0;
+  box-shadow: var(--shadow-base);
+  background-color: var(--color-light);
+  height: var(--mobile-header-height);
+
+  &.MuiStack-root {
+    @include mixins.media(breakpoints.$mobile_breakpoint_min) {
+      display: none;
+    }
+  }
+}

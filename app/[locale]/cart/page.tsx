@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
 
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 import { BlockCart } from "@/src/widgets/blocks";
 
@@ -14,9 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CartPage(): Promise<ReactElement> {
   return (
-    <Box>
+    <Stack gap="20px">
       <Typography variant="h1">Cart</Typography>
       <BlockCart />
-    </Box>
+    </Stack>
   );
 }

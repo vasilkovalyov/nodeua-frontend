@@ -1,7 +1,13 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
 .header-login {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  padding-block: 40px;
   width: 100%;
+
+  @include mixins.media(breakpoints.$mobile_breakpoint_min) {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    padding-block: 40px;
+  }
 }

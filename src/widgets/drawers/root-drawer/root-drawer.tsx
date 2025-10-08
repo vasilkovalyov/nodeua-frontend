@@ -14,7 +14,7 @@ const RootDrawer: FC = () => {
 
   return (
     <Drawer anchor={drawerProps.direction} open={isDrawerOpened} onClose={onCloseDrawer} className="drawer">
-      <Box>
+      <Box className="drawer__inner" py="20px" px="14px">
         <SuspenseWrapper>
           {Object.keys(drawers).map((key) => {
             if (key === activeDrawerName) {

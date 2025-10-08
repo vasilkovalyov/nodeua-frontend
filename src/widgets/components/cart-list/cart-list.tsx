@@ -71,7 +71,7 @@ const CartList: FC = () => {
             {nodes.map(({ _id, name, price_per_month, quantity, duration, max_duration }) => (
               <TableRow key={_id}>
                 <TableCell>{name}</TableCell>
-                <TableCell>$ {getFormatedCurrency(price_per_month)}</TableCell>
+                <TableCell>{getFormatedCurrency(price_per_month)}</TableCell>
                 <TableCell>
                   <TextField
                     type="number"

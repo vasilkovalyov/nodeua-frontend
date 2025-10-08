@@ -65,13 +65,6 @@ const LoginForm: FC = () => {
           type="password"
           fieldType="password-field"
         />
-        <FieldBox
-          labelTranslationKey="confirm_password_label"
-          placeholderTranslationKey="confirm_password_placeholder"
-          name="confirm_password"
-          type="password"
-          fieldType="password-field"
-        />
         <Button variant="contained" aria-label={t("login")} type="submit" loading={isLoading}>
           {t("login")}
         </Button>

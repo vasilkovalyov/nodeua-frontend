@@ -38,7 +38,7 @@ const CardList = <T extends { _id: string | number }>({
   xl = defaultResponsive.xl
 }: CardListProps<T>): ReactElement => {
   return (
-    <Grid container spacing={2}>
+    <Grid container rowSpacing={4} columnSpacing={4}>
       <>
         {items.map((item) => (
           <Grid item key={item._id} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>

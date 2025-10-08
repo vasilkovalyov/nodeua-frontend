@@ -44,5 +44,9 @@
   "active_node_category": "Активні вузли",
   "soldout_node_category": "Завершені вузли",
   "tba_node_category": "Вузли, що очікують",
-  "add_cart": "Додати в кошик"
+  "add_cart": "Додати в кошик",
+  "announced": "Буде оголошено",
+  "logout": "Вийти",
+  "go_to_home_page_button_text": "До головної сторінки",
+  "sold_out": "Розпродано"
 }

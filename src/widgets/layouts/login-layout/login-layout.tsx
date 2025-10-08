@@ -11,16 +11,12 @@ type PageLayoutProps = {
 const LoginLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
     <Box className="login-layout">
-      <Container className="login-layout__container">
-        <HeaderLogin />
-        <Box component="main" className="login-layout__main">
-          <Box component="section">
-            <Box maxWidth="480px" mx="auto">
-              {children}
-            </Box>
-          </Box>
+      <HeaderLogin />
+      <Box component="main" className="login-layout__main">
+        <Box component="section" py="60px">
+          <Container className="login-layout__container">{children}</Container>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };
