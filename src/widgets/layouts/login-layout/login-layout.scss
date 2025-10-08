@@ -5,7 +5,13 @@
 
   &__container {
     &.MuiContainer-root {
-      display: grid;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
+  }
+
+  &__main {
+    justify-content: center;
   }
 }

@@ -28,7 +28,7 @@ const ResetPasswordForm: FC = () => {
 
   return (
     <RootForm methods={methods} onSubmit={onSubmit}>
-      <Stack>
+      <Stack gap="20px">
         <FieldBox
           labelTranslationKey="new_password_label"
           placeholderTranslationKey="password_placeholder"

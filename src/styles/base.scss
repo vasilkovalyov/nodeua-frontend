@@ -27,15 +27,19 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Sansation", sans-serif;
   min-height: 100dvh;
   font-display: optional;
   cursor: default;
 }
 
 a {
-  text-decoration: none;
-  @include mixins.animate(color);
+  text-decoration: underline;
+  color: currentColor;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 img {

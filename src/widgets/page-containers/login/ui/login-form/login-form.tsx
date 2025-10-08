@@ -45,25 +45,32 @@ const LoginForm: FC = () => {
 
   return (
     <RootForm methods={methods} onSubmit={onSubmit}>
-      <Stack>
+      <Stack gap="20px">
         <FieldBox
           labelTranslationKey="email_label"
           placeholderTranslationKey="email_placeholder"
           name="email"
           type="email"
-          fieldType={"text-field"}
+          fieldType="text-field"
         />
         <FieldBox
           labelTranslationKey="password_label"
           placeholderTranslationKey="password_placeholder"
           additionalText={
-            <Typography variant="caption">
+            <Typography variant="body2">
               <Link href={AppRoutes.forgotPassword}>{t("forgot_your_password")}</Link>
             </Typography>
           }
           name="password"
           type="password"
-          fieldType={"text-field"}
+          fieldType="password-field"
+        />
+        <FieldBox
+          labelTranslationKey="confirm_password_label"
+          placeholderTranslationKey="confirm_password_placeholder"
+          name="confirm_password"
+          type="password"
+          fieldType="password-field"
         />
         <Button variant="contained" aria-label={t("login")} type="submit" loading={isLoading}>
           {t("login")}

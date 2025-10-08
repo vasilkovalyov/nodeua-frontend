@@ -13,9 +13,9 @@ const LoginLayout: FC<PageLayoutProps> = ({ children }) => {
     <Box className="login-layout">
       <Container className="login-layout__container">
         <HeaderLogin />
-        <Box component="main">
+        <Box component="main" className="login-layout__main">
           <Box component="section">
-            <Box maxWidth="500px" mx="auto">
+            <Box maxWidth="480px" mx="auto">
               {children}
             </Box>
           </Box>

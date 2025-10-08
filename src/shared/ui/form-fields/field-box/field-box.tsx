@@ -66,8 +66,8 @@ const FieldBox: FC<FieldBoxProps> = ({
 
   return (
     <FormLabel>
-      <Stack direction="row" gap="10px" justifyContent="space-between">
-        {labelTranslationKey && <Typography variant="caption">{t(labelTranslationKey)}</Typography>}
+      <Stack direction="row" gap="10px" justifyContent="space-between" marginBlockEnd="10px">
+        {labelTranslationKey && <Typography variant="body2">{t(labelTranslationKey)}</Typography>}
         {additionalText && additionalText}
       </Stack>
       {getField()}

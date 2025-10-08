@@ -12,13 +12,14 @@ function getTheme(): Theme {
       }
     },
     typography: {
-      fontFamily: ["Noto Sans", "Roboto", "sans-serif"].join(",")
+      fontFamily: ["Sansation", "Roboto", "sans-serif"].join(",")
     }
   });
 
   defaultTheme.typography.h1 = {
     fontSize: 30,
     lineHeight: 1.2,
+    fontWeight: 400,
 
     [defaultTheme.breakpoints.up("lg")]: {
       fontSize: 30
@@ -28,6 +29,7 @@ function getTheme(): Theme {
   defaultTheme.typography.h2 = {
     fontSize: 30,
     lineHeight: 1.2,
+    fontWeight: 400,
 
     [defaultTheme.breakpoints.up("lg")]: {
       fontSize: 30
@@ -36,22 +38,26 @@ function getTheme(): Theme {
 
   defaultTheme.typography.h3 = {
     fontSize: 24,
-    lineHeight: 1.35
+    lineHeight: 1.35,
+    fontWeight: 400
   };
 
   defaultTheme.typography.h4 = {
     fontSize: 24,
-    lineHeight: 1.45
+    lineHeight: 1.45,
+    fontWeight: 400
   };
 
   defaultTheme.typography.h5 = {
     fontSize: 20,
-    lineHeight: 1.45
+    lineHeight: 1.45,
+    fontWeight: 400
   };
 
   defaultTheme.typography.h6 = {
     fontSize: 20,
-    lineHeight: 1.2
+    lineHeight: 1.2,
+    fontWeight: 400
   };
 
   defaultTheme.typography.body1 = {

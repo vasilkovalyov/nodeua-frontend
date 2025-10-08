@@ -28,7 +28,7 @@ const ForgotPasswordForm: FC = () => {
 
   return (
     <RootForm methods={methods} onSubmit={onSubmit}>
-      <Stack>
+      <Stack gap="20px">
         <FieldBox
           labelTranslationKey="email_label"
           placeholderTranslationKey="email_placeholder"

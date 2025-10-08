@@ -45,6 +45,7 @@ const PasswordField: FC<PasswordFieldProps> = ({ name, rules, showErrorMessage =
       autoCapitalize="none"
       autoCorrect="off"
       autoComplete="off"
+      size="small"
       error={!!error}
       helperText={showErrorMessage && error ? t(error.message) : null}
       onChange={onChange || defaultOnChange}

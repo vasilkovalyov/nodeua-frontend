@@ -9,7 +9,7 @@ import { Alert, Button, Stack } from "@mui/material";
 
 import { useAppSelector } from "@/app/store/store";
 import { useSignUpMutation } from "@/app/store/slices/auth/auth.api";
-import { RootForm, PasswordValidationPanel, FieldBox } from "@/src/shared/ui";
+import { RootForm, FieldBox } from "@/src/shared/ui";
 
 import validationSchema from "./registration-form.validation";
 import { RegistrationFormFields } from "./registration-form.types";
@@ -24,10 +24,6 @@ const RegistrationForm: FC = () => {
     resolver: yupResolver(validationSchema),
     mode: "onSubmit"
   });
-
-  const {
-    formState: { errors }
-  } = methods;
 
   function onSubmit(props: RegistrationFormFields): void {
     const { email, password } = props;
@@ -44,7 +40,7 @@ const RegistrationForm: FC = () => {
 
   return (
     <RootForm methods={methods} onSubmit={onSubmit}>
-      <Stack>
+      <Stack gap="20px">
         <FieldBox name="email" type="email" fieldType="text-field" placeholderTranslationKey="email_placeholder" />
         <FieldBox
           name="password"
@@ -52,7 +48,6 @@ const RegistrationForm: FC = () => {
           fieldType="password-field"
           placeholderTranslationKey="create_password_placeholder"
         />
-        <PasswordValidationPanel isError={!!errors.password} />
         <Button variant="contained" type="submit" loading={isLoading}>
           {t("register")}
         </Button>
