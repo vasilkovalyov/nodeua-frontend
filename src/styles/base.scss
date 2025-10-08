@@ -1,0 +1,53 @@
+@use "./mixins.scss" as mixins;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root-layout-app {
+  display: grid;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 50dvh;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  font-family: "Noto Sans", sans-serif;
+  min-height: 100dvh;
+  font-display: optional;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  @include mixins.animate(color);
+}
+
+img {
+  max-width: 100%;
+}
+
+*::-moz-selection {
+}
+
+*::selection {
+}
+
+picture {
+  display: block;
+}

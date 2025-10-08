@@ -1,0 +1,9 @@
+.app-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+}
