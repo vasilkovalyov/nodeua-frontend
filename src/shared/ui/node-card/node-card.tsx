@@ -1,12 +1,13 @@
 import { FC } from "react";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+
 import { AppRoutes } from "@/src/shared/routes";
 import AddNodeToCart from "@/src/widgets/components/add-node-to-cart/add-note-to-cart";
 import { NodeType } from "@/app/entities/node";
-import { useTranslations } from "next-intl";
 import { getFormatedCurrency } from "../../config/methods";
-import Image from "next/image";
 
 type NodeCardProps = NodeType;
 
@@ -25,20 +26,31 @@ const NodeCard: FC<NodeCardProps> = (props) => {
         </Typography>
         <Typography variant="body2">{getFormatedCurrency(price_per_month)}</Typography>
       </CardContent>
-      <CardActions>
+      <CardActions
+        sx={{
+          flexWrap: "wrap",
+          gap: "10px"
+        }}
+      >
         {!is_tba ? (
           <>
             <Button variant="outlined" size="small" href={`${AppRoutes.singleNode}/${_id}`}>
-              More info
+              {t("more_info")}
             </Button>
-            <AddNodeToCart
-              isSoldout={is_soldout}
-              node={{
-                ...props,
-                quantity: 1,
-                duration: 1
+            <Box
+              sx={{
+                margin: "0  !important"
               }}
-            />
+            >
+              <AddNodeToCart
+                isSoldout={is_soldout}
+                node={{
+                  ...props,
+                  quantity: 1,
+                  duration: 1
+                }}
+              />
+            </Box>
           </>
         ) : (
           <Typography>{t("announced")}</Typography>

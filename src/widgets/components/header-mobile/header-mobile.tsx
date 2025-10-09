@@ -3,10 +3,10 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Button, Container, Stack } from "@mui/material";
+import { Button, Container, Paper, Stack } from "@mui/material";
 
 import useDrawer from "@/src/shared/hooks/use-drawer";
-import { MenuToggler } from "@/src/widgets/components";
+import { LanguageSwitcher, MenuToggler } from "@/src/widgets/components";
 import { Link } from "@/app/routing";
 import { AppRoutes } from "@/src/shared/routes";
 
@@ -23,16 +23,19 @@ const HeaderMobile: FC = () => {
   }
 
   return (
-    <Stack component="header" className="header-mobile" py="10px">
+    <Paper elevation={3} component="header" className="header-mobile">
       <Container>
-        <Stack direction="row" justifyContent="space-between" gap="10px">
+        <Stack direction="row" justifyContent="space-between" gap="10px" py="10px">
           <MenuToggler active={isOpen} onClick={openMenu} />
-          <Button variant="contained" size="small" href={AppRoutes.login} component={Link}>
-            {t("login")}
-          </Button>
+          <Stack direction="row" gap="10px">
+            <LanguageSwitcher />
+            <Button variant="contained" size="small" href={AppRoutes.login} component={Link}>
+              {t("login")}
+            </Button>
+          </Stack>
         </Stack>
       </Container>
-    </Stack>
+    </Paper>
   );
 };
 

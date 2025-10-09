@@ -3,7 +3,7 @@ export type DialogState = {
   dialogSize: DialogSize;
 };
 
-export type DialogNames = "USER_MENU_DIALOG";
+export type DialogNames = "TOP_UP_BALANCE_DIALOG";
 
 export type PayloadDialogProps = {
   dialogName: DialogNames;

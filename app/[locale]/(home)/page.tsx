@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
-
-import { BlockNodes } from "@/src/widgets/blocks";
+import HomePageContainer from "@/src/widgets/page-containers/home/home";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,5 +10,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage(): Promise<ReactElement> {
-  return <BlockNodes />;
+  return <HomePageContainer />;
 }

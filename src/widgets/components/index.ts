@@ -9,3 +9,5 @@ export { default as CartOrder } from "./cart-order/cart-order";
 export { default as Header } from "./header/header";
 export { default as HeaderLogin } from "./header-login/header-login";
 export { default as HeaderMobile } from "./header-mobile/header-mobile";
+export { default as TopUpBalanceButton } from "./top-up-balance-button/top-up-balance-button";
+export { default as TopUpBalancePanel } from "./top-up-balance-panel/top-up-balance-panel";

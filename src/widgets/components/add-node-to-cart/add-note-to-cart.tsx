@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@mui/material";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+
 import { addNode } from "@/app/store/slices/cart/cart.slice";
 
 import { useRouter } from "@/app/routing";
@@ -42,7 +44,7 @@ const AddNodeToCart: FC<AddNodeToCartProps> = ({ isSoldout, node }) => {
 
   return (
     <Button variant="contained" size="small" onClick={onHandleClick} disabled={isDisable || isSoldout}>
-      {isSoldout ? t("sold_out") : t("add_cart")}
+      {isDisable ? <CheckBoxIcon /> : <>{isSoldout ? t("sold_out") : t("add_cart")}</>}
     </Button>
   );
 };

@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
-import { Box, Typography } from "@mui/material";
+
+import ActiveNodesPageContainer from "@/src/widgets/page-containers/active-nodes/active-nodes";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -10,9 +11,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ActiveNodesPage(): Promise<ReactElement> {
-  return (
-    <Box>
-      <Typography variant="h1">Active nodes</Typography>
-    </Box>
-  );
+  return <ActiveNodesPageContainer />;
 }

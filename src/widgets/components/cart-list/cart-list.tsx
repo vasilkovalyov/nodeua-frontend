@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "@/app/store/store";
+import { useTranslations } from "next-intl";
 
 import {
   Box,
@@ -15,15 +15,18 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField
+  TextField,
+  Typography
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
+import { useAppDispatch, useAppSelector } from "@/app/store/store";
 import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
 import { deleteNode, updateDurationNodes, updateQuantityNodes } from "@/app/store/slices/cart/cart.slice";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 
 const CartList: FC = () => {
+  const t = useTranslations();
   const nodes = useAppSelector(getNodesFromCartSelector);
   const dispatch = useAppDispatch();
 
@@ -59,22 +62,31 @@ const CartList: FC = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell component="th">Name</TableCell>
-              <TableCell component="th">Per Month </TableCell>
-              <TableCell component="th">Quantity</TableCell>
-              <TableCell component="th">Duration</TableCell>
-              <TableCell component="th">Deploy Type</TableCell>
+              <TableCell component="th">{t("cart_table_head_name")}</TableCell>
+              <TableCell component="th">{t("cart_table_head_month")} </TableCell>
+              <TableCell component="th">{t("cart_table_head_quantity")}</TableCell>
+              <TableCell component="th">{t("cart_table_head_duration")}</TableCell>
               <TableCell component="th" />
             </TableRow>
           </TableHead>
           <TableBody>
             {nodes.map(({ _id, name, price_per_month, quantity, duration, max_duration }) => (
               <TableRow key={_id}>
-                <TableCell>{name}</TableCell>
-                <TableCell>{getFormatedCurrency(price_per_month)}</TableCell>
+                <TableCell>
+                  <Typography variant="body2" fontWeight={600}>
+                    {name}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="body2" fontWeight={600}>
+                    {getFormatedCurrency(price_per_month)}
+                  </Typography>
+                </TableCell>
                 <TableCell>
                   <TextField
                     type="number"
+                    size="small"
+                    fullWidth
                     value={quantity ?? 1}
                     onChange={(e) => onHandleChangeQuantity(_id, +e.target.value)}
                   />
@@ -82,18 +94,19 @@ const CartList: FC = () => {
                 <TableCell>
                   <Select
                     value={(duration ?? 1).toString()}
+                    size="small"
+                    fullWidth
                     onChange={(e) => onHandleChangeMaxDuration(_id, +e.target.value)}
                   >
                     {Array.from(Array(max_duration).keys()).map((item: number) => (
                       <MenuItem key={item} value={item + 1}>
-                        {item + 1} {item + 1 > 1 ? "months" : "month"}
+                        {item + 1} {item + 1 > 1 ? t("months") : t("month")}
                       </MenuItem>
                     ))}
                   </Select>
                 </TableCell>
-                <TableCell>Deploy Type</TableCell>
                 <TableCell>
-                  <Button onClick={() => onHandleDeleteNode(_id)}>
+                  <Button variant="contained" size="small" onClick={() => onHandleDeleteNode(_id)}>
                     <ClearIcon />
                   </Button>
                 </TableCell>

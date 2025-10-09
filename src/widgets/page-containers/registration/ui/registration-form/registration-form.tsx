@@ -41,11 +41,18 @@ const RegistrationForm: FC = () => {
   return (
     <RootForm methods={methods} onSubmit={onSubmit}>
       <Stack gap="20px">
-        <FieldBox name="email" type="email" fieldType="text-field" placeholderTranslationKey="email_placeholder" />
+        <FieldBox
+          name="email"
+          type="email"
+          fieldType="text-field"
+          labelTranslationKey="email_label"
+          placeholderTranslationKey="email_placeholder"
+        />
         <FieldBox
           name="password"
           type="password"
           fieldType="password-field"
+          labelTranslationKey="password_label"
           placeholderTranslationKey="create_password_placeholder"
         />
         <FieldBox

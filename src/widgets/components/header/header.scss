@@ -6,9 +6,11 @@
   inset-block: 0;
   inset-inline-start: 0;
   width: var(--header-width);
-  box-shadow: var(--shadow-base);
 
-  &.MuiStack-root {
+  &.MuiPaper-root {
+    display: flex;
+    flex-direction: column;
+
     @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
       display: none;
     }

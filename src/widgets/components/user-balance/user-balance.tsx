@@ -16,12 +16,14 @@ const UserBalance: FC = () => {
   const user = useAppSelector(selectUserState);
 
   return (
-    <Stack gap="10px">
-      <Typography variant="caption">{t("global_balance")}</Typography>
+    <Stack gap="10px" direction="row" justifyContent="space-between">
       <Stack direction="row" gap="10px" alignItems="center">
         <AccountBalanceWalletOutlinedIcon />
-        <Typography variant="body2">{getFormatedCurrency(user.profile.balance)}</Typography>
+        <Typography variant="caption">{t("balance_money")}</Typography>
       </Stack>
+      <Typography variant="body2" textAlign="right">
+        {getFormatedCurrency(user.profile.balance)}
+      </Typography>
     </Stack>
   );
 };

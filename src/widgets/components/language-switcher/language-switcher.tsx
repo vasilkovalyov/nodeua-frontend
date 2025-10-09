@@ -14,16 +14,12 @@ import { cookieKeys } from "@/src/shared/config/cookie-keys";
 
 import "./language-switcher.scss";
 
-type LanguageSwitcherProps = {
-  compact?: boolean;
-};
-
 type SelectedLanguage = {
   code: string;
   shortName: string;
 };
 
-const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ compact }) => {
+const LanguageSwitcher: FC = () => {
   const router = useRouter();
   const [lang, setLang] = useState<SelectedLanguage>({
     code: "",
@@ -43,9 +39,19 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ compact }) => {
   }, []);
 
   return (
-    <Stack className={cn("language-switcher", { "language-switcher--compact": compact })}>
-      {!compact && <LanguageIcon />}
-      <Button onClick={onHandleChangeLanguage}>{lang.shortName}</Button>
+    <Stack className={cn("language-switcher")} direction="row" alignItems="center" gap="10px">
+      <LanguageIcon />
+      <Button
+        variant="outlined"
+        size="small"
+        onClick={onHandleChangeLanguage}
+        sx={{
+          p: 0,
+          minWidth: "30px"
+        }}
+      >
+        {lang.shortName}
+      </Button>
     </Stack>
   );
 };

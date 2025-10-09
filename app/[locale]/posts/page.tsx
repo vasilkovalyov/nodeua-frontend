@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
 
-import { Box, Typography } from "@mui/material";
+import PostsPageContainer from "@/src/widgets/page-containers/posts/posts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,9 +11,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PostsPage(): Promise<ReactElement> {
-  return (
-    <Box>
-      <Typography variant="h1">Posts</Typography>
-    </Box>
-  );
+  return <PostsPageContainer />;
 }
