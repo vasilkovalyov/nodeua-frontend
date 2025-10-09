@@ -67,5 +67,21 @@
   "proceed_payment_button_text": "Перейти до оплати",
   "current": "Поточний",
   "after_top_up": "Після поповнення",
-  "amount": "Сума"
+  "amount": "Сума",
+  "home_page_meta_title": "Метазаголовок домашньої сторінки",
+  "home_page_meta_description": "Метаопис домашньої сторінки",
+  "active_nodes_page_meta_title": "Метазаголовок сторінки активного вузла",
+  "active_nodes_page_meta_description": "Метаопис сторінки активного вузла",
+  "cart_page_meta_title": "Мета-заголовок сторінки кошика",
+  "cart_page_meta_description": "Мета-опис сторінки кошика",
+  "posts_page_meta_title": "Мета-заголовок сторінки дописів",
+  "posts_page_meta_description": "Мета-опис сторінки дописів",
+  "login_page_meta_title": "Мета-заголовок сторінки входу",
+  "login_page_meta_description": "Мета-опис сторінки входу",
+  "registration_page_meta_title": "Мета-заголовок сторінки реєстрації",
+  "registration_page_meta_description": "Мета-опис сторінки реєстрації",
+  "reset_password_page_meta_title": "Мета-заголовок сторінки скидання пароля",
+  "reset_password_page_meta_description": "Мета-опис сторінки скидання пароля",
+  "forgot_password_page_meta_title": "Мета-заголовок сторінки відновлення пароля",
+  "forgot_password_page_meta_description": "Мета-опис сторінки відновлення пароля"
 }

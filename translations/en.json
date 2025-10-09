@@ -66,5 +66,21 @@
   "proceed_payment_button_text": "Proceed to payment",
   "current": "Current",
   "after_top_up": "After top up",
-  "amount": "Amount"
+  "amount": "Amount",
+  "home_page_meta_title": "Home page meta title",
+  "home_page_meta_description": "Home page meta description",
+  "active_nodes_page_meta_title": "Active node page meta title",
+  "active_nodes_page_meta_description": "Active node page meta description",
+  "cart_page_meta_title": "Cart page meta title",
+  "cart_page_meta_description": "Cart page meta description",
+  "posts_page_meta_title": "Posts page meta title",
+  "posts_page_meta_description": "Posts page meta description",
+  "login_page_meta_title": "Login page meta title",
+  "login_page_meta_description": "Login page meta description",
+  "registration_page_meta_title": "Registration page meta title",
+  "registration_page_meta_description": "Registration page meta description",
+  "reset_password_page_meta_title": "Reset page meta title",
+  "reset_password_page_meta_description": "Reset page meta description",
+  "forgot_password_page_meta_title": "Forgot page meta title",
+  "forgot_password_page_meta_description": "Forgot page meta description"
 }
