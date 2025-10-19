@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cn from "classnames";
 
-import { Dialog } from "@mui/material";
+import { Box, Dialog } from "@mui/material";
 
 import { useAppSelector } from "@/app/store/store";
 import {
@@ -41,9 +41,13 @@ const RootDialog: FC = () => {
         const Component = dialog.component;
 
         return (
-          <SuspenseWrapper key={index}>
-            <Component />
-          </SuspenseWrapper>
+          <Box key={index} className="dialog-box" p="20px">
+            <Box className="dialog-box__inner">
+              <SuspenseWrapper>
+                <Component />
+              </SuspenseWrapper>
+            </Box>
+          </Box>
         );
       })}
     </Dialog>

@@ -3,14 +3,13 @@ export type CartNodeType = {
   duration: number;
   _id: string;
   name: string;
-  price_per_month: number;
+  price: number;
   link: string;
   is_active: boolean;
   guide: boolean;
   is_reneweble: boolean;
   max_duration: number;
   priority: number;
-  discount_percentage: number;
 };
 
 export type CartNodeLocalStorageInfoType = {

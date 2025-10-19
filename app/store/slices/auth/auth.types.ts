@@ -10,19 +10,19 @@ export type SignUpApiRequestType = {
 };
 
 export type SignUpApiResponseType = {
-  userId: number;
+  userId: string;
 };
 
 export type SignUpEmailApiRequestType = {
   code: string;
-  userId: number;
+  userId: string;
 };
 
 export type LoginApiResponseType = {
   accessToken: string;
   refreshToken: string;
   email: string;
-  _id: number;
+  _id: string;
 };
 
 export type LoginApiRequestType = {
@@ -32,7 +32,7 @@ export type LoginApiRequestType = {
 };
 
 export type UpdatePasswordApiRequestType = {
-  userId: number;
+  userId: string;
   oldPassword: string;
   newPassword: string;
 };

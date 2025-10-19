@@ -10,17 +10,23 @@ import { useAppSelector } from "@/app/store/store";
 import { selectUserState } from "@/app/store/slices/user/user.selectors";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 
-const UserBalance: FC = () => {
+type UserBalanceProps = {
+  displayText?: boolean;
+};
+
+const UserBalance: FC<UserBalanceProps> = ({ displayText = true }) => {
   const t = useTranslations();
 
   const user = useAppSelector(selectUserState);
 
   return (
-    <Stack gap="10px" direction="row" justifyContent="space-between">
-      <Stack direction="row" gap="10px" alignItems="center">
-        <AccountBalanceWalletOutlinedIcon />
-        <Typography variant="caption">{t("balance_money")}</Typography>
-      </Stack>
+    <Stack gap="10px" direction="row" alignItems="center" justifyContent="space-between">
+      {displayText && (
+        <Stack direction="row" gap="10px" alignItems="center">
+          <AccountBalanceWalletOutlinedIcon />
+          <Typography variant="caption">{t("balance_money")}</Typography>
+        </Stack>
+      )}
       <Typography variant="body2" textAlign="right">
         {getFormatedCurrency(user.profile.balance)}
       </Typography>

@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, Suspense } from "react";
 
-import PageLoader from "../page-loader/page-loader";
+import { CircularProgress, Stack } from "@mui/material";
 
 const SuspenseWrapper = ({
   children,
@@ -9,7 +9,19 @@ const SuspenseWrapper = ({
   children: ReactNode;
   loaderComponent?: ReactNode;
 }): ReactElement => {
-  return <Suspense fallback={loaderComponent || <PageLoader />}>{children}</Suspense>;
+  return (
+    <Suspense
+      fallback={
+        loaderComponent || (
+          <Stack minHeight="340px" justifyContent="center" alignItems="center" width="100%">
+            <CircularProgress />
+          </Stack>
+        )
+      }
+    >
+      {children}
+    </Suspense>
+  );
 };
 
 export default SuspenseWrapper;

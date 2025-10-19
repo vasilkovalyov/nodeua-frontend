@@ -43,7 +43,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     }),
     signUp: builder.mutation<SignUpApiResponseType, SignUpApiRequestType>({
       query: (props) => ({
-        url: "/auth/signup/personal-data",
+        url: "/auth/registration",
         method: "POST",
         body: props
       }),

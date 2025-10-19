@@ -1,7 +1,7 @@
 type ConfirmationType = {
   email: string;
   code: string;
-  userId: number | null;
+  userId: string | null;
 };
 
 class LocalStorageService {
@@ -10,7 +10,7 @@ class LocalStorageService {
   static hourMs = 3600000;
   static expireTime = 24 * LocalStorageService.hourMs;
 
-  static emailConfirmation(email: string, userId: number): void {
+  static emailConfirmation(email: string, userId: string): void {
     const now = new Date();
 
     const tokenObj = JSON.stringify({
@@ -54,7 +54,7 @@ class LocalStorageService {
     return {
       code,
       email,
-      userId: parseInt(userId)
+      userId: userId
     };
   }
 
@@ -62,12 +62,12 @@ class LocalStorageService {
     localStorage.removeItem(LocalStorageService.emailConfirmationKey);
   }
 
-  static addUserId(id: number): void {
+  static addUserId(id: string): void {
     localStorage.setItem(LocalStorageService.userIdKey, id.toString());
   }
 
-  static getUserId(): number | null {
-    const result = localStorage.getItem(LocalStorageService.userIdKey) as number | null;
+  static getUserId(): string | null {
+    const result = localStorage.getItem(LocalStorageService.userIdKey) as string | null;
     if (!result) return null;
     return result;
   }

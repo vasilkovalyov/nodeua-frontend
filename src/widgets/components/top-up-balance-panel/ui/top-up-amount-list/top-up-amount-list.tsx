@@ -10,7 +10,7 @@ type TopUpAmountListProps = {
 
 const TopUpAmountList: FC<TopUpAmountListProps> = ({ selectedAmount, amountList, onChange }) => {
   return (
-    <Stack direction="row" gap="10px">
+    <Stack direction="row" flexWrap={{ xs: "wrap", sm: "nowrap" }} gap="10px">
       {amountList.map((amount) => (
         <Button
           key={amount}
@@ -19,6 +19,9 @@ const TopUpAmountList: FC<TopUpAmountListProps> = ({ selectedAmount, amountList,
           variant="contained"
           color={amount === selectedAmount ? "success" : "primary"}
           onClick={() => onChange(amount)}
+          sx={{
+            minWidth: "40px"
+          }}
         >
           {amount}
         </Button>

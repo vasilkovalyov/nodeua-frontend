@@ -17,8 +17,8 @@ const TopUpBalanceInfo: FC<TopUpBalanceInfoProps> = ({ balance, afterTopUpBalanc
   return (
     <Paper elevation={3}>
       <Box padding="20px">
-        <Stack direction="row" gap="40px">
-          <Box display="flex" alignItems="center">
+        <Stack direction={{ md: "row" }} gap="40px">
+          <Box display={{ xs: "none", md: "flex" }} alignItems="center">
             <AccountBalanceWalletOutlinedIcon />
           </Box>
           <Box marginInlineEnd="40px">

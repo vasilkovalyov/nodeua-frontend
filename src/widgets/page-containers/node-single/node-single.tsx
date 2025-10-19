@@ -11,15 +11,17 @@ type NodeSingleContainerProps = NodeSingleType;
 const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
   const t = useTranslations();
 
-  const { name, price_per_month, is_soldout, details } = props;
+  const { name, price, is_soldout, description } = props;
 
   return (
     <Box>
       <Box>
         <Typography variant="h1">{name}</Typography>
-        <Typography>
-          {t("price_per_month")}: {getFormatedCurrency(price_per_month)}
-        </Typography>
+        {price && (
+          <Typography>
+            {t("price")}: {getFormatedCurrency(price)}
+          </Typography>
+        )}
         <AddNodeToCart
           isSoldout={is_soldout}
           node={{
@@ -28,12 +30,8 @@ const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
             duration: 1
           }}
         />
-        {details && <Typography>{details.type}</Typography>}
-        {details && <div dangerouslySetInnerHTML={{ __html: details.description }} />}
-      </Box>
-      <Box component="aside">
-        <Typography variant="h2">{t("funds_raised")}</Typography>
-        {details && <div dangerouslySetInnerHTML={{ __html: details.fundsraised }} />}
+        {description && <Typography>{description.type}</Typography>}
+        {description && <div dangerouslySetInnerHTML={{ __html: description.description }} />}
       </Box>
     </Box>
   );

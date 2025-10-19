@@ -10,7 +10,11 @@ import { logOut } from "@/app/store/modules/auth/actions";
 import { AppRoutes } from "@/src/shared/routes";
 import { useTranslations } from "next-intl";
 
-const LogoutButton: FC = () => {
+type LogoutButtonProps = {
+  size?: "small" | "medium" | "large";
+};
+
+const LogoutButton: FC<LogoutButtonProps> = ({ size }) => {
   const t = useTranslations();
   const dispatch = useAppDispatch();
 
@@ -22,7 +26,7 @@ const LogoutButton: FC = () => {
   }
 
   return (
-    <Button variant="contained" fullWidth onClick={onLogout}>
+    <Button variant="contained" fullWidth onClick={onLogout} size={size}>
       {t("logout")}
     </Button>
   );

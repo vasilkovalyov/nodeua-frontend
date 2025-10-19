@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-import { Box } from "@mui/material";
-
 import useDialog from "@/src/shared/hooks/use-dialog";
 import { MenuToggler, TopUpBalancePanel } from "@/src/widgets/components";
 
@@ -15,12 +13,10 @@ const UserMenuDialog: FC = () => {
   }
 
   return (
-    <Box className="dialog-box" p="20px">
-      <Box className="dialog-box__inner">
-        <MenuToggler active={true} onClick={onCloseDialog} className="dialog-box__close-btn" />
-        <TopUpBalancePanel />
-      </Box>
-    </Box>
+    <>
+      <MenuToggler active={true} onClick={onCloseDialog} className="dialog-box__close-btn" />
+      <TopUpBalancePanel />
+    </>
   );
 };
 

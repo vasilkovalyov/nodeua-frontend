@@ -9,7 +9,7 @@ import { getIsAppLoadingSelector } from "../store/slices/app-initialization/app-
 import { selectUserState } from "../store/slices/user/user.selectors";
 
 export type AuthContextType = {
-  userId: number;
+  userId: string;
   email: string;
   isAuth: boolean;
   isAppLoading: boolean;
@@ -20,7 +20,7 @@ type AuthContextProps = {
 };
 
 const initialState: AuthContextType = {
-  userId: 0,
+  userId: "",
   email: "",
   isAuth: false,
   isAppLoading: false

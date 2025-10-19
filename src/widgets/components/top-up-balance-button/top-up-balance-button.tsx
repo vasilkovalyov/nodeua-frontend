@@ -1,12 +1,17 @@
 "use client";
 
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@mui/material";
 import useDialog from "@/src/shared/hooks/use-dialog";
 
-const TopUpBalanceButton: FC = () => {
+type TopUpBalanceButtonProps = {
+  textTranslationKey?: string;
+  children?: ReactNode;
+};
+
+const TopUpBalanceButton: FC<TopUpBalanceButtonProps> = ({ textTranslationKey, children }) => {
   const t = useTranslations();
   const { onOpenDialog } = useDialog();
 
@@ -20,7 +25,8 @@ const TopUpBalanceButton: FC = () => {
         })
       }
     >
-      {t("top_up_balance")}
+      {textTranslationKey && t(textTranslationKey)}
+      {children && children}
     </Button>
   );
 };

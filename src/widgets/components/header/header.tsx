@@ -39,7 +39,7 @@ const Header: FC = () => {
                 <AuthUserPanel />
                 <Stack direction="row" gap="10px" justifyContent="space-between">
                   <LanguageSwitcher />
-                  <TopUpBalanceButton />
+                  <TopUpBalanceButton textTranslationKey="top_up_balance" />
                 </Stack>
                 <UserBalance />
                 <LogoutButton />

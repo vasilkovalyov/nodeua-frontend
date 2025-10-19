@@ -31,6 +31,7 @@
   "have_account": "Вже є акаунт",
   "password_requirements": "Пароль має бути не менше 8 символів і містити принаймні: одну велику літеру; одна маленька літера; один символ і одне число. допустимі символи:",
   "validation_required_field": "Обов'язкове поле",
+  "validation_match_password_field": "Паролі повинні бути однаковими",
   "validation_email_invalid_format": "Недійсний формат електронної пошти",
   "not_found_title": "Сторінка не знайдена",
   "not_found_link_text": "Посилання на домашню сторінку",
@@ -43,7 +44,6 @@
   "balance_money": "Баланс",
   "active_node_category": "Активні ноди",
   "soldout_node_category": "Завершені ноди",
-  "tba_node_category": "Ноди, що очікують",
   "add_cart": "Додати в кошик",
   "announced": "Буде оголошено",
   "logout": "Вийти",
@@ -59,8 +59,7 @@
   "months": "Місяців",
   "more_info": "Їнформація",
   "lack_balance_text": "Недостатньо балансу: вам потрібно {balance} для завершення цього замовлення.",
-  "funds_raised": "Зібрані кошти",
-  "price_per_month": "Ціна за місяць",
+  "price": "Ціна за місяць",
   "top_up_balance": "Поповнити рахунок",
   "top_up_balance_sub_title": "Виберіть суму для поповнення рахунку. Мінімальна сума – 5 доларів США.",
   "cancel_button_text": "Скасувати",
@@ -83,5 +82,8 @@
   "reset_password_page_meta_title": "Мета-заголовок сторінки скидання пароля",
   "reset_password_page_meta_description": "Мета-опис сторінки скидання пароля",
   "forgot_password_page_meta_title": "Мета-заголовок сторінки відновлення пароля",
-  "forgot_password_page_meta_description": "Мета-опис сторінки відновлення пароля"
+  "forgot_password_page_meta_description": "Мета-опис сторінки відновлення пароля",
+  "buy_node": "Купити ноду",
+  "success_top_up_balance": "Ваш баланс успішно поповнено",
+  "error_top_up_balance": "Помилка поповнення балансу"
 }

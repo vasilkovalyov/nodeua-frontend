@@ -30,6 +30,7 @@
   "have_account": "Already have an account",
   "password_requirements": "The password must be at least 8 characters long and include at least: one capital letter; one small letter; one symbol and one number. valid characters:",
   "validation_required_field": "Required field",
+  "validation_match_password_field": "Password should match field",
   "validation_email_invalid_format": "Invalid email format",
   "not_found_title": "Page not found",
   "not_found_link_text": "Link to home page",
@@ -42,7 +43,6 @@
   "balance_money": "Balance",
   "active_node_category": "Deploy a Node",
   "soldout_node_category": "Ended Nodes",
-  "tba_node_category": "Awaiting Nodes",
   "add_cart": "Add card",
   "announced": "To Be Announced",
   "logout": "Log out",
@@ -58,8 +58,7 @@
   "months": "Months",
   "more_info": "More info",
   "lack_balance_text": "Insufficient balance: you need {balance} to complete this order.",
-  "funds_raised": "Funds Raised",
-  "price_per_month": "Price per Month",
+  "price": "Price per Month",
   "top_up_balance": "Top up balance",
   "top_up_balance_sub_title": "Choose an amount to add to your account. Minimum amount is 5 USD.",
   "cancel_button_text": "Cancel",
@@ -82,5 +81,8 @@
   "reset_password_page_meta_title": "Reset page meta title",
   "reset_password_page_meta_description": "Reset page meta description",
   "forgot_password_page_meta_title": "Forgot page meta title",
-  "forgot_password_page_meta_description": "Forgot page meta description"
+  "forgot_password_page_meta_description": "Forgot page meta description",
+  "buy_node": "Buy node",
+  "success_top_up_balance": "Your balance replenished successful",
+  "error_top_up_balance": "Error replenished balance"
 }

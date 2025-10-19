@@ -7,7 +7,7 @@ import { UserState } from "./user.types";
 
 const defaultProps: UserState = {
   profile: {
-    userId: 0,
+    userId: "",
     email: "",
     balance: 0
   }
@@ -27,12 +27,15 @@ const userSlice = createSlice({
         ...action.payload
       };
     },
+    setUserBalance: (state, action: PayloadAction<number>) => {
+      state.profile.balance = action.payload;
+    },
     clearUser: (state) => {
       state.profile = defaultProps.profile;
     }
   }
 });
 
-export const { setUserProfile, clearUser } = userSlice.actions;
+export const { setUserProfile, clearUser, setUserBalance } = userSlice.actions;
 
 export default userSlice.reducer;

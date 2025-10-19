@@ -14,7 +14,7 @@ type NodeCardProps = NodeType;
 const NodeCard: FC<NodeCardProps> = (props) => {
   const t = useTranslations();
 
-  const { _id, name, image, price_per_month, is_soldout, is_tba } = props;
+  const { _id, name, image, price, is_soldout } = props;
   return (
     <Card>
       <Box textAlign="center">
@@ -24,7 +24,7 @@ const NodeCard: FC<NodeCardProps> = (props) => {
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body2">{getFormatedCurrency(price_per_month)}</Typography>
+        {price && <Typography variant="body2">{getFormatedCurrency(price)}</Typography>}
       </CardContent>
       <CardActions
         sx={{
@@ -32,29 +32,23 @@ const NodeCard: FC<NodeCardProps> = (props) => {
           gap: "10px"
         }}
       >
-        {!is_tba ? (
-          <>
-            <Button variant="outlined" size="small" href={`${AppRoutes.singleNode}/${_id}`}>
-              {t("more_info")}
-            </Button>
-            <Box
-              sx={{
-                margin: "0  !important"
-              }}
-            >
-              <AddNodeToCart
-                isSoldout={is_soldout}
-                node={{
-                  ...props,
-                  quantity: 1,
-                  duration: 1
-                }}
-              />
-            </Box>
-          </>
-        ) : (
-          <Typography>{t("announced")}</Typography>
-        )}
+        <Button variant="outlined" size="small" href={`${AppRoutes.singleNode}/${_id}`}>
+          {t("more_info")}
+        </Button>
+        <Box
+          sx={{
+            margin: "0  !important"
+          }}
+        >
+          <AddNodeToCart
+            isSoldout={is_soldout}
+            node={{
+              ...props,
+              quantity: 1,
+              duration: 1
+            }}
+          />
+        </Box>
       </CardActions>
     </Card>
   );

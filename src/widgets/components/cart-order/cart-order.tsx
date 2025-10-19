@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Divider, List, Stack, Typography } from "@mui/material";
+import { Button, Divider, List, Stack, Typography } from "@mui/material";
 
 import { useAppSelector } from "@/app/store/store";
 import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
@@ -27,7 +27,7 @@ const CartOrder: FC = () => {
     let total: number = 0;
 
     for (const node of items) {
-      total += node.price_per_month * (node.duration * node.quantity);
+      total += node.price * (node.duration * node.quantity);
     }
 
     return total;
@@ -44,7 +44,7 @@ const CartOrder: FC = () => {
       <List>
         {nodes.map((node) => {
           const title = `${node.name} x ${node.quantity} | ${node.duration} ${node.duration > 1 ? t("months") : t("month")} ${CURRENCY.base}`;
-          const totalPrice = node.price_per_month * (node.duration * node.quantity);
+          const totalPrice = node.price * (node.duration * node.quantity);
           return <CartOrderListItem key={node._id} title={title} value={getFormatedCurrency(totalPrice)} />;
         })}
       </List>
@@ -53,11 +53,15 @@ const CartOrder: FC = () => {
         <CartOrderListItem titleTranslationKey="total" value={getFormatedCurrency(getTotal(nodes))} />
         <CartOrderListItem titleTranslationKey="balance_money" value={getFormatedCurrency(userBalanceAmount)} />
       </List>
-      {getDifferenceAmount() >= 0 && (
+      {getDifferenceAmount() >= 0 ? (
         <>
           <LackBalancePanel balance={getDifferenceAmount()} />
-          <TopUpBalanceButton />
+          <TopUpBalanceButton textTranslationKey="top_up_balance" />
         </>
+      ) : (
+        <Button variant="contained" color="primary">
+          {t("buy_node")}
+        </Button>
       )}
     </Stack>
   );

@@ -70,7 +70,7 @@ const CartList: FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {nodes.map(({ _id, name, price_per_month, quantity, duration, max_duration }) => (
+            {nodes.map(({ _id, name, price, quantity, duration, max_duration }) => (
               <TableRow key={_id}>
                 <TableCell>
                   <Typography variant="body2" fontWeight={600}>
@@ -79,7 +79,7 @@ const CartList: FC = () => {
                 </TableCell>
                 <TableCell>
                   <Typography variant="body2" fontWeight={600}>
-                    {getFormatedCurrency(price_per_month)}
+                    {getFormatedCurrency(price)}
                   </Typography>
                 </TableCell>
                 <TableCell>
