@@ -14,7 +14,18 @@ const authSlice = createSlice({
   reducers: {
     addNodes: (state: CartState, action: PayloadAction<NodeType[]>) => {
       const nodesForCart: CartNodeType[] = action.payload.map((node) => {
-        const { _id, name, guide, price, link, is_active, is_reneweble, priority, max_duration } = node;
+        const {
+          _id,
+          name,
+          guide,
+          price,
+          link,
+          is_active,
+          is_reneweble,
+          priority,
+          max_duration_months,
+          max_duration_days
+        } = node;
         const objData: CartNodeType = {
           quantity: LocalStorageCartService.getQuantityByIdNode(_id),
           duration: LocalStorageCartService.getDurationByIdNode(_id),
@@ -26,7 +37,8 @@ const authSlice = createSlice({
           guide,
           is_reneweble,
           priority,
-          max_duration
+          max_duration_months,
+          max_duration_days
         };
 
         return objData;
@@ -46,8 +58,9 @@ const authSlice = createSlice({
       state.nodes = state.nodes.filter((node) => node._id !== id);
       LocalStorageCartService.deleteNode(id);
     },
-    clearNodes: (state: CartState) => {
+    clearCart: (state: CartState) => {
       state.nodes = [];
+      LocalStorageCartService.clearCart();
     },
     updateQuantityNodes: (state: CartState, action: PayloadAction<CartNodeQuantityType>) => {
       const { _id, quantity } = action.payload;
@@ -80,7 +93,6 @@ const authSlice = createSlice({
   }
 });
 
-export const { addNode, addNodes, deleteNode, clearNodes, updateDurationNodes, updateQuantityNodes } =
-  authSlice.actions;
+export const { addNode, addNodes, deleteNode, clearCart, updateDurationNodes, updateQuantityNodes } = authSlice.actions;
 
 export default authSlice.reducer;

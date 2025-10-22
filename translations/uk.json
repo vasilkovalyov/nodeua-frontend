@@ -39,7 +39,7 @@
   "page_name_cart": "Кошик",
   "page_name_posts": "Пости",
   "page_name_active_nodes": "Активні ноди",
-
+  "page_name_expired_nodes": "Термін дії вузлів закінчився",
   "page_name_support": "Підтримка",
   "balance_money": "Баланс",
   "active_node_category": "Активні ноди",
@@ -49,6 +49,7 @@
   "logout": "Вийти",
   "go_to_home_page_button_text": "До головної сторінки",
   "sold_out": "Розпродано",
+  "cart_table_head_image": "Зображення",
   "cart_table_head_name": "Назва",
   "cart_table_head_month": "За місяць",
   "cart_table_head_quantity": "Кількість",
@@ -85,5 +86,14 @@
   "forgot_password_page_meta_description": "Мета-опис сторінки відновлення пароля",
   "buy_node": "Купити ноду",
   "success_top_up_balance": "Ваш баланс успішно поповнено",
-  "error_top_up_balance": "Помилка поповнення балансу"
+  "error_top_up_balance": "Помилка поповнення балансу",
+  "success_node_add": "Нода успішно додана",
+  "error_node_add": "Помилки додавання ноди",
+  "modal_node_key_title": "Ваші ключі Unichain",
+  "copy_to_clipboard": "Скопійовано в буфер обміну",
+  "copy_to_clipboard_failed": "Помилка буфера обміну",
+  "expiration_time_left": "залишилося до закінчення часу",
+  "day": "день",
+  "days_left": "днів",
+  "cart_table_head_expiration_date": "Термін придатності"
 }

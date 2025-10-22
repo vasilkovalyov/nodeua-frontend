@@ -38,7 +38,7 @@
   "page_name_cart": "Cart",
   "page_name_posts": "Posts",
   "page_name_active_nodes": "Active nodes",
-
+  "page_name_expired_nodes": "Expired nodes",
   "page_name_support": "Support",
   "balance_money": "Balance",
   "active_node_category": "Deploy a Node",
@@ -48,6 +48,7 @@
   "logout": "Log out",
   "go_to_home_page_button_text": "Go To Home Page",
   "sold_out": "Sold out",
+  "cart_table_head_image": "Image",
   "cart_table_head_name": "Name",
   "cart_table_head_month": "Per Month",
   "cart_table_head_quantity": "Quantity",
@@ -84,5 +85,14 @@
   "forgot_password_page_meta_description": "Forgot page meta description",
   "buy_node": "Buy node",
   "success_top_up_balance": "Your balance replenished successful",
-  "error_top_up_balance": "Error replenished balance"
+  "error_top_up_balance": "Error replenished balance",
+  "success_node_add": "Node has been added successful",
+  "error_node_add": "Error node add",
+  "modal_node_key_title": "Your Unichain keys",
+  "copy_to_clipboard": "Copied to clipboard",
+  "copy_to_clipboard_failed": "Failed to clipboard",
+  "expiration_time_left": "left to expiration time",
+  "day": "day",
+  "days_left": "days",
+  "cart_table_head_expiration_date": "Expiration date"
 }

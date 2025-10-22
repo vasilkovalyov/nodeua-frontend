@@ -13,12 +13,29 @@ import { selectUserState } from "@/app/store/slices/user/user.selectors";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 import { CURRENCY } from "@/src/shared/constant/currency";
 import { LackBalancePanel } from "@/src/shared/ui";
+import { useBuyNodeMutation } from "@/app/store/slices/user/user.api";
+import useSnackbar from "@/src/shared/hooks/use-snackbar";
+import { NodePaymentCartType } from "@/app/store/slices/user/user.types";
+
 import CartOrderListItem from "./ui/cart-order-list-item/cart-order-list-item";
 import TopUpBalanceButton from "../top-up-balance-button/top-up-balance-button";
+
+function getNodesForPayment(nodes: CartNodeType[]): NodePaymentCartType[] {
+  return nodes.map((node) => {
+    return {
+      _id: node._id,
+      months: node.duration,
+      price: node.price,
+      quantity: node.quantity
+    };
+  });
+}
 
 const CartOrder: FC = () => {
   const t = useTranslations();
   const nodes = useAppSelector(getNodesFromCartSelector);
+  const { showSnackbar } = useSnackbar();
+  const [buyNode, { isLoading }] = useBuyNodeMutation();
 
   const user = useAppSelector(selectUserState);
   const userBalanceAmount = user.profile.balance;
@@ -35,6 +52,19 @@ const CartOrder: FC = () => {
 
   function getDifferenceAmount(): number {
     return getTotal(nodes) - userBalanceAmount;
+  }
+
+  function onHandleBuyNode(): void {
+    buyNode({
+      nodes: getNodesForPayment(nodes)
+    })
+      .unwrap()
+      .then(() => {
+        showSnackbar({ title: t("success_node_add"), color: "success" });
+      })
+      .catch(() => {
+        showSnackbar({ title: t("error_node_add") });
+      });
   }
 
   return (
@@ -59,7 +89,7 @@ const CartOrder: FC = () => {
           <TopUpBalanceButton textTranslationKey="top_up_balance" />
         </>
       ) : (
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={onHandleBuyNode} loading={isLoading}>
           {t("buy_node")}
         </Button>
       )}

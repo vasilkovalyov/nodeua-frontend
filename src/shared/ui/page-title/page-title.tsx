@@ -10,7 +10,11 @@ export type PageTitleProps = {
 const PageTitle: FC<PageTitleProps> = ({ titleTranslationKey }) => {
   const t = useTranslations();
 
-  return <Typography variant="h1">{t(titleTranslationKey)}</Typography>;
+  return (
+    <Typography variant="h1" textAlign="center">
+      {t(titleTranslationKey)}
+    </Typography>
+  );
 };
 
 export default PageTitle;

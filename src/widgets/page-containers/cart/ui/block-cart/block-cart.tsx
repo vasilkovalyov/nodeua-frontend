@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/routing";
-import { Box, Button, Paper, Skeleton } from "@mui/material";
+import { Box, Button, Paper, Skeleton, Stack, Typography } from "@mui/material";
 import { AuthContainer, CartList, CartOrder } from "@/src/widgets/components";
 import { useAppSelector } from "@/app/store/store";
 import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
@@ -16,7 +16,7 @@ const BlockCart: FC = () => {
   const nodes = useAppSelector(getNodesFromCartSelector);
 
   return (
-    <Box>
+    <Box flex="1">
       <AuthContainer
         auth={
           <>
@@ -30,9 +30,14 @@ const BlockCart: FC = () => {
                 }
               />
             ) : (
-              <Button component={Link} href={AppRoutes.home} variant="contained" size="small">
-                {t("go_to_home_page_button_text")}
-              </Button>
+              <Stack textAlign="center" gap="20px" justifyContent="center" minHeight={"50dvh"}>
+                <Typography variant="h4">Your cart is empty. Let&apos;s add some nodes</Typography>
+                <Box>
+                  <Button component={Link} href={AppRoutes.home} variant="contained" size="small">
+                    {t("go_to_home_page_button_text")}
+                  </Button>
+                </Box>
+              </Stack>
             )}
           </>
         }

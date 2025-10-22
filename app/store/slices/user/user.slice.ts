@@ -1,9 +1,12 @@
+import Cookies from "js-cookie";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { UserType } from "@/app/entities/user";
 
 import { RootState } from "../../store";
 import { UserState } from "./user.types";
+import LocalStorageService from "@/src/shared/services/local-storage";
+import { cookieKeys } from "@/src/shared/config/cookie-keys";
 
 const defaultProps: UserState = {
   profile: {
@@ -32,6 +35,10 @@ const userSlice = createSlice({
     },
     clearUser: (state) => {
       state.profile = defaultProps.profile;
+      LocalStorageService.removeUserId();
+      Cookies.remove(cookieKeys.accessToken);
+      Cookies.remove(cookieKeys.refreshToken);
+      Cookies.remove(cookieKeys.userId);
     }
   }
 });

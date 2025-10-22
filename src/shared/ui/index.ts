@@ -11,3 +11,4 @@ export { default as NodeCard } from "./node-card/node-card";
 export { default as FormHeading } from "./form-heading/form-heading";
 export { default as LackBalancePanel } from "./lack-balance-panel/lack-balance-panel";
 export { default as PageTitle } from "./page-title/page-title";
+export { default as Table } from "./table/table";

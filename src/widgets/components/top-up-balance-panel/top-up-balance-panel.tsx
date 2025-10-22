@@ -13,7 +13,6 @@ import { useTopUpBalanceProfileMutation } from "@/app/store/slices/user/user.api
 import { CURRENCY } from "@/src/shared/constant/currency";
 import useSnackbar from "@/src/shared/hooks/use-snackbar";
 import useDialog from "@/src/shared/hooks/use-dialog";
-import useAuth from "@/app/hooks/use-auth";
 
 import TopUpAmountList from "./ui/top-up-amount-list/top-up-amount-list";
 import TopUpBalanceInfo from "./ui/top-up-balance-info/top-up-balance-info";
@@ -22,7 +21,6 @@ const AMOUNT_LIST: number[] = [5, 10, 25, 50, 100, 250];
 
 const TopUpBalancePanel: FC = () => {
   const t = useTranslations();
-  const { userId } = useAuth();
   const { onCloseDialogByName } = useDialog();
   const { showSnackbar } = useSnackbar();
   const user = useAppSelector(selectUserState);
@@ -46,7 +44,6 @@ const TopUpBalancePanel: FC = () => {
 
   function onHandleTopUpBalance(): void {
     topUpBalance({
-      userId: userId,
       amount: amountValue
     })
       .unwrap()

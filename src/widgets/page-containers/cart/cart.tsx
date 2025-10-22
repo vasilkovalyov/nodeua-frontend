@@ -5,7 +5,7 @@ import BlockCart from "./ui/block-cart/block-cart";
 
 const CartPageContainer: FC = () => {
   return (
-    <Stack gap="20px">
+    <Stack gap="20px" minHeight="80dvh" direction="column">
       <PageTitle titleTranslationKey="page_name_cart" />
       <BlockCart />
     </Stack>

@@ -23,12 +23,16 @@ const BlockNodes: FC = async () => {
   return (
     <Stack gap="40px">
       {Object.entries(nodesList).map(([category, nodes]) => (
-        <Stack key={category} gap="40px">
-          <Typography variant="h2" textAlign="center">
-            {t(`${category}_node_category`)}
-          </Typography>
-          <CardList items={nodes} renderCard={(props) => <NodeCard {...props} />} />
-        </Stack>
+        <>
+          {nodes.length ? (
+            <Stack key={category} gap="40px">
+              <Typography variant="h2" textAlign="center">
+                {t(`${category}_node_category`)}
+              </Typography>
+              <CardList items={nodes} renderCard={(props) => <NodeCard {...props} />} />
+            </Stack>
+          ) : null}
+        </>
       ))}
     </Stack>
   );

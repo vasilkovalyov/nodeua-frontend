@@ -24,6 +24,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store/store";
 import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
 import { deleteNode, updateDurationNodes, updateQuantityNodes } from "@/app/store/slices/cart/cart.slice";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
+import { AVG_MONTH_DAYS } from "@/src/shared/constant/days";
 
 const CartList: FC = () => {
   const t = useTranslations();
@@ -70,7 +71,7 @@ const CartList: FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {nodes.map(({ _id, name, price, quantity, duration, max_duration }) => (
+            {nodes.map(({ _id, name, price, quantity, duration, max_duration_months, max_duration_days }) => (
               <TableRow key={_id}>
                 <TableCell>
                   <Typography variant="body2" fontWeight={600}>
@@ -92,18 +93,25 @@ const CartList: FC = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <Select
-                    value={(duration ?? 1).toString()}
-                    size="small"
-                    fullWidth
-                    onChange={(e) => onHandleChangeMaxDuration(_id, +e.target.value)}
-                  >
-                    {Array.from(Array(max_duration).keys()).map((item: number) => (
-                      <MenuItem key={item} value={item + 1}>
-                        {item + 1} {item + 1 > 1 ? t("months") : t("month")}
-                      </MenuItem>
-                    ))}
-                  </Select>
+                  {max_duration_days < AVG_MONTH_DAYS ? (
+                    <Typography variant="body2" color="error">
+                      {max_duration_days} {max_duration_days < 2 ? t("day") : t("days_left")}{" "}
+                      {t("expiration_time_left")}
+                    </Typography>
+                  ) : (
+                    <Select
+                      value={(duration ?? 1).toString()}
+                      size="small"
+                      fullWidth
+                      onChange={(e) => onHandleChangeMaxDuration(_id, +e.target.value)}
+                    >
+                      {Array.from(Array(max_duration_months).keys()).map((item: number) => (
+                        <MenuItem key={item} value={item + 1}>
+                          {item + 1} {item + 1 > 1 ? t("months") : t("month")}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  )}
                 </TableCell>
                 <TableCell>
                   <Button variant="contained" size="small" onClick={() => onHandleDeleteNode(_id)}>

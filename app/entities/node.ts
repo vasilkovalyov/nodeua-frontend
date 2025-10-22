@@ -8,9 +8,12 @@ export type NodeType = {
   guide: boolean;
   is_reneweble: boolean;
   is_soldout: boolean;
-  max_duration: number;
+  max_duration_months: number;
+  max_duration_days: number;
   priority: number;
   ip_node: string;
+  id_node: string;
+  key_node: string;
 };
 
 export type NodeSingleType = NodeType & {
@@ -24,4 +27,8 @@ export type NodeSingleType = NodeType & {
     telegram_link: string;
     guide_link: string;
   };
+};
+
+export type BuyedNodeType = Pick<NodeType, "_id" | "image" | "name" | "price" | "id_node" | "key_node"> & {
+  expiration_date: string;
 };

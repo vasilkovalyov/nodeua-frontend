@@ -8,6 +8,7 @@ type UseDialogProps = {
   onOpenDialog: (props: PayloadDialogProps) => void;
   onCloseDialogByName: (name: DialogNames) => void;
   getOptionsFromDialog: (name: DialogNames) => any;
+  getPropsFromDialog: (name: DialogNames) => any;
   closeDialogs: () => any;
 };
 
@@ -28,6 +29,10 @@ export default function useDialog(): UseDialogProps {
     return getDialogByName(allDialogs, name).options;
   }
 
+  function getPropsFromDialog(name: DialogNames): any {
+    return getDialogByName(allDialogs, name).dialogProps;
+  }
+
   function closeDialogs(): void {
     if (allDialogs.length) {
       dispatch(closeAllDialogs());
@@ -39,6 +44,7 @@ export default function useDialog(): UseDialogProps {
     onOpenDialog,
     onCloseDialogByName,
     getOptionsFromDialog,
+    getPropsFromDialog,
     closeDialogs
   };
 }

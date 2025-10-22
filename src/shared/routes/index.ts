@@ -12,4 +12,4 @@ export const AppRoutes = {
   notFound: "/404"
 } as const;
 
-export const ROLE_PRIVATE_ROUTES: string[] = ["/cart", "/active-nodes"];
+export const ROLE_PRIVATE_ROUTES: string[] = [AppRoutes.cart, AppRoutes.activeNodes];

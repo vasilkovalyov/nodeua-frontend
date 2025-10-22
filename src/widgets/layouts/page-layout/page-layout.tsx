@@ -14,7 +14,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
       <Header />
       <HeaderMobile />
       <Box component="main" className="page-layout__main">
-        <Box component="section" py="40px">
+        <Box component="section" py="40px" flex="1">
           <Container>{children}</Container>
         </Box>
       </Box>

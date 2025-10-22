@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 
 type BlockCartTemplateProps = {
   leftCol: ReactElement;
@@ -14,9 +14,11 @@ const BlockCartTemplate: FC<BlockCartTemplateProps> = ({ leftCol, rightCol }) =>
         {leftCol}
       </Grid>
       <Grid item xs={12} xl={4}>
-        <Box component="aside" flex={1} height="100%">
-          {rightCol}
-        </Box>
+        <Stack>
+          <Box component="aside" flex={1} height="100%">
+            {rightCol}
+          </Box>
+        </Stack>
       </Grid>
     </Grid>
   );

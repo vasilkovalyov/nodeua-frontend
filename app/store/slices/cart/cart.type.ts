@@ -8,7 +8,8 @@ export type CartNodeType = {
   is_active: boolean;
   guide: boolean;
   is_reneweble: boolean;
-  max_duration: number;
+  max_duration_months: number;
+  max_duration_days: number;
   priority: number;
 };
 
