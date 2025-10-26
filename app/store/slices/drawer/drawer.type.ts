@@ -1,4 +1,4 @@
-export type DrawerNames = "NOTIFICATIONS_DRAWER" | "BASE_NAVIGATION_DRAWER";
+export type DrawerNames = "NOTIFICATIONS_DRAWER" | "BASE_NAVIGATION_DRAWER" | "ADMIN_NAVIGATION_DRAWER";
 
 export type PayloadDialogProps = {
   dialogName: DrawerNames;

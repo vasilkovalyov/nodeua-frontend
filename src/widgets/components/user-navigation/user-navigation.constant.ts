@@ -1,17 +1,11 @@
-import { AppRoutes } from "../routes";
-import { NavigationLinkType } from "../types/navigation-link";
+import { AppRoutes } from "@/src/shared/routes";
+import { NavigationLinkType } from "@/src/shared/types/navigation-link";
 
-export const navigationList: NavigationLinkType[] = [
+export const USER_NAVIGATION: NavigationLinkType[] = [
   {
     icon: "HomeOutlinedIcon",
     nameTranslationKey: "page_name_home",
     path: AppRoutes.home,
-    isPublic: true
-  },
-  {
-    icon: "NewspaperOutlinedIcon",
-    nameTranslationKey: "page_name_posts",
-    path: AppRoutes.userPosts,
     isPublic: true
   },
   {

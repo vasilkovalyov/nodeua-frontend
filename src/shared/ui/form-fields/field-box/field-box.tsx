@@ -15,6 +15,8 @@ type FieldBoxProps = {
   name: string;
   type: InputHTMLAttributes<unknown>["type"];
   ariaLabel?: string;
+  minRows?: number;
+  multiline?: boolean;
   fieldType: "text-field" | "password-field";
 };
 
@@ -25,6 +27,8 @@ const FieldBox: FC<FieldBoxProps> = ({
   name,
   type,
   ariaLabel,
+  multiline = false,
+  minRows,
   fieldType
 }) => {
   const t = useTranslations();
@@ -37,6 +41,8 @@ const FieldBox: FC<FieldBoxProps> = ({
             fullWidth
             name={name}
             type={type}
+            multiline={multiline}
+            minRows={minRows}
             aria-label={ariaLabel}
             placeholder={placeholderTranslationKey && t(placeholderTranslationKey)}
           />
@@ -57,6 +63,8 @@ const FieldBox: FC<FieldBoxProps> = ({
             fullWidth
             name={name}
             type={type}
+            multiline={multiline}
+            minRows={minRows}
             aria-label={ariaLabel}
             placeholder={placeholderTranslationKey && t(placeholderTranslationKey)}
           />

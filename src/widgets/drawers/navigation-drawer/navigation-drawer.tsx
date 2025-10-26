@@ -4,25 +4,21 @@ import { Stack, Box, Divider } from "@mui/material";
 
 import { AppLogo } from "@/src/shared/ui";
 import { UserNavigation } from "@/src/widgets/components";
-import { NavigationLinkType } from "@/src/shared/types/navigation-link";
 import DrawerHeader from "../drawer-header/drawer-header";
 import DrawerBody from "../drawer-body/drawer-body";
 
 type NavigationDrawerProps = {
   children?: ReactNode;
-  navigationList: NavigationLinkType[];
-  open: boolean;
-  onClose: () => void;
 };
 
-const NavigationDrawer: FC<NavigationDrawerProps> = ({ children, navigationList }) => {
+const NavigationDrawer: FC<NavigationDrawerProps> = ({ children }) => {
   return (
     <Stack gap="20px">
       <DrawerHeader>
         <AppLogo />
       </DrawerHeader>
       <DrawerBody>
-        <UserNavigation items={navigationList} />
+        <UserNavigation />
         <Box>
           <Divider />
         </Box>

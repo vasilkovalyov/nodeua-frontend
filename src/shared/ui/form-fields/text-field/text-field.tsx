@@ -21,7 +21,10 @@ const TextField: FC<TextFieldProps> = ({ name, rules, className, showErrorMessag
     fieldState: { error }
   } = useController({ name, control, rules: rules || {} });
 
-  function defaultOnChange(e: ChangeEvent<HTMLInputElement>): void {
+  function defaultOnChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+    if (onChange) {
+      onChange(e);
+    }
     field.onChange(e);
   }
 
@@ -37,7 +40,7 @@ const TextField: FC<TextFieldProps> = ({ name, rules, className, showErrorMessag
       error={!!error}
       helperText={showErrorMessage && error ? t(error.message) : null}
       className={className}
-      onChange={onChange || defaultOnChange}
+      onChange={defaultOnChange}
     />
   );
 };

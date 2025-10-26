@@ -1,4 +1,5 @@
 export const DATES_FORMAT = {
+  base: "YYYY-MM-DD",
   primary: "DD-MM-YYYY",
   secondary: "DD.MM.YYYY",
   dateAndTime: "DD.MM.YYYY HH:MM",

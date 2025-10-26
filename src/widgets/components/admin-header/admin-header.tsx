@@ -3,12 +3,13 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Box, Button, Link, Paper, Skeleton, Stack, Typography } from "@mui/material";
+import { Box, Button, Paper, Skeleton, Stack } from "@mui/material";
 
+import { Link } from "@/app/routing";
 import { AuthContainer, AuthUserPanel, AdminNavigation } from "@/src/widgets/components";
 
 import { AppRoutes } from "@/src/shared/routes";
-import { adminNavigationList } from "@/src/shared/hooks/use-admin-header-navigation";
+import AdminLogo from "@/src/shared/ui/admin-logo/admin-logo";
 import LogoutButton from "../logout-button/logout-button";
 
 import "./admin-header.scss";
@@ -20,10 +21,10 @@ const AdminHeader: FC = () => {
     <Paper elevation={3} component="header" className="admin-header">
       <Stack p="14px" gap="20px" flex={1}>
         <Stack direction="row" justifyContent="center">
-          <Typography variant="h1">Admin</Typography>
+          <AdminLogo />
         </Stack>
         <Box>
-          <AdminNavigation items={adminNavigationList} />
+          <AdminNavigation />
         </Box>
         <Stack marginBlockStart="auto">
           <AuthContainer

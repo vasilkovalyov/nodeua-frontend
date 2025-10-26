@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { AdminHeader, AdminHeaderMobile } from "@/src/widgets/components";
 
 import "./admin-layout.scss";
@@ -14,8 +14,8 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children }) => {
       <AdminHeader />
       <AdminHeaderMobile />
       <Box component="main" className="admin-layout__main">
-        <Box component="section" py="40px" flex="1">
-          <Container>{children}</Container>
+        <Box component="section" py="40px" px="20px" flex="1">
+          {children}
         </Box>
       </Box>
     </Box>

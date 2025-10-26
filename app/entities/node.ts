@@ -3,7 +3,6 @@ export type NodeType = {
   name: string;
   image: string;
   price: number;
-  link: string;
   is_active: boolean;
   guide: boolean;
   is_reneweble: boolean;
@@ -19,7 +18,6 @@ export type NodeType = {
 export type NodeSingleType = NodeType & {
   description?: {
     description: string;
-    short_description: string;
     type: string;
     site_link: string;
     twitter_link: string;

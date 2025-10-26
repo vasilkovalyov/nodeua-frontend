@@ -13,14 +13,14 @@ import LogoutButton from "../logout-button/logout-button";
 
 import "./admin-header-mobile.scss";
 
-const HeaderMobile: FC = () => {
+const AdminHeaderMobile: FC = () => {
   const t = useTranslations();
 
   const { onOpenDrawer, isOpenDrawer } = useDrawer();
-  const isOpen = isOpenDrawer("BASE_NAVIGATION_DRAWER");
+  const isOpen = isOpenDrawer("ADMIN_NAVIGATION_DRAWER");
 
   function openMenu(): void {
-    onOpenDrawer("BASE_NAVIGATION_DRAWER");
+    onOpenDrawer("ADMIN_NAVIGATION_DRAWER");
   }
 
   return (
@@ -50,4 +50,4 @@ const HeaderMobile: FC = () => {
   );
 };
 
-export default HeaderMobile;
+export default AdminHeaderMobile;

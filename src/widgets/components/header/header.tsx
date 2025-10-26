@@ -16,7 +16,7 @@ import {
 
 import useAuth from "@/app/hooks/use-auth";
 import { AppRoutes } from "@/src/shared/routes";
-import { navigationList } from "@/src/shared/hooks/use-header-navigation";
+
 import { AppLogo } from "@/src/shared/ui";
 import LogoutButton from "../logout-button/logout-button";
 
@@ -33,7 +33,7 @@ const Header: FC = () => {
           <AppLogo />
         </Stack>
         <Box>
-          <UserNavigation items={navigationList} />
+          <UserNavigation />
         </Box>
         <Stack marginBlockStart="auto">
           <AuthContainer

@@ -14,25 +14,14 @@ const authSlice = createSlice({
   reducers: {
     addNodes: (state: CartState, action: PayloadAction<NodeType[]>) => {
       const nodesForCart: CartNodeType[] = action.payload.map((node) => {
-        const {
-          _id,
-          name,
-          guide,
-          price,
-          link,
-          is_active,
-          is_reneweble,
-          priority,
-          max_duration_months,
-          max_duration_days
-        } = node;
+        const { _id, name, guide, price, is_active, is_reneweble, priority, max_duration_months, max_duration_days } =
+          node;
         const objData: CartNodeType = {
           quantity: LocalStorageCartService.getQuantityByIdNode(_id),
           duration: LocalStorageCartService.getDurationByIdNode(_id),
           _id,
           name,
           price,
-          link,
           is_active,
           guide,
           is_reneweble,

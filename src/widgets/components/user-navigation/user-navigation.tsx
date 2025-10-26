@@ -15,13 +15,9 @@ import useAuth from "@/app/hooks/use-auth";
 import { Link, usePathname } from "@/app/routing";
 import useDrawer from "@/src/shared/hooks/use-drawer";
 import { useAppSelector } from "@/app/store/store";
-import { NavigationLinkType } from "@/src/shared/types/navigation-link";
+import { USER_NAVIGATION } from "./user-navigation.constant";
 
 import "./user-navigation.scss";
-
-type UserNavigationProps = {
-  items: NavigationLinkType[];
-};
 
 const ICONS: Record<string, ReactElement> = {
   HomeOutlinedIcon: <HomeOutlinedIcon />,
@@ -31,7 +27,7 @@ const ICONS: Record<string, ReactElement> = {
   GroupOutlinedIcon: <GroupOutlinedIcon />
 };
 
-const UserNavigation: FC<UserNavigationProps> = ({ items }) => {
+const UserNavigation: FC = () => {
   const pathname = usePathname();
   const t = useTranslations();
   const { onCloseDrawer } = useDrawer();
@@ -46,7 +42,7 @@ const UserNavigation: FC<UserNavigationProps> = ({ items }) => {
   return (
     <Box component="nav" className="navigation">
       <List>
-        {items.map(({ path, nameTranslationKey, icon, className, target, isPublic }) => {
+        {USER_NAVIGATION.map(({ path, nameTranslationKey, icon, className, target, isPublic }) => {
           if (!isDisplayMenuLink(isPublic)) return null;
           return (
             <ListItem key={nameTranslationKey} className="navigation__item">

@@ -4,7 +4,6 @@ export type CartNodeType = {
   _id: string;
   name: string;
   price: number;
-  link: string;
   is_active: boolean;
   guide: boolean;
   is_reneweble: boolean;

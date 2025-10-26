@@ -10,7 +10,9 @@ export const AppRoutes = {
   userActiveNodes: "/active-nodes",
   anyRoute: "*",
   notFound: "/404",
-  admin: "/admin"
+  admin: "/admin",
+  adminNodes: "/admin/nodes",
+  adminCreateNode: "/admin/create-node"
 } as const;
 
 export const ROLE_PRIVATE_ROUTES: string[] = [AppRoutes.userCart, AppRoutes.userActiveNodes, AppRoutes.admin];
@@ -22,4 +24,4 @@ export const FORBIDDEN_ROUTES_FOR_ADMIN: string[] = [
   AppRoutes.userActiveNodes
 ];
 
-export const FORBIDDEN_ROUTES_FOR_USER: string[] = [AppRoutes.admin];
+export const FORBIDDEN_ROUTES_FOR_USER: string[] = [AppRoutes.admin, AppRoutes.adminNodes];

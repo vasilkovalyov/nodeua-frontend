@@ -22,5 +22,7 @@ export function isPrivateUrl(url: string): boolean {
 export function isPrivateUrlForUserRole(url: string, role: UserRole): boolean {
   const urls = role === "admin" ? FORBIDDEN_ROUTES_FOR_ADMIN : FORBIDDEN_ROUTES_FOR_USER;
 
-  return urls.some((route) => url.includes(route));
+  return urls.some((route) => {
+    return url === route;
+  });
 }
