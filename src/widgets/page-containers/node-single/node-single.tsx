@@ -1,39 +1,98 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Chip, Paper, Stack, Typography } from "@mui/material";
 import AddNodeToCart from "@/src/widgets/components/add-node-to-cart/add-note-to-cart";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 import { NodeSingleType } from "@/app/entities/node";
 import { useTranslations } from "next-intl";
+import Picture from "@/src/shared/ui/picture/picture";
+
+import PublicIcon from "@mui/icons-material/Public";
+import XIcon from "@mui/icons-material/X";
+import InfoIcon from "@mui/icons-material/Info";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import Link from "next/link";
 
 type NodeSingleContainerProps = NodeSingleType;
+
+type SocialLink = {
+  icon: ReactElement;
+  path: string;
+};
 
 const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
   const t = useTranslations();
 
-  const { name, price, is_soldout, description } = props;
+  const { name, price, is_soldout, description, image } = props;
+
+  const LINKS: SocialLink[] = [
+    {
+      icon: <PublicIcon />,
+      path: description?.site_link || ""
+    },
+    {
+      icon: <XIcon />,
+      path: description?.twitter_link || ""
+    },
+    {
+      icon: <InfoIcon />,
+      path: description?.guide_link || ""
+    },
+    {
+      icon: <TelegramIcon />,
+      path: description?.telegram_link || ""
+    },
+    {
+      icon: <GitHubIcon />,
+      path: description?.github_link || ""
+    }
+  ];
 
   return (
-    <Box>
-      <Box>
+    <Paper elevation={3} component={Stack} padding="20px" gap="20px">
+      <Stack direction="row" alignItems="start" gap="20px" justifyContent="space-between">
         <Typography variant="h1">{name}</Typography>
-        {price && (
+        {description && <Chip label={description.type} />}
+      </Stack>
+      <Stack direction="row" justifyContent="space-between" gap="20px">
+        <Stack gap="20px" alignItems="start">
           <Typography>
             {t("price")}: {getFormatedCurrency(price)}
           </Typography>
-        )}
-        <AddNodeToCart
-          isSoldout={is_soldout}
-          node={{
-            ...props,
-            quantity: 1,
-            duration: 1
-          }}
-        />
-        {description && <Typography>{description.type}</Typography>}
-        {description && <div dangerouslySetInnerHTML={{ __html: description.description }} />}
-      </Box>
-    </Box>
+          <AddNodeToCart
+            isSoldout={is_soldout}
+            node={{
+              ...props,
+              quantity: 1,
+              duration: 1
+            }}
+          />
+        </Stack>
+        <Box borderRadius="50%" overflow="hidden">
+          <Picture
+            image={{
+              src: image,
+              width: 140,
+              height: 140
+            }}
+            imageAlt={name}
+          />
+        </Box>
+      </Stack>
+      <Box maxWidth="600px">{description && <div dangerouslySetInnerHTML={{ __html: description.description }} />}</Box>
+      <Stack direction="row" gap="10px">
+        {LINKS.map(({ icon, path }) => {
+          if (path.length) {
+            return (
+              <Link key={path} href={path} target="_blank">
+                {icon}
+              </Link>
+            );
+          }
+        })}
+      </Stack>
+    </Paper>
   );
 };
 
