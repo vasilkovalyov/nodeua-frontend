@@ -1,0 +1,27 @@
+@use "@/styles/mixins.scss" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.admin-navigation {
+  &__item {
+    &.MuiListItem-root {
+      padding: 0;
+      margin-block-end: 4px;
+    }
+  }
+
+  &__link {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-decoration: none;
+    padding: 4px;
+    border-radius: 4px;
+
+    &.active {
+      color: var(--color-light);
+      background-color: var(--color-accent);
+    }
+  }
+}

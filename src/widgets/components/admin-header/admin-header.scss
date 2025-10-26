@@ -1,0 +1,18 @@
+@use "@/styles/mixins.scss" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.admin-header {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--header-width);
+
+  &.MuiPaper-root {
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
+      display: none;
+    }
+  }
+}

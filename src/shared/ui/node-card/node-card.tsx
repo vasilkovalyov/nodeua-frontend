@@ -32,7 +32,7 @@ const NodeCard: FC<NodeCardProps> = (props) => {
           gap: "10px"
         }}
       >
-        <Button variant="outlined" size="small" href={`${AppRoutes.singleNode}/${_id}`}>
+        <Button variant="outlined" size="small" href={`${AppRoutes.userSingleNode}/${_id}`}>
           {t("more_info")}
         </Button>
         <Box

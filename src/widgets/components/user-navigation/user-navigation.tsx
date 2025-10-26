@@ -17,9 +17,9 @@ import useDrawer from "@/src/shared/hooks/use-drawer";
 import { useAppSelector } from "@/app/store/store";
 import { NavigationLinkType } from "@/src/shared/types/navigation-link";
 
-import "./navigation.scss";
+import "./user-navigation.scss";
 
-type NavigationProps = {
+type UserNavigationProps = {
   items: NavigationLinkType[];
 };
 
@@ -31,7 +31,7 @@ const ICONS: Record<string, ReactElement> = {
   GroupOutlinedIcon: <GroupOutlinedIcon />
 };
 
-const Navigation: FC<NavigationProps> = ({ items }) => {
+const UserNavigation: FC<UserNavigationProps> = ({ items }) => {
   const pathname = usePathname();
   const t = useTranslations();
   const { onCloseDrawer } = useDrawer();
@@ -70,4 +70,4 @@ const Navigation: FC<NavigationProps> = ({ items }) => {
   );
 };
 
-export default Navigation;
+export default UserNavigation;

@@ -1,0 +1,17 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.admin-header-mobile {
+  position: fixed;
+  z-index: 10;
+  inset-block-start: 0;
+  inset-inline: 0;
+  background-color: var(--color-light);
+  height: var(--mobile-header-height);
+
+  &.MuiPaper-root {
+    @include mixins.media(breakpoints.$mobile_breakpoint_min) {
+      display: none;
+    }
+  }
+}

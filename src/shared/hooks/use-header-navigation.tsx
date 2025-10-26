@@ -11,7 +11,7 @@ export const navigationList: NavigationLinkType[] = [
   {
     icon: "NewspaperOutlinedIcon",
     nameTranslationKey: "page_name_posts",
-    path: AppRoutes.posts,
+    path: AppRoutes.userPosts,
     isPublic: true
   },
   {
@@ -24,13 +24,13 @@ export const navigationList: NavigationLinkType[] = [
   {
     icon: "ShoppingCartOutlinedIcon",
     nameTranslationKey: "page_name_cart",
-    path: AppRoutes.cart,
+    path: AppRoutes.userCart,
     isPublic: false
   },
   {
     icon: "ViewInArOutlinedIcon",
     nameTranslationKey: "page_name_active_nodes",
-    path: AppRoutes.activeNodes,
+    path: AppRoutes.userActiveNodes,
     isPublic: false
   }
 ];

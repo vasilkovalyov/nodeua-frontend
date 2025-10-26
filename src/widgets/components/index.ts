@@ -1,6 +1,6 @@
 export { default as AuthContainer } from "./auth-container/auth-container";
 export { default as MenuToggler } from "./menu-toggler/menu-toggler";
-export { default as Navigation } from "./navigation/navigation";
+export { default as UserNavigation } from "./user-navigation/user-navigation";
 export { default as LanguageSwitcher } from "./language-switcher/language-switcher";
 export { default as AuthUserPanel } from "./auth-user-panel/auth-user-panel";
 export { default as UserBalance } from "./user-balance/user-balance";
@@ -12,3 +12,6 @@ export { default as HeaderMobile } from "./header-mobile/header-mobile";
 export { default as TopUpBalanceButton } from "./top-up-balance-button/top-up-balance-button";
 export { default as TopUpBalancePanel } from "./top-up-balance-panel/top-up-balance-panel";
 export { default as CopyClipboard } from "./copy-clipboard/copy-clipboard";
+export { default as AdminHeader } from "./admin-header/admin-header";
+export { default as AdminHeaderMobile } from "./admin-header-mobile/admin-header-mobile";
+export { default as AdminNavigation } from "./admin-navigation/admin-navigation";

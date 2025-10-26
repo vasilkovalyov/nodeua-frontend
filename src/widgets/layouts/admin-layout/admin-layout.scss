@@ -1,0 +1,16 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.admin-layout {
+  @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
+    padding-top: var(--mobile-header-height);
+  }
+
+  &__main {
+    padding-inline-start: var(--header-width);
+
+    @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
+      --header-width: 0;
+    }
+  }
+}

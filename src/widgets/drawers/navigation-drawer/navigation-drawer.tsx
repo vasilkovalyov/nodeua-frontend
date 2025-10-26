@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react";
 import { Stack, Box, Divider } from "@mui/material";
 
 import { AppLogo } from "@/src/shared/ui";
-import { Navigation } from "@/src/widgets/components";
+import { UserNavigation } from "@/src/widgets/components";
 import { NavigationLinkType } from "@/src/shared/types/navigation-link";
 import DrawerHeader from "../drawer-header/drawer-header";
 import DrawerBody from "../drawer-body/drawer-body";
@@ -22,7 +22,7 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({ children, navigationList 
         <AppLogo />
       </DrawerHeader>
       <DrawerBody>
-        <Navigation items={navigationList} />
+        <UserNavigation items={navigationList} />
         <Box>
           <Divider />
         </Box>

@@ -13,6 +13,7 @@ export type AuthContextType = {
   email: string;
   isAuth: boolean;
   isAppLoading: boolean;
+  isAdmin?: boolean;
 };
 
 type AuthContextProps = {
@@ -35,15 +36,16 @@ function AuthProvider({ children }: AuthContextProps): ReactElement {
   const isAppLoading = useAppSelector(getIsAppLoadingSelector);
 
   const values = useMemo(() => {
-    const { email, userId } = user.profile;
+    const { email, userId, role } = user.profile;
 
     return {
       userId: userId,
       isAuth: isAuth,
       email: email,
-      isAppLoading: isAppLoading
+      isAppLoading: isAppLoading,
+      isAdmin: role === "admin"
     };
-  }, [isAuth, isAppLoading]);
+  }, [isAuth, user, isAppLoading]);
 
   useEffect(() => {
     dispatch(initializeApp());

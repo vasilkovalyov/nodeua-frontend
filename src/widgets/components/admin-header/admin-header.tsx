@@ -3,56 +3,38 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Box, Button, Link, Paper, Skeleton, Stack } from "@mui/material";
+import { Box, Button, Link, Paper, Skeleton, Stack, Typography } from "@mui/material";
 
-import {
-  AuthContainer,
-  AuthUserPanel,
-  LanguageSwitcher,
-  UserNavigation,
-  TopUpBalanceButton,
-  UserBalance
-} from "@/src/widgets/components";
+import { AuthContainer, AuthUserPanel, AdminNavigation } from "@/src/widgets/components";
 
-import useAuth from "@/app/hooks/use-auth";
 import { AppRoutes } from "@/src/shared/routes";
-import { navigationList } from "@/src/shared/hooks/use-header-navigation";
-import { AppLogo } from "@/src/shared/ui";
+import { adminNavigationList } from "@/src/shared/hooks/use-admin-header-navigation";
 import LogoutButton from "../logout-button/logout-button";
 
-import "./header.scss";
+import "./admin-header.scss";
 
-const Header: FC = () => {
+const AdminHeader: FC = () => {
   const t = useTranslations();
-  const { isAdmin } = useAuth();
 
   return (
-    <Paper elevation={3} component="header" className="header">
+    <Paper elevation={3} component="header" className="admin-header">
       <Stack p="14px" gap="20px" flex={1}>
         <Stack direction="row" justifyContent="center">
-          <AppLogo />
+          <Typography variant="h1">Admin</Typography>
         </Stack>
         <Box>
-          <UserNavigation items={navigationList} />
+          <AdminNavigation items={adminNavigationList} />
         </Box>
         <Stack marginBlockStart="auto">
           <AuthContainer
             auth={
               <Stack gap="10px">
                 <AuthUserPanel />
-                <Stack direction="row" gap="10px" justifyContent="space-between">
-                  <LanguageSwitcher />
-                  {!isAdmin && <TopUpBalanceButton textTranslationKey="top_up_balance" />}
-                </Stack>
-                {!isAdmin && <UserBalance />}
                 <LogoutButton />
               </Stack>
             }
             notAuth={
               <Stack gap="20px">
-                <Stack direction="row" gap="10px" justifyContent="space-between">
-                  <LanguageSwitcher />
-                </Stack>
                 <Button variant="contained" size="small" href={AppRoutes.login} component={Link} fullWidth>
                   {t("login")}
                 </Button>
@@ -60,7 +42,6 @@ const Header: FC = () => {
             }
             loader={
               <Stack gap="10px">
-                <Skeleton sx={{ height: "40px", transform: "none" }} />
                 <Skeleton sx={{ height: "24px", transform: "none" }} />
                 <Skeleton sx={{ height: "36px", transform: "none" }} />
               </Stack>
@@ -72,4 +53,4 @@ const Header: FC = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;
