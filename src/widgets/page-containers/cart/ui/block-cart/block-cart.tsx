@@ -30,8 +30,8 @@ const BlockCart: FC = () => {
                 }
               />
             ) : (
-              <Stack textAlign="center" gap="20px" justifyContent="center" minHeight={"50dvh"}>
-                <Typography variant="h4">Your cart is empty. Let&apos;s add some nodes</Typography>
+              <Stack textAlign="center" gap="20px" justifyContent="center">
+                <Typography variant="h4">{t("empty_cart")}</Typography>
                 <Box>
                   <Button component={Link} href={AppRoutes.home} variant="contained" size="small">
                     {t("go_to_home_page_button_text")}

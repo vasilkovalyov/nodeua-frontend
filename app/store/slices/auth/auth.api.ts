@@ -53,7 +53,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const response = await queryFulfilled;
           const { userId } = response.data;
           LocalStorageService.emailConfirmation(args.email, userId);
-        } catch (e) {
+        } catch (e: any) {
+          // throw new Error(e.data?.message);
           console.log(e);
         } finally {
           dispatch(stopLoadingAuth());

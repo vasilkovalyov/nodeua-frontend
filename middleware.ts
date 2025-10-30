@@ -25,20 +25,24 @@ export default async function middleware(req: NextRequest): Promise<any> {
     }
   }
 
-  const jwtSecret = process.env.JWT_ACCESS_SECRET;
+  try {
+    const jwtSecret = process.env.JWT_ACCESS_SECRET;
 
-  if (token && jwtSecret) {
-    const secret = new TextEncoder().encode(jwtSecret);
-    const { payload } = await jwtVerify(token.value, secret);
-    const currentRole: UserRole = payload.isAdmin ? "admin" : "user";
+    if (token && jwtSecret) {
+      const secret = new TextEncoder().encode(jwtSecret);
+      const { payload } = await jwtVerify(token.value, secret);
+      const currentRole: UserRole = payload?.isAdmin ? "admin" : "user";
 
-    if (payload.isAdmin && req.nextUrl.pathname === AppRoutes.home) {
-      return NextResponse.redirect(new URL(AppRoutes.admin, req.url));
+      if (payload.isAdmin && req.nextUrl.pathname === AppRoutes.home) {
+        return NextResponse.redirect(new URL(AppRoutes.admin, req.url));
+      }
+
+      if (isPrivateUrlForUserRole(req.nextUrl.pathname, currentRole)) {
+        return NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
+      }
     }
-
-    if (isPrivateUrlForUserRole(req.nextUrl.pathname, currentRole)) {
-      return NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
-    }
+  } catch (e) {
+    console.log(e);
   }
 
   return response;

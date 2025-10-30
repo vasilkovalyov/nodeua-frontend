@@ -1,3 +1,4 @@
+import { TELEGRAM_LINK } from "@/src/shared/constant/links";
 import { AppRoutes } from "@/src/shared/routes";
 import { NavigationLinkType } from "@/src/shared/types/navigation-link";
 
@@ -11,7 +12,7 @@ export const USER_NAVIGATION: NavigationLinkType[] = [
   {
     icon: "GroupOutlinedIcon",
     nameTranslationKey: "page_name_support",
-    path: "https://t.me/nodesua",
+    path: TELEGRAM_LINK,
     target: "_blank",
     isPublic: true
   },

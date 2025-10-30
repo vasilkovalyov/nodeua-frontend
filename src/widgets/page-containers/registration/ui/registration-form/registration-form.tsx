@@ -7,16 +7,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Alert, Button, Stack } from "@mui/material";
 
+import { useRouter } from "@/app/routing";
 import { useAppSelector } from "@/app/store/store";
 import { useSignUpMutation } from "@/app/store/slices/auth/auth.api";
 import { RootForm, FieldBox } from "@/src/shared/ui";
 
 import validationSchema from "./registration-form.validation";
 import { RegistrationFormFields } from "./registration-form.types";
+import { ErrorType } from "@/src/shared/types/error";
+import { AppRoutes } from "@/src/shared/routes";
 
 const RegistrationForm: FC = () => {
   const t = useTranslations();
   const [signUpApi] = useSignUpMutation();
+  const router = useRouter();
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const isLoading = useAppSelector((store) => store.auth.isLoading);
 
@@ -25,16 +30,19 @@ const RegistrationForm: FC = () => {
     mode: "onSubmit"
   });
 
-  function onSubmit(props: RegistrationFormFields): void {
+  async function onSubmit(props: RegistrationFormFields): Promise<void> {
     const { email, password } = props;
 
-    signUpApi({
+    await signUpApi({
       email: email,
       password: password
     })
       .unwrap()
-      .catch((e) => {
-        setErrorMessage(e.data?.messages[0]);
+      .then(() => {
+        router.push(AppRoutes.login);
+      })
+      .catch((e: ErrorType) => {
+        setErrorMessage(e.data?.message);
       });
   }
 

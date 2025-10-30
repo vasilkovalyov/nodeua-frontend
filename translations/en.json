@@ -119,5 +119,8 @@
   "node_edit_error": "Node update error",
   "all_nodes": "Nodes",
   "edit_node": "Edit Node",
-  "details": "Details"
+  "details": "Details",
+  "empty_nodes": "You don`t have nodes. Let`s add some nodes",
+  "empty_cart": "Your cart is empty. Let`s add some nodes",
+  "subscribe": "Subscribe to our <link>TG channel</link> to be the first to know the news."
 }
