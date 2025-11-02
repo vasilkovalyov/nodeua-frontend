@@ -1,4 +1,4 @@
-import { BuyedNodeType } from "@/app/entities/node";
+import { PaymentNodeType } from "@/app/entities/node";
 import { UserType } from "@/app/entities/user";
 
 export type UserState = {
@@ -17,9 +17,9 @@ export type NodePaymentCartType = {
 };
 
 export type GetActiveNodesResponseType = {
-  buyed_nodes: BuyedNodeType[];
+  nodes: PaymentNodeType[];
 };
 
 export type GetExpiredNodesResponseType = {
-  buyed_nodes: BuyedNodeType[];
+  nodes: PaymentNodeType[];
 };

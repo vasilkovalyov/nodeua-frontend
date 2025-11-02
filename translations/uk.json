@@ -16,7 +16,6 @@
   "sign_up_title": "Зареєструватися",
   "sign_up_sub_title": "Введіть свою електронну адресу нижче, щоб зареєструвати свій обліковий запис",
   "already_have_account": "Вже маєте обліковий запис?",
-
   "sign_up": "Зареєструватися",
   "password_label": "Пароль",
   "password_placeholder": "Пароль",
@@ -41,7 +40,7 @@
   "page_name_posts": "Пости",
   "page_name_active_nodes": "Активні ноди",
   "page_name_expired_nodes": "Термін дії вузлів закінчився",
-  "page_name_support": "Підтримка",
+  "page_name_telegram_chanel": "Telegram канал",
   "balance_money": "Баланс",
   "active_node_category": "Активні ноди",
   "soldout_node_category": "Завершені ноди",
@@ -123,5 +122,5 @@
   "details": "Подробиці",
   "empty_nodes": "У вас немає нод. Додамо кілька нод.",
   "empty_cart": "Ваш кошик порожній. Додамо кілька нод.",
-  "subscribe": "Підпишіться на наш <linkTG-канал</link>, щоб першими дізнаватися новини."
+  "choose_language_title": "Виберіть мову"
 }

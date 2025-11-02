@@ -11,7 +11,7 @@ export const USER_NAVIGATION: NavigationLinkType[] = [
   },
   {
     icon: "GroupOutlinedIcon",
-    nameTranslationKey: "page_name_support",
+    nameTranslationKey: "page_name_telegram_chanel",
     path: TELEGRAM_LINK,
     target: "_blank",
     isPublic: true

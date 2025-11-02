@@ -3,7 +3,7 @@ export type DialogState = {
   dialogSize: DialogSize;
 };
 
-export type DialogNames = "TOP_UP_BALANCE_DIALOG" | "UNICHAIN_DIALOG";
+export type DialogNames = "TOP_UP_BALANCE_DIALOG" | "UNICHAIN_DIALOG" | "LANGUAGE_SWITCHER_DIALOG";
 
 export type PayloadDialogProps = {
   dialogName: DialogNames;

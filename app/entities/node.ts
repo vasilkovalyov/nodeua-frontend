@@ -27,6 +27,6 @@ export type NodeSingleType = NodeType & {
   };
 };
 
-export type BuyedNodeType = Pick<NodeType, "_id" | "image" | "name" | "price" | "id_node" | "key_node"> & {
+export type PaymentNodeType = Pick<NodeType, "_id" | "image" | "name" | "price" | "id_node" | "key_node"> & {
   expiration_date: string;
 };

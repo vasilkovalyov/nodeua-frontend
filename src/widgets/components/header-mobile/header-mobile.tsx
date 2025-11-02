@@ -44,7 +44,7 @@ const HeaderMobile: FC = () => {
                   <TopUpBalanceButton>
                     <AccountBalanceWalletIcon />
                   </TopUpBalanceButton>
-                  <LogoutButton size="small" />
+                  <LogoutButton size="small" useIcon={true} />
                 </>
               }
               notAuth={

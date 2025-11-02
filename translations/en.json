@@ -16,7 +16,6 @@
   "sign_up_title": "Sign up",
   "sign_up_sub_title": "Enter your email below to register your account",
   "already_have_account": "Already have an account?",
-
   "password_label": "Password",
   "password_placeholder": "Password",
   "email_label": "Email",
@@ -40,7 +39,7 @@
   "page_name_posts": "Posts",
   "page_name_active_nodes": "Active nodes",
   "page_name_expired_nodes": "Expired nodes",
-  "page_name_support": "Support",
+  "page_name_telegram_chanel": "Telegam chanel",
   "balance_money": "Balance",
   "active_node_category": "Deploy a Node",
   "soldout_node_category": "Ended Nodes",
@@ -122,5 +121,5 @@
   "details": "Details",
   "empty_nodes": "You don`t have nodes. Let`s add some nodes",
   "empty_cart": "Your cart is empty. Let`s add some nodes",
-  "subscribe": "Subscribe to our <link>TG channel</link> to be the first to know the news."
+  "choose_language_title": "Choose your language"
 }

@@ -5,12 +5,12 @@ import dayjs from "dayjs";
 import { Button, TableCell, Typography, Stack } from "@mui/material";
 import KeyIcon from "@mui/icons-material/Key";
 
-import { BuyedNodeType } from "@/app/entities/node";
+import { PaymentNodeType } from "@/app/entities/node";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 import { CopyClipboard } from "@/src/widgets/components";
 import { DATES_FORMAT } from "@/src/shared/config/dates";
 
-type TableNodesRowProps = BuyedNodeType & {
+type TableNodesRowProps = PaymentNodeType & {
   type: "active" | "inactive";
   onHandleShowKeyNode: (keyNode: string) => void;
 };

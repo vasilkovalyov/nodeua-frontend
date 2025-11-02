@@ -1,42 +1,18 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import cn from "classnames";
-import Cookies from "js-cookie";
-
 import { Stack, Button } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 
-import { useRouter } from "@/app/routing";
-
-import { findLanguage, getLangCode, getLanguageCode } from "./language-switcher.utils";
-import { cookieKeys } from "@/src/shared/config/cookie-keys";
+import useDialog from "@/src/shared/hooks/use-dialog";
+import useLanguage from "@/src/shared/hooks/use-language";
 
 import "./language-switcher.scss";
 
-type SelectedLanguage = {
-  code: string;
-  shortName: string;
-};
-
 const LanguageSwitcher: FC = () => {
-  const router = useRouter();
-  const [lang, setLang] = useState<SelectedLanguage>({
-    code: "",
-    shortName: ""
-  });
-
-  function onHandleChangeLanguage(): void {
-    const langCode: SelectedLanguage = getLangCode();
-    const findLang = findLanguage(langCode.code) as SelectedLanguage;
-    Cookies.set(cookieKeys.locale, findLang.code);
-    setLang(findLang);
-    router.refresh();
-  }
-
-  useEffect(() => {
-    setLang(getLanguageCode());
-  }, []);
+  const { onOpenDialog } = useDialog();
+  const { currentLanguage } = useLanguage();
 
   return (
     <Stack className={cn("language-switcher")} direction="row" alignItems="center" gap="10px">
@@ -44,13 +20,17 @@ const LanguageSwitcher: FC = () => {
       <Button
         variant="outlined"
         size="small"
-        onClick={onHandleChangeLanguage}
+        onClick={() =>
+          onOpenDialog({
+            dialogName: "LANGUAGE_SWITCHER_DIALOG"
+          })
+        }
         sx={{
           p: 0,
           minWidth: "30px"
         }}
       >
-        {lang.shortName}
+        {currentLanguage?.shortName}
       </Button>
     </Stack>
   );

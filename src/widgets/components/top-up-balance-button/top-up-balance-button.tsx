@@ -19,6 +19,9 @@ const TopUpBalanceButton: FC<TopUpBalanceButtonProps> = ({ textTranslationKey, c
     <Button
       variant="contained"
       size="small"
+      sx={{
+        minWidth: "40px"
+      }}
       onClick={() =>
         onOpenDialog({
           dialogName: "TOP_UP_BALANCE_DIALOG"

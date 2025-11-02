@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { Box, Button, Skeleton, Stack, Typography } from "@mui/material";
@@ -13,16 +13,23 @@ import TableNodes from "./ui/table-nodes/table-nodes";
 
 const ActiveNodesPageContainer: FC = () => {
   const t = useTranslations();
+  const [isEndLoading, setIsEndLoading] = useState<boolean>(true);
 
   const { data: activeNodes, isLoading: isLoadingActive } = useGetActiveNodesQuery();
   const { data: expiredNodes, isLoading: isLoadingExpired } = useGetExpiredNodesQuery();
-  const isEmptyNodes = !activeNodes?.buyed_nodes.length || !expiredNodes?.buyed_nodes.length;
+  const isEmptyNodes = activeNodes?.nodes.length || expiredNodes?.nodes.length;
+
+  useEffect(() => {
+    if (!isLoadingActive && !isLoadingExpired) {
+      setIsEndLoading(false);
+    }
+  }, [isLoadingActive, isLoadingExpired]);
 
   return (
     <Stack gap="50px">
       <PageTitle titleTranslationKey="page_name_active_nodes" />
 
-      {isLoadingActive || isLoadingExpired ? (
+      {isEndLoading ? (
         <Stack gap="3px">
           <Skeleton sx={{ height: "56px", width: "100%", transform: "none" }} />
           <Skeleton sx={{ height: "74px", width: "100%", transform: "none" }} />
@@ -32,11 +39,11 @@ const ActiveNodesPageContainer: FC = () => {
         <Stack gap="50px">
           {isEmptyNodes ? (
             <>
-              {activeNodes?.buyed_nodes.length ? <TableNodes nodes={activeNodes.buyed_nodes} type="active" /> : null}
-              {expiredNodes?.buyed_nodes.length ? (
+              {activeNodes?.nodes.length ? <TableNodes nodes={activeNodes.nodes} type="active" /> : null}
+              {expiredNodes?.nodes.length ? (
                 <Stack gap="30px">
                   <PageTitle titleTranslationKey="page_name_expired_nodes" />
-                  <TableNodes nodes={expiredNodes.buyed_nodes} type="inactive" />
+                  <TableNodes nodes={expiredNodes.nodes} type="inactive" />
                 </Stack>
               ) : null}
             </>

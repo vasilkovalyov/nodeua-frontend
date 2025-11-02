@@ -1,0 +1,11 @@
+.dialog-box {
+  &__inner {
+    position: relative;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
