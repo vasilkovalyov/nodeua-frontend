@@ -5,7 +5,12 @@ import { setAuth } from "../auth/auth.slice";
 import { UserType } from "@/app/entities/user";
 import { cartApiSlice } from "../cart/cart.api";
 import LocalStorageCartService from "@/src/shared/services/local-storage-cart";
-import { GetActiveNodesResponseType, NodePaymentApiRequest } from "./user.types";
+import {
+  CreateInvoiceProps,
+  CreateInvoiceResponseProps,
+  GetActiveNodesResponseType,
+  NodePaymentApiRequest
+} from "./user.types";
 import { clearCart } from "../cart/cart.slice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -35,21 +40,21 @@ export const userApiSlice = apiSlice.injectEndpoints({
         }
       }
     }),
-    topUpBalanceProfile: builder.mutation<{ balance: number }, { amount: number }>({
+    createPaymentInvoiceProfile: builder.mutation<CreateInvoiceResponseProps, CreateInvoiceProps>({
       query: (props) => ({
-        url: "/user/top-up-balance",
-        method: "PUT",
+        url: "/create-invoice",
+        method: "POST",
         body: props
-      }),
-      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
-        try {
-          const response = await queryFulfilled;
-          const balance = response.data.balance;
-          dispatch(setUserBalance(balance));
-        } catch (e) {
-          console.log(e);
-        }
-      }
+      })
+      // onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+      //   try {
+      //     const response = await queryFulfilled;
+      //     const balance = response.data.balance;
+      //     dispatch(setUserBalance(balance));
+      //   } catch (e) {
+      //     console.log(e);
+      //   }
+      // }
     }),
     buyNode: builder.mutation<{ balance: number }, NodePaymentApiRequest>({
       query: (props) => ({
@@ -83,5 +88,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
   })
 });
 
-export const { useTopUpBalanceProfileMutation, useBuyNodeMutation, useGetActiveNodesQuery, useGetExpiredNodesQuery } =
-  userApiSlice;
+export const {
+  useCreatePaymentInvoiceProfileMutation,
+  useBuyNodeMutation,
+  useGetActiveNodesQuery,
+  useGetExpiredNodesQuery
+} = userApiSlice;

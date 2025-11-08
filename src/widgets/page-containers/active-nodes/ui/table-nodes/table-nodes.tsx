@@ -4,14 +4,14 @@ import { FC } from "react";
 
 import { Table } from "@/src/shared/ui";
 
-import { PaymentNodeType } from "@/app/entities/node";
+import { BuyedNodeType } from "@/app/entities/node";
 import useDialog from "@/src/shared/hooks/use-dialog";
 
 import { TABLE_ACTIVE_NODES_HEAD_CELL, TABLE_INACTIVE_NODES_HEAD_CELL } from "./table-nodes.constant";
 import TableNodesRow from "../table-nodes-row/table-nodes-row";
 
 type TableNodesProps = {
-  nodes: PaymentNodeType[];
+  nodes: BuyedNodeType[];
   type: "active" | "inactive";
 };
 

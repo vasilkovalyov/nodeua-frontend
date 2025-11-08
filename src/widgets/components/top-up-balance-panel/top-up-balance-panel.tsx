@@ -1,17 +1,17 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { Button, Stack, Typography, TextField, InputAdornment } from "@mui/material";
 
+import { usePathname } from "@/app/routing";
 import { FormHeading } from "@/src/shared/ui";
 import { useAppSelector } from "@/app/store/store";
 import { selectUserState } from "@/app/store/slices/user/user.selectors";
-import { useTopUpBalanceProfileMutation } from "@/app/store/slices/user/user.api";
+import { useCreatePaymentInvoiceProfileMutation } from "@/app/store/slices/user/user.api";
 
 import { CURRENCY } from "@/src/shared/constant/currency";
-import useSnackbar from "@/src/shared/hooks/use-snackbar";
 import useDialog from "@/src/shared/hooks/use-dialog";
 
 import TopUpAmountList from "./ui/top-up-amount-list/top-up-amount-list";
@@ -21,16 +21,20 @@ const AMOUNT_LIST: number[] = [5, 10, 25, 50, 100, 250];
 
 const TopUpBalancePanel: FC = () => {
   const t = useTranslations();
+  const pathname = usePathname();
   const { onCloseDialogByName } = useDialog();
-  const { showSnackbar } = useSnackbar();
   const user = useAppSelector(selectUserState);
 
-  const [topUpBalance, { isLoading }] = useTopUpBalanceProfileMutation();
+  const [paymentInvoice, { isLoading }] = useCreatePaymentInvoiceProfileMutation();
 
   const [amountValue, setAmountValue] = useState<number>(AMOUNT_LIST[0]);
   const [afterTopUpBalance, setAfterTopUpBalance] = useState<number>(AMOUNT_LIST[0]);
 
   const userBalance = user.profile.balance;
+
+  useEffect(() => {
+    setAfterTopUpBalance(user.profile.balance + amountValue);
+  }, [user.profile.balance]);
 
   function onHandleAddAmount(amount: number): void {
     setAfterTopUpBalance(amount + userBalance);
@@ -43,17 +47,16 @@ const TopUpBalancePanel: FC = () => {
   }
 
   function onHandleTopUpBalance(): void {
-    topUpBalance({
-      amount: amountValue
+    paymentInvoice({
+      amount: amountValue,
+      success_url: pathname,
+      cancel_url: pathname
     })
       .unwrap()
-      .then(() => {
-        showSnackbar({ title: t("success_top_up_balance"), color: "success" });
-        onCloseDialog();
+      .then((props) => {
+        window.location.href = props.invoice_url;
       })
-      .catch(() => {
-        showSnackbar({ title: t("error_top_up_balance") });
-      });
+      .catch(() => {});
   }
 
   function onCloseDialog(): void {
