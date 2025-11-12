@@ -19,8 +19,6 @@ export type SignUpEmailApiRequestType = {
 };
 
 export type LoginApiResponseType = {
-  accessToken: string;
-  refreshToken: string;
   email: string;
   _id: string;
 };

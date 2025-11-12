@@ -121,5 +121,7 @@
   "details": "Подробнее",
   "empty_nodes": "У вас нет нод. Добавьте хотя бы одну ноду.",
   "empty_cart": "Ваша корзина пуста. Добавьте несколько нод.",
-  "choose_language_title": "Выберите язык"
+  "choose_language_title": "Выберите язык",
+  "google_login": "Войти через Google",
+  "google_registration": "Регистрация через Google"
 }

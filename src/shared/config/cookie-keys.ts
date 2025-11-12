@@ -1,5 +1,5 @@
 export const cookieKeys = {
-  accessToken: "accessToken",
+  accessToken: "token",
   refreshToken: "refreshToken",
   locale: "NEXT_LOCALE",
   userId: "userId"

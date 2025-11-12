@@ -12,7 +12,16 @@ const AuthUserPanel: FC = () => {
   return (
     <Stack direction="row" alignItems="center" gap="10px">
       <Avatar>{email.split("")[0]}</Avatar>
-      <Typography variant="body2">{email}</Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          overflow: "hidden"
+        }}
+      >
+        {email}
+      </Typography>
     </Stack>
   );
 };

@@ -7,9 +7,8 @@ import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 import { useRouter } from "@/app/routing";
-import { useAppDispatch } from "@/app/store/store";
-import { logOut } from "@/app/store/modules/auth/actions";
 import { AppRoutes } from "@/src/shared/routes";
+import { useLogoutMutation } from "@/app/store/slices/auth/auth.api";
 
 type LogoutButtonProps = {
   size?: "small" | "medium" | "large";
@@ -18,13 +17,19 @@ type LogoutButtonProps = {
 
 const LogoutButton: FC<LogoutButtonProps> = ({ size, useIcon }) => {
   const t = useTranslations();
-  const dispatch = useAppDispatch();
+  const [logoutApi] = useLogoutMutation();
 
   const router = useRouter();
 
   function onLogout(): void {
-    dispatch(logOut());
-    router.push(AppRoutes.login);
+    logoutApi()
+      .unwrap()
+      .then(() => {
+        router.push(AppRoutes.login);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   return (

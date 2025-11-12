@@ -15,3 +15,4 @@ export { default as CopyClipboard } from "./copy-clipboard/copy-clipboard";
 export { default as AdminHeader } from "./admin-header/admin-header";
 export { default as AdminHeaderMobile } from "./admin-header-mobile/admin-header-mobile";
 export { default as AdminNavigation } from "./admin-navigation/admin-navigation";
+export { default as GoogleAuthButton } from "./google-auth-button/google-auth-button";

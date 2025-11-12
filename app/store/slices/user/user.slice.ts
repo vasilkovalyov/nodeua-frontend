@@ -36,8 +36,6 @@ const userSlice = createSlice({
     clearUser: (state) => {
       state.profile = defaultProps.profile;
       LocalStorageService.removeUserId();
-      Cookies.remove(cookieKeys.accessToken);
-      Cookies.remove(cookieKeys.refreshToken);
       Cookies.remove(cookieKeys.userId);
     }
   }

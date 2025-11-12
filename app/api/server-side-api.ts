@@ -1,7 +1,7 @@
 "use server";
 
-import { cookies } from "next/headers";
-import { cookieKeys } from "@/src/shared/config/cookie-keys";
+// import { cookies } from "next/headers";
+// import { cookieKeys } from "@/src/shared/config/cookie-keys";
 
 type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
@@ -47,16 +47,16 @@ type ServerSideFetchOptions = {
 };
 
 export async function serverSideFetch(url: string, options?: ServerSideFetchOptions): Promise<Response> {
-  const basePath = `${process.env.NEXT_PUBLIC_API_URL}/api`;
-  const cookiesResponse = await cookies();
-  const token = cookiesResponse.get(cookieKeys.accessToken)?.value;
+  const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
+  // const cookiesResponse = await cookies();
+  // const token = cookiesResponse.get(cookieKeys.accessToken)?.value;
 
   const res = await fetch(`${basePath}${url}`, {
-    ...options,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      ...options?.headers
-    }
+    ...options
+    // headers: {
+    //   Authorization: `Bearer ${token}`,
+    //   ...options?.headers
+    // }
   });
 
   return res;

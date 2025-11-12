@@ -121,5 +121,7 @@
   "details": "Details",
   "empty_nodes": "You don`t have nodes. Let`s add some nodes",
   "empty_cart": "Your cart is empty. Let`s add some nodes",
-  "choose_language_title": "Choose your language"
+  "choose_language_title": "Choose your language",
+  "google_login": "Login via Google",
+  "google_registration": "Registration via Google"
 }

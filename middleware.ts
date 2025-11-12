@@ -21,7 +21,7 @@ export default async function middleware(req: NextRequest): Promise<any> {
 
   if (!token) {
     if (isPrivateUrl(req.nextUrl.pathname)) {
-      return NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
+      NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
     }
   }
 
@@ -34,15 +34,15 @@ export default async function middleware(req: NextRequest): Promise<any> {
       const currentRole: UserRole = payload?.isAdmin ? "admin" : "user";
 
       if (payload.isAdmin && req.nextUrl.pathname === AppRoutes.home) {
-        return NextResponse.redirect(new URL(AppRoutes.admin, req.url));
+        NextResponse.redirect(new URL(AppRoutes.admin, req.url));
       }
 
       if (isPrivateUrlForUserRole(req.nextUrl.pathname, currentRole)) {
-        return NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
+        NextResponse.redirect(new URL(AppRoutes.notFound, req.url));
       }
     }
-  } catch (e) {
-    console.log(e);
+  } catch {
+    NextResponse.redirect(new URL(AppRoutes.home, req.url));
   }
 
   return response;

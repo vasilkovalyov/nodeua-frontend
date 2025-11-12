@@ -14,7 +14,9 @@ import {
 } from "./auth.types";
 
 import { userApiSlice } from "../user/user.api";
-import { startLoadingAuth, stopLoadingAuth } from "./auth.slice";
+import { clearAuth, startLoadingAuth, stopLoadingAuth } from "./auth.slice";
+import { clearUser } from "../user/user.slice";
+import { clearCart } from "../cart/cart.slice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -28,12 +30,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
         try {
           dispatch(startLoadingAuth());
           const response = await queryFulfilled;
-          const { accessToken, refreshToken, _id } = response.data;
-          Cookies.set(cookieKeys.accessToken, accessToken);
-          Cookies.set(cookieKeys.refreshToken, refreshToken);
+          const { _id } = response.data;
           LocalStorageService.addUserId(_id);
           Cookies.set(cookieKeys.userId, _id.toString());
-          await dispatch(userApiSlice.endpoints.getUserProfile.initiate(_id, { forceRefetch: true }));
+          await dispatch(userApiSlice.endpoints.getUserProfile.initiate(null, { forceRefetch: true }));
         } catch (e) {
           console.log(e);
         } finally {
@@ -54,7 +54,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { userId } = response.data;
           LocalStorageService.emailConfirmation(args.email, userId);
         } catch (e: any) {
-          // throw new Error(e.data?.message);
           console.log(e);
         } finally {
           dispatch(stopLoadingAuth());
@@ -70,12 +69,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
       onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
         try {
           dispatch(startLoadingAuth());
-          const response = await queryFulfilled;
+          await queryFulfilled;
           LocalStorageService.removeConfirmationInfo();
           LocalStorageService.addUserId(args.userId);
-          Cookies.set(cookieKeys.accessToken, response.data.accessToken);
-          Cookies.set(cookieKeys.refreshToken, response.data.refreshToken);
-          await dispatch(userApiSlice.endpoints.getUserProfile.initiate(args.userId));
+          await dispatch(userApiSlice.endpoints.getUserProfile.initiate(null));
         } catch (e) {
           console.log(e);
         } finally {
@@ -92,9 +89,32 @@ export const authApiSlice = apiSlice.injectEndpoints({
           newPassword
         }
       })
+    }),
+    logout: builder.mutation<boolean, void>({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST"
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        try {
+          const response = await queryFulfilled;
+          if (response.data) {
+            dispatch(clearAuth());
+            dispatch(clearUser());
+            dispatch(clearCart());
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
     })
   })
 });
 
-export const { useLoginMutation, useSignUpMutation, useVerifyEmailMutation, useAuthUserPasswordUpdateMutation } =
-  authApiSlice;
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useSignUpMutation,
+  useVerifyEmailMutation,
+  useAuthUserPasswordUpdateMutation
+} = authApiSlice;

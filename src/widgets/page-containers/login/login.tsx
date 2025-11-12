@@ -7,6 +7,7 @@ import { Link } from "@/app/routing";
 import { AppRoutes } from "@/src/shared/routes";
 import LoginForm from "./ui/login-form/login-form";
 import { FormHeading } from "@/src/shared/ui";
+import { GoogleAuthButton } from "../../components";
 
 const LoginPageContainer: FC = () => {
   const t = useTranslations();
@@ -15,6 +16,7 @@ const LoginPageContainer: FC = () => {
     <Stack gap="20px">
       <FormHeading titleTranslationKey="login_title" subTitleTranslationKey="login_sub_title" />
       <LoginForm />
+      <GoogleAuthButton />
       <Stack>
         <Typography variant="body2">
           {t("dont_have_account")} <Link href={AppRoutes.registration}>{t("register")}</Link>

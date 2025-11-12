@@ -122,5 +122,7 @@
   "details": "Подробиці",
   "empty_nodes": "У вас немає нод. Додамо кілька нод.",
   "empty_cart": "Ваш кошик порожній. Додамо кілька нод.",
-  "choose_language_title": "Виберіть мову"
+  "choose_language_title": "Виберіть мову",
+  "google_login": "Вхід через Google",
+  "google_registration": "Реєстрація через Google"
 }

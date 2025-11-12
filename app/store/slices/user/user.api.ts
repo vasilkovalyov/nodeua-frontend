@@ -15,19 +15,20 @@ import { clearCart } from "../cart/cart.slice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUserProfile: builder.query<UserType, string>({
-      query: (id) => ({
-        url: `/auth/profiles/${id}`,
+    getUserProfile: builder.query<UserType, null>({
+      query: () => ({
+        url: "/auth/profile",
         method: "GET"
       }),
-      onQueryStarted: async (userId, { dispatch, queryFulfilled }) => {
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           const response = await queryFulfilled;
-          const { ...rest } = response.data;
+          const result = response.data;
+
           dispatch(
             setUserProfile({
-              ...rest,
-              userId: userId
+              ...result,
+              userId: result.userId
             })
           );
           dispatch(setAuth());
