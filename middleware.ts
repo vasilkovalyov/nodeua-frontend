@@ -8,6 +8,7 @@ import { cookieKeys } from "./src/shared/config/cookie-keys";
 import { UserRole } from "./src/shared/types/user-role";
 import { AppRoutes } from "./src/shared/routes";
 import { DEFAULT_LOCALE, LOCALES } from "./app/constants/languages";
+import { removeLocalePrefix } from "./src/shared/utils/common";
 
 const intlMiddleware = createIntlMiddleware(routingConfig);
 
@@ -58,12 +59,12 @@ export default async function middleware(req: NextRequest): Promise<any> {
       const secret = new TextEncoder().encode(jwtSecret);
       const { payload } = await jwtVerify(token.value, secret);
       const currentRole: UserRole = payload?.isAdmin ? "admin" : "user";
-
-      if (payload.isAdmin && pathName === AppRoutes.home) {
+      const pathNameWithoutLocale = removeLocalePrefix(pathName);
+      if (payload.isAdmin && pathNameWithoutLocale === AppRoutes.home) {
         return NextResponse.redirect(new URL(`${BASE_PATH_WITH_LOCALE}${AppRoutes.admin}`, requestUrl));
       }
 
-      if (isForbiddenUrlForUserRole(pathName, currentRole)) {
+      if (isForbiddenUrlForUserRole(pathNameWithoutLocale, currentRole)) {
         return NextResponse.redirect(NOT_FOUND_URL);
       }
     }

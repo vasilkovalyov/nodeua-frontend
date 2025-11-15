@@ -1,5 +1,7 @@
 "use server";
 
+import { cookies } from "next/headers";
+
 type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
@@ -51,10 +53,17 @@ export interface FetchResult<T> {
 }
 
 export async function serverSideFetch<T>(url: string, options?: ServerSideFetchOptions): Promise<FetchResult<T>> {
-  const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
+  const cookieStore = await cookies();
+  const cookieHeader = cookieStore.toString();
 
+  const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
   const res = await fetch(`${basePath}${url}`, {
-    ...options
+    ...options,
+    credentials: "include",
+    headers: {
+      ...options?.headers,
+      Cookie: cookieHeader
+    }
   });
 
   const responseStatus = res.status;

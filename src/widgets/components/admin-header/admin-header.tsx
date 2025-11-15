@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Box, Button, Paper, Skeleton, Stack } from "@mui/material";
 
 import { Link } from "@/app/routing";
-import { AuthContainer, AuthUserPanel, AdminNavigation } from "@/src/widgets/components";
+import { AuthContainer, AuthUserPanel, AdminNavigation, LanguageSwitcher } from "@/src/widgets/components";
 
 import { AppRoutes } from "@/src/shared/routes";
 import AdminLogo from "@/src/shared/ui/admin-logo/admin-logo";
@@ -31,6 +31,7 @@ const AdminHeader: FC = () => {
             auth={
               <Stack gap="10px">
                 <AuthUserPanel />
+                <LanguageSwitcher />
                 <LogoutButton />
               </Stack>
             }
