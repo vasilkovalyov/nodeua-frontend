@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import { useRouter } from "@/app/routing";
-
 import Cookies from "js-cookie";
 
 import { cookieKeys } from "@/src/shared/config/cookie-keys";
 import { LANGUAGES } from "@/app/constants/languages";
 import { LanguageCodesType, LanguageType } from "../types/language";
+import { usePathname, useRouter } from "@/app/routing";
+import { useSearchParams } from "next/navigation";
+import { removeLocalePrefix } from "../utils/common";
 
 type UseLanguageProps = {
   allLanguages: LanguageType[];
@@ -45,6 +46,9 @@ const findLanguage = (langCode?: LanguageCodesType): LanguageType => {
 
 const useLanguage = (): UseLanguageProps => {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [currentLanguage, setCurrentLanguage] = useState<LanguageType | null>(null);
 
   useEffect(() => {
@@ -54,9 +58,10 @@ const useLanguage = (): UseLanguageProps => {
   }, []);
 
   function onChangeLanguage(languageCode: LanguageCodesType): void {
-    const findLang = findLanguage(languageCode) as LanguageType;
-    Cookies.set(cookieKeys.locale, findLang.code);
-    setCurrentLanguage(findLang);
+    const queryString = searchParams.toString();
+    const url = queryString ? `${pathname}?${queryString}` : pathname;
+
+    router.push({ pathname: removeLocalePrefix(url) }, { locale: languageCode });
     router.refresh();
   }
 

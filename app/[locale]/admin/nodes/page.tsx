@@ -6,9 +6,9 @@ import { Box, Typography } from "@mui/material";
 import { AdminNodeType } from "@/app/entities/admin/admin-node";
 
 export default async function AdminNodesPage(): Promise<ReactElement> {
-  const response = await serverSideFetch("/admin-nodes");
+  const { success, data } = await serverSideFetch<AdminNodeType[]>("/admin-nodes");
 
-  if (!response.ok) {
+  if (!success) {
     return (
       <Box>
         <Typography>Error. Something went wrong!</Typography>
@@ -16,6 +16,5 @@ export default async function AdminNodesPage(): Promise<ReactElement> {
     );
   }
 
-  const nodes: AdminNodeType[] = await response.json();
-  return <AdminNodesPageContainer nodes={nodes || []} />;
+  return <AdminNodesPageContainer nodes={data || []} />;
 }

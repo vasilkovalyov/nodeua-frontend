@@ -3,7 +3,9 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Box, Button, Link, Paper, Skeleton, Stack } from "@mui/material";
+import { Box, Button, Paper, Skeleton, Stack } from "@mui/material";
+
+import { Link } from "@/app/routing";
 
 import {
   AuthContainer,

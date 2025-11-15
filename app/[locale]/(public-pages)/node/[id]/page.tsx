@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { AppRoutes } from "@/src/shared/routes";
-import { NodeSingleType } from "@/app/entities/node";
 import NodeSingleContainer from "@/src/widgets/page-containers/node-single/node-single";
 import { serverSideFetch } from "@/app/api/server-side-api";
+import { NodeSingleContainerProps } from "@/src/widgets/page-containers/node-single/node-single.type";
+
+export const dynamic = "force-static";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -16,15 +18,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NodePage({ params }: { params: Promise<{ id: string }> }): Promise<ReactElement> {
   const { id } = await params;
-  const response = await serverSideFetch(`/node/${id}`, {
+  const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }
   });
 
-  if (!response.ok) {
+  if (!success) {
     redirect(AppRoutes.notFound);
   }
 
-  const nodeResponseProps: NodeSingleType = await response.json();
-
-  return <NodeSingleContainer {...nodeResponseProps} />;
+  return <NodeSingleContainer {...data} />;
 }

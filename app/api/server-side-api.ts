@@ -1,8 +1,5 @@
 "use server";
 
-// import { cookies } from "next/headers";
-// import { cookieKeys } from "@/src/shared/config/cookie-keys";
-
 type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
@@ -46,18 +43,34 @@ type ServerSideFetchOptions = {
   next?: NextFetchRequestConfig | undefined;
 };
 
-export async function serverSideFetch(url: string, options?: ServerSideFetchOptions): Promise<Response> {
+export interface FetchResult<T> {
+  success: boolean;
+  data: T;
+  error?: string;
+  status: number;
+}
+
+export async function serverSideFetch<T>(url: string, options?: ServerSideFetchOptions): Promise<FetchResult<T>> {
   const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
-  // const cookiesResponse = await cookies();
-  // const token = cookiesResponse.get(cookieKeys.accessToken)?.value;
 
   const res = await fetch(`${basePath}${url}`, {
     ...options
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    //   ...options?.headers
-    // }
   });
 
-  return res;
+  const responseStatus = res.status;
+
+  if (!res.ok) {
+    const text = await res.text();
+    const textMessage = text || res.statusText;
+    return {
+      success: false,
+      status: responseStatus,
+      error: textMessage,
+      data: null as T
+    };
+  }
+
+  const data: T = await res.json();
+
+  return { success: true, status: responseStatus, data };
 }

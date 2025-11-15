@@ -12,7 +12,7 @@ function getTheme(): Theme {
       }
     },
     typography: {
-      fontFamily: ["Sansation", "Roboto", "sans-serif"].join(",")
+      fontFamily: ["Roboto", "sans-serif"].join(",")
     }
   });
 

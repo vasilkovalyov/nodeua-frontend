@@ -1,26 +1,12 @@
-import { FC } from "react";
-
-import { Stack, Typography } from "@mui/material";
-import { CardList, NodeCard } from "@/src/shared/ui";
+import React, { FC } from "react";
 import { getTranslations } from "next-intl/server";
-import { NodeType } from "@/app/entities/node";
-import { serverSideFetch } from "@/app/api/server-side-api";
-import React from "react";
+import { Stack, Typography } from "@mui/material";
 
-type NodeCategoryType = "active" | "soldout" | "tba";
+import { CardList, NodeCard } from "@/src/shared/ui";
+import { BlockNodesProps } from "./block-nodes.type";
 
-const BlockNodes: FC = async () => {
+const BlockNodes: FC<BlockNodesProps> = async ({ nodesList }) => {
   const t = await getTranslations();
-
-  const response = await serverSideFetch("/nodes", {
-    next: { revalidate: 60 }
-  });
-
-  if (!response.ok) {
-    console.log("error", response.status);
-  }
-
-  const nodesList: Record<NodeCategoryType, NodeType[]> = await response.json();
 
   return (
     <Stack gap="40px">

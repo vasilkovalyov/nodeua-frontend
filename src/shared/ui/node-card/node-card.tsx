@@ -1,7 +1,10 @@
+"use client";
+
 import { FC } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { Link } from "@/app/routing";
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
 
 import { AppRoutes } from "@/src/shared/routes";
@@ -32,7 +35,7 @@ const NodeCard: FC<NodeCardProps> = (props) => {
           gap: "10px"
         }}
       >
-        <Button variant="outlined" size="small" href={`${AppRoutes.userSingleNode}/${_id}`}>
+        <Button variant="outlined" size="small" component={Link} href={`${AppRoutes.userSingleNode}/${_id}`}>
           {t("more_info")}
         </Button>
         <Box

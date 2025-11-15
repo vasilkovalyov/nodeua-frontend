@@ -20,9 +20,9 @@ export default async function AdminEditNodePage({
   params: Promise<{ id: string }>;
 }): Promise<ReactElement> {
   const { id } = await params;
-  const response = await serverSideFetch(`/admin-node/${id}`);
+  const { success, data } = await serverSideFetch<ApiAdminEditNodeResponseType>(`/admin-node/${id}`);
 
-  if (!response.ok) {
+  if (!success) {
     return (
       <Box>
         <Typography>Error. Something went wrong!</Typography>
@@ -30,7 +30,5 @@ export default async function AdminEditNodePage({
     );
   }
 
-  const node: ApiAdminEditNodeResponseType = await response.json();
-
-  return <AdminNodeEditPageContainer node={adaptApiAdminEditNodeResponseType(node)} id={id} />;
+  return <AdminNodeEditPageContainer node={adaptApiAdminEditNodeResponseType(data)} id={id} />;
 }

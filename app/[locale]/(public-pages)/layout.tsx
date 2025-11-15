@@ -1,11 +1,11 @@
 import PageLayout from "@/src/widgets/layouts/page-layout/page-layout";
 import type { ReactElement, ReactNode } from "react";
 
-interface NodeLayoutProps {
+interface PublicPageLayoutProps {
   children: ReactNode;
 }
 
-export default function NodeLayout(props: NodeLayoutProps): ReactElement {
+export default function PublicPageLayout(props: PublicPageLayoutProps): ReactElement {
   const { children } = props;
 
   return <PageLayout>{children}</PageLayout>;

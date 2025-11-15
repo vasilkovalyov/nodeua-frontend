@@ -1,4 +1,4 @@
-import { LanguageType } from "@/src/shared/types/language";
+import { LanguageCodesType, LanguageType } from "@/src/shared/types/language";
 
 export const LANGUAGES: LanguageType[] = [
   {
@@ -15,4 +15,5 @@ export const LANGUAGES: LanguageType[] = [
   }
 ];
 
-export const LOCALES: string[] = LANGUAGES.map((language) => language.code);
+export const LOCALES: LanguageCodesType[] = LANGUAGES.map((language) => language.code);
+export const DEFAULT_LOCALE = LOCALES[1];

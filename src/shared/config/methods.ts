@@ -1,6 +1,7 @@
 import { FORBIDDEN_ROUTES_FOR_ADMIN, FORBIDDEN_ROUTES_FOR_USER, ROLE_PRIVATE_ROUTES } from "../routes";
 import { CURRENCY } from "@/src/shared/constant/currency";
 import { UserRole } from "../types/user-role";
+import { removeLocalePrefix } from "../utils/common";
 
 export function getFormatedCurrency(value: number): string {
   return (
@@ -19,10 +20,10 @@ export function isPrivateUrl(url: string): boolean {
   return ROLE_PRIVATE_ROUTES.some((route) => url.includes(route));
 }
 
-export function isPrivateUrlForUserRole(url: string, role: UserRole): boolean {
-  const urls = role === "admin" ? FORBIDDEN_ROUTES_FOR_ADMIN : FORBIDDEN_ROUTES_FOR_USER;
+export function isForbiddenUrlForUserRole(url: string, role: UserRole): boolean {
+  const forbiddenRoutes = role === "admin" ? FORBIDDEN_ROUTES_FOR_ADMIN : FORBIDDEN_ROUTES_FOR_USER;
 
-  return urls.some((route) => {
-    return url === route;
+  return forbiddenRoutes.some((route) => {
+    return removeLocalePrefix(url).startsWith(route);
   });
 }

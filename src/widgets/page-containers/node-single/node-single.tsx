@@ -1,10 +1,12 @@
+"use client";
+
 import { FC, ReactElement } from "react";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { Box, Chip, Paper, Stack, Typography } from "@mui/material";
 import AddNodeToCart from "@/src/widgets/components/add-node-to-cart/add-note-to-cart";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
-import { NodeSingleType } from "@/app/entities/node";
-import { useTranslations } from "next-intl";
 import Picture from "@/src/shared/ui/picture/picture";
 
 import PublicIcon from "@mui/icons-material/Public";
@@ -12,9 +14,7 @@ import XIcon from "@mui/icons-material/X";
 import InfoIcon from "@mui/icons-material/Info";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Link from "next/link";
-
-type NodeSingleContainerProps = NodeSingleType;
+import { NodeSingleContainerProps } from "./node-single.type";
 
 type SocialLink = {
   icon: ReactElement;
