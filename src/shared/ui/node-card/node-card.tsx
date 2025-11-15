@@ -21,7 +21,17 @@ const NodeCard: FC<NodeCardProps> = (props) => {
   return (
     <Card>
       <Box textAlign="center">
-        <Image src={image} alt={name} loading="lazy" width={140} height={140} />
+        <Image
+          src={image}
+          alt={name}
+          loading="lazy"
+          width={140}
+          height={140}
+          sizes="
+      (max-width: 768px) 100vw,
+      (max-width: 1200px) 50vw,
+      600px"
+        />
       </Box>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

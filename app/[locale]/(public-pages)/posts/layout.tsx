@@ -1,11 +1,10 @@
-import type { ReactElement, ReactNode } from "react";
-
+import { LOCALES } from "@/app/constants/languages";
 import TranslationProvider from "@/app/providers/translation-provider";
 import { LanguageCodesType } from "@/src/shared/types/language";
 import PageLayout from "@/src/widgets/layouts/page-layout/page-layout";
-import { getStaticParams } from "./generate-static-params";
+import type { ReactElement, ReactNode } from "react";
 
-interface NodeLayoutProps {
+interface PostsLayoutProps {
   children: ReactNode;
   params: Promise<{ locale: string; id: string }>;
 }
@@ -17,11 +16,10 @@ type LocaleParamsType = {
 export const dynamic = "force-static";
 
 export async function generateStaticParams(): Promise<LocaleParamsType[]> {
-  const res = await getStaticParams();
-  return res;
+  return LOCALES.map((locale) => ({ locale }));
 }
 
-export default async function NodeLayout({ children, params }: NodeLayoutProps): Promise<ReactElement> {
+export default async function PostsLayout({ children, params }: PostsLayoutProps): Promise<ReactElement> {
   const { locale } = await params;
 
   return (

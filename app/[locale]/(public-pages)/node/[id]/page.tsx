@@ -7,8 +7,6 @@ import NodeSingleContainer from "@/src/widgets/page-containers/node-single/node-
 import { serverSideFetch } from "@/app/api/server-side-api";
 import { NodeSingleContainerProps } from "@/src/widgets/page-containers/node-single/node-single.type";
 
-export const dynamic = "force-static";
-
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "",

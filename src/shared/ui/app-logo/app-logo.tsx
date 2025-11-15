@@ -7,7 +7,7 @@ import "./app-logo.scss";
 
 const AppLogo: FC = () => {
   return (
-    <Link href={AppRoutes.home} className="app-logo">
+    <Link href={AppRoutes.home} className="app-logo" aria-label="NodeUa logo">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

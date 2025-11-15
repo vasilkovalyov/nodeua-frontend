@@ -27,6 +27,7 @@ const TopUpBalanceButton: FC<TopUpBalanceButtonProps> = ({ textTranslationKey, c
           dialogName: "TOP_UP_BALANCE_DIALOG"
         })
       }
+      aria-label={t("top_up_balance")}
     >
       {textTranslationKey && t(textTranslationKey)}
       {children && children}

@@ -41,6 +41,7 @@ const LogoutButton: FC<LogoutButtonProps> = ({ size, useIcon }) => {
       fullWidth={!useIcon}
       onClick={onLogout}
       size={size}
+      aria-label={t("logout")}
     >
       {useIcon ? <LogoutIcon /> : t("logout")}
     </Button>

@@ -1,29 +1,22 @@
 import { ReactNode, ReactElement } from "react";
 
-import { Roboto } from "next/font/google";
 import { Viewport } from "next/types";
 
 import { getLocale, getMessages, getTimeZone } from "next-intl/server";
 
 import Providers from "./providers/providers";
+import { robotoFont } from "./fonts";
 
 import "@/styles/main.scss";
 interface LayoutProps {
   children: ReactNode;
 }
 
-const fonts = Roboto({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  preload: true
-});
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false
+  maximumScale: 5,
+  userScalable: true
 };
 
 export default async function Layout({ children }: LayoutProps): Promise<ReactElement> {
@@ -33,7 +26,7 @@ export default async function Layout({ children }: LayoutProps): Promise<ReactEl
 
   return (
     <html suppressHydrationWarning lang={locale}>
-      <body className={fonts.className}>
+      <body className={robotoFont.className}>
         <Providers locale={locale} timeZone={timeZone} messages={messages}>
           {children}
         </Providers>

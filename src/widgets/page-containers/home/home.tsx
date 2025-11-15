@@ -1,21 +1,14 @@
 import { FC } from "react";
-import { redirect } from "next/navigation";
 
 import BlockNodes from "./ui/block-nodes/block-nodes";
-import { serverSideFetch } from "@/app/api/server-side-api";
 import { NodesList } from "./ui/block-nodes/block-nodes.type";
-import { AppRoutes } from "@/src/shared/routes";
 
-const HomePageContainer: FC = async () => {
-  const { success, data } = await serverSideFetch<NodesList>("/nodes", {
-    next: { revalidate: 60 }
-  });
+type HomePageContainerProps = {
+  nodes: NodesList;
+};
 
-  if (!success) {
-    redirect(AppRoutes.notFound);
-  }
-
-  return <BlockNodes nodesList={data} />;
+const HomePageContainer: FC<HomePageContainerProps> = ({ nodes }) => {
+  return <BlockNodes nodesList={nodes} />;
 };
 
 export default HomePageContainer;
