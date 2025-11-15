@@ -1,0 +1,10 @@
+.logout-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background-color: var(--color-light);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -7,6 +7,8 @@ import { useAppSelector, useAppDispatch } from "../store/store";
 import { getIsAppLoadingSelector } from "../store/slices/app-initialization/app-initialization.selectors";
 
 import { selectUserState } from "../store/slices/user/user.selectors";
+import { AppLoader, LogoutLoaader } from "@/src/shared/ui";
+import { Box } from "@mui/material";
 
 export type AuthContextType = {
   userId: string;
@@ -32,7 +34,7 @@ export const AuthContext = createContext<AuthContextType>(initialState);
 function AuthProvider({ children }: AuthContextProps): ReactElement {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUserState);
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const { isAuth, logoutLoading } = useAppSelector((state) => state.auth);
   const isAppLoading = useAppSelector(getIsAppLoadingSelector);
 
   const values = useMemo(() => {
@@ -53,7 +55,10 @@ function AuthProvider({ children }: AuthContextProps): ReactElement {
 
   return (
     <AuthContext.Provider value={values}>
-      <div id="root-layout-app">{children}</div>
+      <div id="root-layout-app">
+        {logoutLoading && <LogoutLoaader />}
+        {children}
+      </div>
     </AuthContext.Provider>
   );
 }

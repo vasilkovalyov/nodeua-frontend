@@ -12,3 +12,4 @@ export { default as FormHeading } from "./form-heading/form-heading";
 export { default as LackBalancePanel } from "./lack-balance-panel/lack-balance-panel";
 export { default as PageTitle } from "./page-title/page-title";
 export { default as Table } from "./table/table";
+export { default as LogoutLoaader } from "./logout-loader/logout-loader";

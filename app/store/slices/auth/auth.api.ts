@@ -14,7 +14,7 @@ import {
 } from "./auth.types";
 
 import { userApiSlice } from "../user/user.api";
-import { clearAuth, startLoadingAuth, stopLoadingAuth } from "./auth.slice";
+import { clearAuth, startLoadingAuth, startLoadingLogout, stopLoadingAuth, stopLoadingLogout } from "./auth.slice";
 import { clearUser } from "../user/user.slice";
 import { clearCart } from "../cart/cart.slice";
 
@@ -97,6 +97,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
+          dispatch(startLoadingLogout());
           const response = await queryFulfilled;
           if (response.data) {
             dispatch(clearAuth());
@@ -105,6 +106,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
           }
         } catch (e) {
           console.log(e);
+        } finally {
+          dispatch(stopLoadingLogout());
         }
       }
     })

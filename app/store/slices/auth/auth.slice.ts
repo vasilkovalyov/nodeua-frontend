@@ -4,6 +4,7 @@ import { AuthState } from "./auth.types";
 const initialState: AuthState = {
   isAuth: false,
   isLoading: false,
+  logoutLoading: false,
   errorMessage: null
 };
 
@@ -16,6 +17,12 @@ const authSlice = createSlice({
     },
     stopLoadingAuth: (state) => {
       state.isLoading = false;
+    },
+    startLoadingLogout: (state) => {
+      state.logoutLoading = true;
+    },
+    stopLoadingLogout: (state) => {
+      state.logoutLoading = false;
     },
     setErrorMessage: (state, action: PayloadAction<{ mesage: string }>) => {
       state.errorMessage = action.payload.mesage;
@@ -32,7 +39,15 @@ const authSlice = createSlice({
   }
 });
 
-export const { startLoadingAuth, stopLoadingAuth, setErrorMessage, clearErrorMessage, setAuth, clearAuth } =
-  authSlice.actions;
+export const {
+  startLoadingAuth,
+  stopLoadingAuth,
+  setErrorMessage,
+  clearErrorMessage,
+  setAuth,
+  clearAuth,
+  startLoadingLogout,
+  stopLoadingLogout
+} = authSlice.actions;
 
 export default authSlice.reducer;

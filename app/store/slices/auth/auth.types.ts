@@ -2,6 +2,7 @@ export type AuthState = {
   isAuth: boolean;
   isLoading: boolean;
   errorMessage: string | null;
+  logoutLoading: boolean;
 };
 
 export type SignUpApiRequestType = {
