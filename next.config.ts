@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     PROJECT_ROOT: __dirname
   },
   images: {
+    minimumCacheTTL: 60 * 60 * 24, // cache for 1 day
     remotePatterns: [
       {
         protocol: "https",

@@ -1,8 +1,9 @@
+import type { ReactElement, ReactNode } from "react";
+
 import { LOCALES } from "@/app/constants/languages";
 import TranslationProvider from "@/app/providers/translation-provider";
 import { LanguageCodesType } from "@/src/shared/types/language";
-import PageLayout from "@/src/widgets/layouts/page-layout/page-layout";
-import type { ReactElement, ReactNode } from "react";
+import { PageLayout } from "@/src/widgets/layouts";
 
 interface PostsLayoutProps {
   children: ReactNode;
