@@ -7,8 +7,7 @@ import { useAppSelector, useAppDispatch } from "../store/store";
 import { getIsAppLoadingSelector } from "../store/slices/app-initialization/app-initialization.selectors";
 
 import { selectUserState } from "../store/slices/user/user.selectors";
-import { AppLoader, LogoutLoaader } from "@/src/shared/ui";
-import { Box } from "@mui/material";
+import { LogoutLoaader } from "@/src/shared/ui";
 
 export type AuthContextType = {
   userId: string;
