@@ -1,13 +1,8 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ReactElement } from "react";
 
 import { AdminPageLayout } from "@/src/widgets/layouts";
+import { LayoutProps } from "@/app/types/layout.type";
 
-interface AdminLayoutProps {
-  children: ReactNode;
-}
-
-export default function AdminLayout(props: AdminLayoutProps): ReactElement {
-  const { children } = props;
-
+export default function AdminLayout({ children }: LayoutProps): ReactElement {
   return <AdminPageLayout>{children}</AdminPageLayout>;
 }

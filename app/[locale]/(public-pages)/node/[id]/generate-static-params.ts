@@ -1,4 +1,3 @@
-import { serverSideFetch } from "@/app/api/server-side-api";
 import { LOCALES } from "@/app/constants/languages";
 import { LanguageCodesType } from "@/src/shared/types/language";
 import { NodesList } from "@/src/widgets/page-containers/home/ui/block-nodes/block-nodes.type";
@@ -12,22 +11,14 @@ type StaticParams = {
   id: string;
 };
 
-export const dynamic = "force-static";
-
-export async function getStaticParams(): Promise<LocaleParamsType[]> {
-  const { success, data } = await serverSideFetch<NodesList>("/nodes", {
-    next: { revalidate: 300 }
-  });
-
-  if (!success) return [];
-
+export function getStaticParams(nodes: NodesList): LocaleParamsType[] {
   const nodesIds: string[] = [];
 
-  for (const key in data) {
-    const nodes = data[key as keyof NodesList];
+  for (const key in nodes) {
+    const nodesList = nodes[key as keyof NodesList];
 
-    if (nodes.length) {
-      for (const node of nodes) {
+    if (nodesList.length) {
+      for (const node of nodesList) {
         nodesIds.push(node._id);
       }
     }

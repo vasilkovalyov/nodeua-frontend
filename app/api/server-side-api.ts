@@ -43,6 +43,7 @@ type ServerSideFetchOptions = {
   revalidate?: number | false;
   tags?: string[];
   next?: NextFetchRequestConfig | undefined;
+  useCookies?: boolean;
 };
 
 export interface FetchResult<T> {
@@ -53,8 +54,13 @@ export interface FetchResult<T> {
 }
 
 export async function serverSideFetch<T>(url: string, options?: ServerSideFetchOptions): Promise<FetchResult<T>> {
-  const cookieStore = await cookies();
-  const cookieHeader = cookieStore.toString();
+  let cookieHeader: string = "";
+  const usingCookies = options?.useCookies !== false ? true : false;
+
+  if (usingCookies) {
+    const cookieStore = await cookies();
+    cookieHeader = cookieStore.toString();
+  }
 
   const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
   const res = await fetch(`${basePath}${url}`, {

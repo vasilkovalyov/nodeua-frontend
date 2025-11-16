@@ -1,13 +1,10 @@
+import type { ReactElement } from "react";
+
 import TranslationProvider from "@/app/providers/translation-provider";
 import PageLayout from "@/src/widgets/layouts/page-layout/page-layout";
-import type { ReactElement, ReactNode } from "react";
+import { LayoutProps } from "@/app/types/layout.type";
 
-interface HomeLayoutProps {
-  children: ReactNode;
-  params: Promise<{ locale: string; id: string }>;
-}
-
-export default async function HomeLayout({ children, params }: HomeLayoutProps): Promise<ReactElement> {
+export default async function HomeLayout({ children, params }: LayoutProps): Promise<ReactElement> {
   const { locale } = await params;
   return (
     <TranslationProvider locale={locale}>
