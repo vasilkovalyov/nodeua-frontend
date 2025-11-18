@@ -17,7 +17,7 @@ type NodeCardProps = NodeType;
 const NodeCard: FC<NodeCardProps> = (props) => {
   const t = useTranslations();
 
-  const { _id, name, image, price, is_soldout } = props;
+  const { _id, name, image, price, is_expired } = props;
   return (
     <Card>
       <Box textAlign="center">
@@ -54,7 +54,7 @@ const NodeCard: FC<NodeCardProps> = (props) => {
           }}
         >
           <AddNodeToCart
-            isSoldout={is_soldout}
+            isExpired={is_expired}
             node={{
               ...props,
               quantity: 1,

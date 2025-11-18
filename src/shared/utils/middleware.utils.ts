@@ -39,7 +39,7 @@ export async function handleUserPermission(req: NextRequest): Promise<string | U
       }
     }
   } catch {
-    return new URL(`${AppRoutes.home}`, url.href);
+    return null;
   }
 
   return null;

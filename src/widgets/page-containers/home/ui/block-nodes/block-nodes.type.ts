@@ -1,6 +1,6 @@
 import { NodeType } from "@/app/entities/node";
 
-export type NodeCategoryType = "active" | "soldout";
+export type NodeCategoryType = "active" | "expired";
 
 export type NodesList = Record<NodeCategoryType, NodeType[]>;
 

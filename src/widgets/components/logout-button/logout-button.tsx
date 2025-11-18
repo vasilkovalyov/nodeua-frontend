@@ -9,6 +9,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "@/app/routing";
 import { AppRoutes } from "@/src/shared/routes";
 import { useLogoutMutation } from "@/app/store/slices/auth/auth.api";
+import { usePathname } from "next/navigation";
+import { removeLocalePrefix } from "@/src/shared/utils/common";
 
 type LogoutButtonProps = {
   size?: "small" | "medium" | "large";
@@ -20,12 +22,16 @@ const LogoutButton: FC<LogoutButtonProps> = ({ size, useIcon }) => {
   const [logoutApi] = useLogoutMutation();
 
   const router = useRouter();
+  const pathname = usePathname();
 
   function onLogout(): void {
     logoutApi()
       .unwrap()
       .then(() => {
-        router.push(AppRoutes.home);
+        if (removeLocalePrefix(pathname) !== "/") {
+          router.push(AppRoutes.home);
+        }
+        router.refresh();
       })
       .catch((e) => {
         console.log(e);

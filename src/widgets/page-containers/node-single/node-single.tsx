@@ -24,7 +24,7 @@ type SocialLink = {
 const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
   const t = useTranslations();
 
-  const { name, price, is_soldout, description, image } = props;
+  const { name, price, is_expired, description, image } = props;
 
   const LINKS: SocialLink[] = [
     {
@@ -61,7 +61,7 @@ const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
             {t("price")}: {getFormatedCurrency(price)}
           </Typography>
           <AddNodeToCart
-            isSoldout={is_soldout}
+            isExpired={is_expired}
             node={{
               ...props,
               quantity: 1,
