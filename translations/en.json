@@ -51,6 +51,7 @@
   "cart_table_head_image": "Image",
   "cart_table_head_name": "Name",
   "cart_table_head_month": "Per Month",
+  "cart_table_head_buyed_id_node": "Buyed id node",
   "cart_table_head_quantity": "Quantity",
   "cart_table_head_duration": "Duration",
   "total": "Total",

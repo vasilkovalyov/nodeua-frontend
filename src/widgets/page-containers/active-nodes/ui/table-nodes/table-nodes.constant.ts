@@ -11,7 +11,7 @@ export const TABLE_ACTIVE_NODES_HEAD_CELL: TableHeadCellProps[] = [
     translationKey: "price"
   },
   {
-    title: "Id"
+    translationKey: "cart_table_head_buyed_id_node"
   },
   {
     translationKey: "cart_table_head_expiration_date"
@@ -30,7 +30,7 @@ export const TABLE_INACTIVE_NODES_HEAD_CELL: TableHeadCellProps[] = [
     translationKey: "price"
   },
   {
-    title: "Id"
+    translationKey: "cart_table_head_buyed_id_node"
   },
   {
     title: ""

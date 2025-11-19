@@ -34,7 +34,7 @@ const TableNodes: FC<TableNodesProps> = ({ nodes = [], type }) => {
       headCells={headCells}
       bodyCells={nodes}
       renderFormatRow={(props) => {
-        return <TableNodesRow {...props} type={type} onHandleShowKeyNode={onHandleOpenDialog} />;
+        return <TableNodesRow key={props._id} {...props} type={type} onHandleShowKeyNode={onHandleOpenDialog} />;
       }}
     />
   );

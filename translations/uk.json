@@ -52,6 +52,7 @@
   "cart_table_head_image": "Зображення",
   "cart_table_head_name": "Назва",
   "cart_table_head_month": "За місяць",
+  "cart_table_head_buyed_id_node": "Куплений ідентифікатор ноди",
   "cart_table_head_quantity": "Кількість",
   "cart_table_head_duration": "Тривалість",
   "total": "Всього",

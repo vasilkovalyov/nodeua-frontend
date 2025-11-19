@@ -51,6 +51,7 @@
   "cart_table_head_image": "Изображение",
   "cart_table_head_name": "Название",
   "cart_table_head_month": "В месяц",
+  "cart_table_head_buyed_id_node": "Купленный идентификатор ноды",
   "cart_table_head_quantity": "Количество",
   "cart_table_head_duration": "Длительность",
   "total": "Итого",

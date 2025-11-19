@@ -15,16 +15,7 @@ type TableNodesRowProps = BuyedNodeType & {
   onHandleShowKeyNode: (keyNode: string) => void;
 };
 
-const TableNodesRow: FC<TableNodesRowProps> = ({
-  id_node,
-  expiration_date,
-  image,
-  key_node,
-  name,
-  price,
-  type,
-  onHandleShowKeyNode
-}) => {
+const TableNodesRow: FC<TableNodesRowProps> = ({ _id, node, type, expiration_date, onHandleShowKeyNode }) => {
   return (
     <>
       <TableCell
@@ -33,7 +24,7 @@ const TableNodesRow: FC<TableNodesRowProps> = ({
           maxWidth: "40px"
         }}
       >
-        <Image src={image} alt={name} loading="lazy" width={40} height={40} />
+        <Image src={node.image} alt={node.name} loading="lazy" width={40} height={40} />
       </TableCell>
       <TableCell
         sx={{
@@ -41,7 +32,7 @@ const TableNodesRow: FC<TableNodesRowProps> = ({
         }}
       >
         <Typography variant="body2" fontWeight={600}>
-          {name}
+          {node.name}
         </Typography>
       </TableCell>
       <TableCell
@@ -50,7 +41,7 @@ const TableNodesRow: FC<TableNodesRowProps> = ({
         }}
       >
         <Typography variant="body2" fontWeight={600}>
-          {getFormatedCurrency(price)}
+          {getFormatedCurrency(node.price)}
         </Typography>
       </TableCell>
       <TableCell
@@ -61,9 +52,9 @@ const TableNodesRow: FC<TableNodesRowProps> = ({
       >
         <Stack direction="row" gap="10px" alignItems="center">
           <Typography variant="body2" fontWeight={600}>
-            {id_node}
+            {_id}
           </Typography>
-          <CopyClipboard value={id_node} />
+          <CopyClipboard value={_id} />
         </Stack>
       </TableCell>
       <TableCell
@@ -86,7 +77,7 @@ const TableNodesRow: FC<TableNodesRowProps> = ({
           textAlign: "right"
         }}
       >
-        <Button variant="contained" size="small" onClick={() => onHandleShowKeyNode(key_node)}>
+        <Button variant="contained" size="small" onClick={() => onHandleShowKeyNode(node.key_node)}>
           <KeyIcon />
         </Button>
       </TableCell>
