@@ -8,6 +8,7 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HubIcon from "@mui/icons-material/Hub";
 import Person2Icon from "@mui/icons-material/Person2";
+import InventoryIcon from "@mui/icons-material/Inventory";
 
 import { Link, usePathname } from "@/app/routing";
 import { ADMIN_NAVIGATION } from "./admin-navigation.constant";
@@ -18,7 +19,8 @@ import "./admin-navigation.scss";
 const ICONS: Record<string, ReactElement> = {
   HomeOutlinedIcon: <HomeOutlinedIcon />,
   HubIcon: <HubIcon />,
-  Person2Icon: <Person2Icon />
+  Person2Icon: <Person2Icon />,
+  InventoryIcon: <InventoryIcon />
 };
 
 const AdminNavigation: FC = () => {

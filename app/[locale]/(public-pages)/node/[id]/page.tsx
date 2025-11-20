@@ -3,11 +3,12 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { serverSideFetch } from "@/app/api/server-side-api";
 import { AppRoutes } from "@/src/shared/routes";
+import { PageProps } from "@/app/types/page.type";
 import NodeSingleContainer from "@/src/widgets/page-containers/node-single/node-single";
 import { GenerateMetadataProps } from "@/app/types/matadata.type";
 import { NodeSingleContainerProps } from "@/src/widgets/page-containers/node-single/node-single.type";
-import { serverSideFetch } from "@/app/api/server-side-api";
 
 export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
   const locale = await getLocale();
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
   };
 }
 
-export default async function NodePage({ params }: { params: Promise<{ id: string }> }): Promise<ReactElement> {
+export default async function NodePage({ params }: PageProps): Promise<ReactElement> {
   const { id } = await params;
   const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }

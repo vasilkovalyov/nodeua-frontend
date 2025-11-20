@@ -16,6 +16,7 @@ import useDialog from "@/src/shared/hooks/use-dialog";
 
 import TopUpAmountList from "./ui/top-up-amount-list/top-up-amount-list";
 import TopUpBalanceInfo from "./ui/top-up-balance-info/top-up-balance-info";
+import { ErrorType } from "@/src/shared/types/error";
 
 const AMOUNT_LIST: number[] = [5, 10, 25, 50, 100, 250];
 
@@ -24,6 +25,8 @@ const TopUpBalancePanel: FC = () => {
   const pathname = usePathname();
   const { onCloseDialogByName } = useDialog();
   const user = useAppSelector(selectUserState);
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [paymentInvoice, { isLoading }] = useCreatePaymentInvoiceProfileMutation();
 
@@ -54,9 +57,12 @@ const TopUpBalancePanel: FC = () => {
     })
       .unwrap()
       .then((props) => {
-        window.location.href = props.invoice_url;
+        console.log("props", props);
+        // window.location.href = props.payment_url;
       })
-      .catch(() => {});
+      .catch((e: ErrorType) => {
+        setErrorMessage(e.data.message);
+      });
   }
 
   function onCloseDialog(): void {
@@ -90,6 +96,7 @@ const TopUpBalancePanel: FC = () => {
           {t("cancel_button_text")}
         </Button>
       </Stack>
+      {errorMessage}
     </Stack>
   );
 };

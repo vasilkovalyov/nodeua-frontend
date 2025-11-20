@@ -37,7 +37,7 @@ export type CreateInvoiceResponseProps = {
   created_at: string;
   customer_email: null;
   id: string;
-  invoice_url: string;
+  payment_url: string;
   ipn_callback_url: string;
   is_fee_paid_by_user: boolean;
   is_fixed_rate: boolean;

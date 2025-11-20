@@ -7,3 +7,5 @@ export { default as AdminNodeCreatePageContainer } from "./admin-node/admin-node
 export { default as AdminNodeEditPageContainer } from "./admin-node/admin-node-edit";
 export { default as AdminNodesPageContainer } from "./admin-nodes/admin-nodes";
 export { default as AdminUsersPageContainer } from "./admin-users/admin-users";
+export { default as AdminBuyedNodesPageContainer } from "./admin-buyed-nodes/admin-buyed-nodes";
+export { default as AdminBuyedNodePageContainer } from "./admin-buyed-node/admin-buyed-node";

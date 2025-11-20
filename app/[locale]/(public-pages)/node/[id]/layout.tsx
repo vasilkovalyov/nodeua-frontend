@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 
 export async function generateStaticParams(): Promise<LayoutLocaleParamsProps[]> {
   const { success, data } = await serverSideFetch<NodesList>("/nodes", {
-    next: { revalidate: 300 },
+    next: { revalidate: 1000 },
     useCookies: false
   });
 

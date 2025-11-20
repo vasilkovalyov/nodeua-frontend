@@ -13,6 +13,7 @@ export const AppRoutes = {
   admin: "/admin",
   adminNodes: "/admin/nodes",
   adminUsers: "/admin/users",
+  adminBuyedNodes: "/admin/buyed-nodes",
   adminCreateNode: "/admin/create-node"
 } as const;
 

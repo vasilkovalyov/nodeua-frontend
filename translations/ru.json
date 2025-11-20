@@ -126,6 +126,13 @@
   "choose_language_title": "Выберите язык",
   "google_login": "Войти через Google",
   "google_registration": "Регистрация через Google",
-  "admin_user_table_head_id": "Id пользователя",
-  "admin_user_table_head_email": "Email пользователяl"
+  "user_id_global": "Id пользователя",
+  "user_email_global": "Email пользователяl",
+  "buyed_nodes": "Купленные ноды",
+  "id_purchase_node": "Id покупки",
+  "purchase_date_global": "Дата покупки",
+  "expiration_date_global": "Срок годности",
+  "search_nodes": "Введите идентификатор покупки ноды",
+  "node": "Нода",
+  "user": "Пользователь"
 }

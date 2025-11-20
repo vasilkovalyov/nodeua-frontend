@@ -16,5 +16,10 @@ export const ADMIN_NAVIGATION: AdminNavigationLinkType[] = [
     icon: "Person2Icon",
     nameTranslationKey: "users",
     path: AppRoutes.adminUsers
+  },
+  {
+    icon: "InventoryIcon",
+    nameTranslationKey: "buyed_nodes",
+    path: AppRoutes.adminBuyedNodes
   }
 ];

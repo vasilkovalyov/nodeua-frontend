@@ -127,6 +127,13 @@
   "choose_language_title": "Виберіть мову",
   "google_login": "Вхід через Google",
   "google_registration": "Реєстрація через Google",
-  "admin_user_table_head_id": "Id користувача",
-  "admin_user_table_head_email": "Email користувачаl"
+  "user_id_global": "Id користувача",
+  "user_email_global": "Email користувачаl",
+  "buyed_nodes": "Куплені ноди",
+  "id_purchase_node": "Id покупки",
+  "purchase_date_global": "Дата покупки",
+  "expiration_date_global": "Дата закінчення терміну дії",
+  "search_nodes": "Введіть ідентифікатор вузла покупки",
+  "node": "Нода",
+  "user": "Користувач"
 }

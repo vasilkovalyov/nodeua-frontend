@@ -126,6 +126,13 @@
   "choose_language_title": "Choose your language",
   "google_login": "Login via Google",
   "google_registration": "Registration via Google",
-  "admin_user_table_head_id": "User id",
-  "admin_user_table_head_email": "User email"
+  "user_id_global": "User id",
+  "user_email_global": "User email",
+  "buyed_nodes": "Buyed nodes",
+  "id_purchase_node": "Id purchase",
+  "purchase_date_global": "Purchase date",
+  "expiration_date_global": "Expiration date",
+  "search_nodes": "Input purchase node id",
+  "node": "Node",
+  "user": "User"
 }
