@@ -5,7 +5,8 @@ import LocalStorageCartService from "@/src/shared/services/local-storage-cart";
 import { NodeType } from "@/app/entities/node";
 
 const initialState: CartState = {
-  nodes: []
+  nodes: [],
+  isLoading: true
 };
 
 const authSlice = createSlice({
@@ -76,10 +77,25 @@ const authSlice = createSlice({
       });
       state.nodes = updatedNodes;
       LocalStorageCartService.updateDurationNode(_id, duration);
+    },
+    startLoadingCart: (state: CartState) => {
+      state.isLoading = true;
+    },
+    stopLoadingCart: (state: CartState) => {
+      state.isLoading = false;
     }
   }
 });
 
-export const { addNode, addNodes, deleteNode, clearCart, updateDurationNodes, updateQuantityNodes } = authSlice.actions;
+export const {
+  addNode,
+  addNodes,
+  deleteNode,
+  clearCart,
+  updateDurationNodes,
+  updateQuantityNodes,
+  startLoadingCart,
+  stopLoadingCart
+} = authSlice.actions;
 
 export default authSlice.reducer;

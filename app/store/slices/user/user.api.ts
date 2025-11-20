@@ -11,7 +11,7 @@ import {
   GetActiveNodesResponseType,
   NodePaymentApiRequest
 } from "./user.types";
-import { clearCart } from "../cart/cart.slice";
+import { clearCart, stopLoadingCart } from "../cart/cart.slice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -35,6 +35,8 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const ids = LocalStorageCartService.getAllNodesIds();
           if (ids.length) {
             await dispatch(cartApiSlice.endpoints.getNodesForCart.initiate(ids.join(",")));
+          } else {
+            dispatch(stopLoadingCart());
           }
         } catch (e) {
           console.log(e);

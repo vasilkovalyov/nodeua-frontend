@@ -20,15 +20,18 @@ import {
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/store";
-import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
+import { useAppDispatch } from "@/app/store/store";
 import { deleteNode, updateDurationNodes, updateQuantityNodes } from "@/app/store/slices/cart/cart.slice";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 import { AVG_MONTH_DAYS } from "@/src/shared/constant/days";
+import { CartNodeType } from "@/app/store/slices/cart/cart.type";
 
-const CartList: FC = () => {
+type CartListProps = {
+  nodes: CartNodeType[];
+};
+
+const CartList: FC<CartListProps> = ({ nodes }) => {
   const t = useTranslations();
-  const nodes = useAppSelector(getNodesFromCartSelector);
   const dispatch = useAppDispatch();
 
   function onHandleChangeQuantity(id: string, quantity: number): void {

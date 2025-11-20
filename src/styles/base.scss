@@ -33,6 +33,12 @@ body {
   cursor: default;
 }
 
+.MuiButton-root {
+  a {
+    text-decoration: none;
+  }
+}
+
 a {
   text-decoration: underline;
   color: currentColor;

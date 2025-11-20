@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
 }
 
 export default async function NodePage({ params }: PageProps): Promise<ReactElement> {
-  const { id } = await params;
+  const { id, locale } = await params;
   const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }
   });
@@ -36,5 +36,5 @@ export default async function NodePage({ params }: PageProps): Promise<ReactElem
     redirect(AppRoutes.notFound);
   }
 
-  return <NodeSingleContainer {...data} />;
+  return <NodeSingleContainer {...data} locale={locale} />;
 }

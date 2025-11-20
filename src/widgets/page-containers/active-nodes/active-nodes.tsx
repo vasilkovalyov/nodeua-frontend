@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, lazy } from "react";
 import { useTranslations } from "next-intl";
 
 import { Box, Button, Skeleton, Stack, Typography } from "@mui/material";
@@ -9,7 +9,8 @@ import { useGetActiveNodesQuery, useGetExpiredNodesQuery } from "@/app/store/sli
 import { Link } from "@/app/routing";
 import { PageTitle } from "@/src/shared/ui";
 import { AppRoutes } from "@/src/shared/routes";
-import TableNodes from "./ui/table-nodes/table-nodes";
+
+const TableNodes = lazy(() => import("./ui/table-nodes/table-nodes"));
 
 const ActiveNodesPageContainer: FC = () => {
   const t = useTranslations();

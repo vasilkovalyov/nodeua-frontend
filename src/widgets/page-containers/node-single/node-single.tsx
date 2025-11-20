@@ -1,8 +1,6 @@
-"use client";
-
 import { FC, ReactElement } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { Box, Chip, Paper, Stack, Typography } from "@mui/material";
 import AddNodeToCart from "@/src/widgets/components/add-node-to-cart/add-note-to-cart";
@@ -21,10 +19,10 @@ type SocialLink = {
   path: string;
 };
 
-const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
-  const t = useTranslations();
+const NodeSingleContainer: FC<NodeSingleContainerProps> = async ({ locale, ...rest }) => {
+  const t = await getTranslations({ locale });
 
-  const { name, price, is_expired, description, image } = props;
+  const { name, price, is_expired, description, image } = rest;
 
   const LINKS: SocialLink[] = [
     {
@@ -63,7 +61,7 @@ const NodeSingleContainer: FC<NodeSingleContainerProps> = (props) => {
           <AddNodeToCart
             isExpired={is_expired}
             node={{
-              ...props,
+              ...rest,
               quantity: 1,
               duration: 1
             }}

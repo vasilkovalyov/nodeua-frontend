@@ -7,7 +7,6 @@ import { getLocale, getMessages, getTimeZone } from "next-intl/server";
 import Providers from "./providers/providers";
 import { robotoFont } from "./fonts";
 
-import "@/styles/main.scss";
 interface LayoutProps {
   children: ReactNode;
 }

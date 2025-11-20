@@ -1,5 +1,7 @@
 "use client";
 
+import "@/styles/main.scss";
+
 import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
@@ -10,7 +12,7 @@ import MuiProvider from "./mui-provider";
 import { AuthProvider } from "../context/auth";
 import { RootLayout } from "@/src/widgets/layouts";
 
-if (process.env.MODE === "production") {
+if (process.env.NODE_ENV === "production") {
   disableReactDevTools();
 }
 
@@ -23,15 +25,15 @@ type ProvidersProps = {
 
 function Providers({ children, messages, locale, timeZone }: ProvidersProps): ReactElement {
   return (
-    <NextIntlClientProvider locale={locale} timeZone={timeZone} messages={messages}>
-      <Provider store={store}>
-        <AuthProvider>
-          <MuiProvider>
+    <Provider store={store}>
+      <NextIntlClientProvider locale={locale} timeZone={timeZone} messages={messages}>
+        <MuiProvider>
+          <AuthProvider>
             <RootLayout>{children}</RootLayout>
-          </MuiProvider>
-        </AuthProvider>
-      </Provider>
-    </NextIntlClientProvider>
+          </AuthProvider>
+        </MuiProvider>
+      </NextIntlClientProvider>
+    </Provider>
   );
 }
 
