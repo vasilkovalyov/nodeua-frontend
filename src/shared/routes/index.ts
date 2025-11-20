@@ -12,6 +12,7 @@ export const AppRoutes = {
   notFound: "/404",
   admin: "/admin",
   adminNodes: "/admin/nodes",
+  adminUsers: "/admin/users",
   adminCreateNode: "/admin/create-node"
 } as const;
 

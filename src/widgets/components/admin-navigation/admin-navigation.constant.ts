@@ -11,5 +11,10 @@ export const ADMIN_NAVIGATION: AdminNavigationLinkType[] = [
     icon: "HubIcon",
     nameTranslationKey: "nodes",
     path: AppRoutes.adminNodes
+  },
+  {
+    icon: "Person2Icon",
+    nameTranslationKey: "users",
+    path: AppRoutes.adminUsers
   }
 ];

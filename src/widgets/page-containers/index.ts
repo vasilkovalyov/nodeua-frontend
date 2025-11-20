@@ -6,3 +6,4 @@ export { default as NotFoundPageContainer } from "./not-found/not-found";
 export { default as AdminNodeCreatePageContainer } from "./admin-node/admin-node-create";
 export { default as AdminNodeEditPageContainer } from "./admin-node/admin-node-edit";
 export { default as AdminNodesPageContainer } from "./admin-nodes/admin-nodes";
+export { default as AdminUsersPageContainer } from "./admin-users/admin-users";

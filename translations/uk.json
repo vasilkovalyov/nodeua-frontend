@@ -57,6 +57,7 @@
   "cart_table_head_duration": "Тривалість",
   "total": "Всього",
   "nodes": "Ноди",
+  "users": "Користувачі",
   "month": "Місяць",
   "months": "Місяців",
   "more_info": "Їнформація",
@@ -125,5 +126,7 @@
   "empty_cart": "Ваш кошик порожній. Додамо кілька нод.",
   "choose_language_title": "Виберіть мову",
   "google_login": "Вхід через Google",
-  "google_registration": "Реєстрація через Google"
+  "google_registration": "Реєстрація через Google",
+  "admin_user_table_head_id": "Id користувача",
+  "admin_user_table_head_email": "Email користувачаl"
 }

@@ -56,6 +56,7 @@
   "cart_table_head_duration": "Duration",
   "total": "Total",
   "nodes": "Nodes",
+  "users": "Users",
   "month": "Month",
   "months": "Months",
   "more_info": "More info",
@@ -124,5 +125,7 @@
   "empty_cart": "Your cart is empty. Let`s add some nodes",
   "choose_language_title": "Choose your language",
   "google_login": "Login via Google",
-  "google_registration": "Registration via Google"
+  "google_registration": "Registration via Google",
+  "admin_user_table_head_id": "User id",
+  "admin_user_table_head_email": "User email"
 }

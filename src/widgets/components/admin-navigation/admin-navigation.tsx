@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HubIcon from "@mui/icons-material/Hub";
+import Person2Icon from "@mui/icons-material/Person2";
 
 import { Link, usePathname } from "@/app/routing";
 import { ADMIN_NAVIGATION } from "./admin-navigation.constant";
@@ -16,7 +17,8 @@ import "./admin-navigation.scss";
 
 const ICONS: Record<string, ReactElement> = {
   HomeOutlinedIcon: <HomeOutlinedIcon />,
-  HubIcon: <HubIcon />
+  HubIcon: <HubIcon />,
+  Person2Icon: <Person2Icon />
 };
 
 const AdminNavigation: FC = () => {
