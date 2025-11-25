@@ -13,3 +13,4 @@ export { default as LackBalancePanel } from "./lack-balance-panel/lack-balance-p
 export { default as PageTitle } from "./page-title/page-title";
 export { default as Table } from "./table/table";
 export { default as LogoutLoaader } from "./logout-loader/logout-loader";
+export { default as StatusNode } from "./status-node/status-node";

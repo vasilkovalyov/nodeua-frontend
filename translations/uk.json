@@ -135,5 +135,8 @@
   "expiration_date_global": "Дата закінчення терміну дії",
   "search_nodes": "Введіть ідентифікатор вузла покупки",
   "node": "Нода",
-  "user": "Користувач"
+  "user": "Користувач",
+  "active_global": "Активний",
+  "expired_global": "Минув",
+  "status_global": "Статус"
 }

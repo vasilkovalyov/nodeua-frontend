@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 
-import { PageTitle } from "@/src/shared/ui";
+import { PageTitle, StatusNode } from "@/src/shared/ui";
 import { AdminBuyedNodeType } from "./types/admin-buyed-node.type";
 import { CopyClipboard } from "../../components";
 import { getFormattedNodeFields } from "./admin-buyed-node.utils";
@@ -14,6 +14,7 @@ type AdminBuyedNodePageContainerProps = AdminBuyedNodeType;
 
 const AdminBuyedNodePageContainer: FC<AdminBuyedNodePageContainerProps> = async ({
   _id,
+  is_active,
   expiration_date,
   node,
   purchase_date,
@@ -31,19 +32,22 @@ const AdminBuyedNodePageContainer: FC<AdminBuyedNodePageContainerProps> = async 
           <Typography>{t("id_node_label")}</Typography>
           <Typography>{node._id}</Typography>
         </Stack>
+        <Box>
+          <StatusNode isActive={is_active} />
+        </Box>
       </Stack>
 
       <Grid container gap="30px">
         <Grid item>
-          <Typography>{t("expiration_date_global")}</Typography>
-          <Stack direction="row" gap="10px">
-            <Typography>{dayjs(expiration_date).format(DATES_FORMAT.dateTextAndTime)}</Typography>
-          </Stack>
-        </Grid>
-        <Grid item>
           <Typography>{t("purchase_date_global")}</Typography>
           <Stack direction="row" gap="10px">
             <Typography>{dayjs(purchase_date).format(DATES_FORMAT.dateTextAndTime)}</Typography>
+          </Stack>
+        </Grid>
+        <Grid item>
+          <Typography>{t("expiration_date_global")}</Typography>
+          <Stack direction="row" gap="10px">
+            <Typography>{dayjs(expiration_date).format(DATES_FORMAT.dateTextAndTime)}</Typography>
           </Stack>
         </Grid>
       </Grid>

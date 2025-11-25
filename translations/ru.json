@@ -134,5 +134,8 @@
   "expiration_date_global": "Срок годности",
   "search_nodes": "Введите идентификатор покупки ноды",
   "node": "Нода",
-  "user": "Пользователь"
+  "user": "Пользователь",
+  "active_global": "Active",
+  "expired_global": "Expired",
+  "status_global": "Статус"
 }

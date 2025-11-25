@@ -134,5 +134,8 @@
   "expiration_date_global": "Expiration date",
   "search_nodes": "Input purchase node id",
   "node": "Node",
-  "user": "User"
+  "user": "User",
+  "active_global": "Active",
+  "expired_global": "Expired",
+  "status_global": "Status"
 }

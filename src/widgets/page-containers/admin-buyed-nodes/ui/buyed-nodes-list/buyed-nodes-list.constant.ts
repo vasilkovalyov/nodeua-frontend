@@ -16,5 +16,8 @@ export const ADMIN_TABLE_BUYED_NODES_HEAD_CELL: TableHeadCellProps[] = [
   {
     translationKey: "expiration_date_global"
   },
+  {
+    translationKey: "status_global"
+  },
   {}
 ];
