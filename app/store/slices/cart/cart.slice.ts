@@ -3,9 +3,11 @@ import { CartState } from "./cart.types";
 import { CartNodeDurationType, CartNodeQuantityType, CartNodeType } from "./cart.type";
 import LocalStorageCartService from "@/src/shared/services/local-storage-cart";
 import { NodeType } from "@/app/entities/node";
+import { calcTotalAmount } from "./cart.utils";
 
 const initialState: CartState = {
   nodes: [],
+  totalAmount: 0,
   isLoading: true
 };
 
@@ -32,9 +34,11 @@ const authSlice = createSlice({
         return objData;
       });
       state.nodes = nodesForCart;
+      state.totalAmount = calcTotalAmount(state.nodes);
     },
     addNode: (state: CartState, action: PayloadAction<CartNodeType>) => {
       state.nodes.push(action.payload);
+      state.totalAmount = calcTotalAmount(state.nodes);
       LocalStorageCartService.addToCart({
         _id: action.payload._id,
         duration: 1,
@@ -44,10 +48,12 @@ const authSlice = createSlice({
     deleteNode: (state: CartState, action: PayloadAction<{ id: string }>) => {
       const id = action.payload.id;
       state.nodes = state.nodes.filter((node) => node._id !== id);
+      state.totalAmount = calcTotalAmount(state.nodes);
       LocalStorageCartService.deleteNode(id);
     },
     clearCart: (state: CartState) => {
       state.nodes = [];
+      state.totalAmount = 0;
       LocalStorageCartService.clearCart();
     },
     updateQuantityNodes: (state: CartState, action: PayloadAction<CartNodeQuantityType>) => {
@@ -62,6 +68,7 @@ const authSlice = createSlice({
         return node;
       });
       state.nodes = updatedNodes;
+      state.totalAmount = calcTotalAmount(state.nodes);
       LocalStorageCartService.updateQuantityNode(_id, quantity);
     },
     updateDurationNodes: (state: CartState, action: PayloadAction<CartNodeDurationType>) => {
@@ -76,6 +83,7 @@ const authSlice = createSlice({
         return node;
       });
       state.nodes = updatedNodes;
+      state.totalAmount = calcTotalAmount(state.nodes);
       LocalStorageCartService.updateDurationNode(_id, duration);
     },
     startLoadingCart: (state: CartState) => {
@@ -83,6 +91,9 @@ const authSlice = createSlice({
     },
     stopLoadingCart: (state: CartState) => {
       state.isLoading = false;
+    },
+    setTotalAmount: (state: CartState, action: PayloadAction<number>) => {
+      state.totalAmount = action.payload;
     }
   }
 });
@@ -95,7 +106,8 @@ export const {
   updateDurationNodes,
   updateQuantityNodes,
   startLoadingCart,
-  stopLoadingCart
+  stopLoadingCart,
+  setTotalAmount
 } = authSlice.actions;
 
 export default authSlice.reducer;

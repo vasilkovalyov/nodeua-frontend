@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Button, Divider, List, Stack, Typography } from "@mui/material";
 
 import { useAppSelector } from "@/app/store/store";
-import { getNodesFromCartSelector } from "@/app/store/slices/cart/cart.selectors";
+import { getCartState } from "@/app/store/slices/cart/cart.selectors";
 import { CartNodeType } from "@/app/store/slices/cart/cart.type";
 import { selectUserState } from "@/app/store/slices/user/user.selectors";
 
@@ -33,25 +33,15 @@ function getNodesForPayment(nodes: CartNodeType[]): NodePaymentCartType[] {
 
 const CartOrder: FC = () => {
   const t = useTranslations();
-  const nodes = useAppSelector(getNodesFromCartSelector);
+  const { nodes, totalAmount: cartTotalAmount } = useAppSelector(getCartState);
   const { showSnackbar } = useSnackbar();
   const [buyNode, { isLoading }] = useBuyNodeMutation();
 
   const user = useAppSelector(selectUserState);
   const userBalanceAmount = user.profile.balance;
 
-  function getTotal(items: CartNodeType[]): number {
-    let total: number = 0;
-
-    for (const node of items) {
-      total += node.price * (node.duration * node.quantity);
-    }
-
-    return total;
-  }
-
   function getDifferenceAmount(): number {
-    return getTotal(nodes) - userBalanceAmount;
+    return cartTotalAmount - userBalanceAmount;
   }
 
   function onHandleBuyNode(): void {
@@ -80,7 +70,7 @@ const CartOrder: FC = () => {
       </List>
       <Divider />
       <List>
-        <CartOrderListItem titleTranslationKey="total" value={getFormatedCurrency(getTotal(nodes))} />
+        <CartOrderListItem titleTranslationKey="total" value={getFormatedCurrency(cartTotalAmount)} />
         <CartOrderListItem titleTranslationKey="balance_money" value={getFormatedCurrency(userBalanceAmount)} />
       </List>
       {getDifferenceAmount() >= 0 ? (

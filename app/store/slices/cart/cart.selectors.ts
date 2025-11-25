@@ -5,5 +5,4 @@ import { RootState } from "../../store";
 
 const selectState = (state: RootState): CartState => state.cart;
 
-export const getNodesFromCartSelector = createSelector(selectState, (state) => state.nodes);
-export const getCartLoading = createSelector(selectState, (state) => state.isLoading);
+export const getCartState = createSelector(selectState, (state) => state);
