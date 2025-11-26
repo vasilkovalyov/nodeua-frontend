@@ -8,7 +8,7 @@ import { ReactElement } from "react";
 export default async function AdminBuyedNodePage({ params }: PageProps): Promise<ReactElement> {
   const { id } = await params;
 
-  const { success, data } = await serverSideFetch<AdminBuyedNodeApiResponseProps>(`/admin-buyed-nodes/${id}`);
+  const { success, data } = await serverSideFetch<AdminBuyedNodeApiResponseProps>(`/admin/buyed-nodes/${id}`);
 
   if (!success) {
     return (

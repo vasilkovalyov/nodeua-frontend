@@ -8,7 +8,7 @@ import BuyedNodesList from "./ui/buyed-nodes-list/buyed-nodes-list";
 import { AdminBuyedNodesApiResponseProps } from "./types/api.type";
 
 const AdminBuyedNodesPageContainer: FC = async () => {
-  const { success, data } = await serverSideFetch<AdminBuyedNodesApiResponseProps>("/admin-buyed-nodes");
+  const { success, data } = await serverSideFetch<AdminBuyedNodesApiResponseProps>("/admin/buyed-nodes");
 
   if (!success) {
     return (

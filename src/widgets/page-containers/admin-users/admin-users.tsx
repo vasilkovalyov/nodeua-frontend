@@ -9,7 +9,7 @@ import AdminTableNodes from "./ui/admin-table-users/admin-table-users";
 import { AdminUsersApiResponseProps } from "./types/api.type";
 
 const AdminUsersPageContainer: FC = async (): Promise<ReactElement> => {
-  const { success, data } = await serverSideFetch<AdminUsersApiResponseProps>("/admin-users");
+  const { success, data } = await serverSideFetch<AdminUsersApiResponseProps>("/admin/users");
 
   if (!success) {
     return (

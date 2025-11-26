@@ -6,7 +6,7 @@ import { AdminNodeType } from "@/app/entities/admin/admin-node";
 import { serverSideFetch } from "@/app/api/server-side-api";
 
 export default async function AdminNodesPage(): Promise<ReactElement> {
-  const { success, data } = await serverSideFetch<AdminNodeType[]>("/admin-nodes");
+  const { success, data } = await serverSideFetch<AdminNodeType[]>("/admin/nodes");
 
   if (!success) {
     return (

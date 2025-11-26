@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AdminEditNodePage({ params }: PageProps): Promise<ReactElement> {
   const { id } = await params;
-  const { success, data } = await serverSideFetch<ApiAdminEditNodeResponseType>(`/admin-node/${id}`);
+  const { success, data } = await serverSideFetch<ApiAdminEditNodeResponseType>(`/admin/node/${id}`);
 
   if (!success) {
     return (
