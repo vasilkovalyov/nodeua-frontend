@@ -17,7 +17,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUserProfile: builder.query<UserType, null>({
       query: () => ({
-        url: "/auth/profile",
+        url: "/user/profile",
         method: "GET"
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {

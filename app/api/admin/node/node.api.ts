@@ -9,14 +9,14 @@ export const adminNode = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     adminCreateNode: builder.mutation<ApiAdminCreateNodeResponseType, ApiAdminCreateNodeRequestType>({
       query: (props) => ({
-        url: `/create-node`,
+        url: `/admin/create-node`,
         method: "POST",
         body: props
       })
     }),
     adminEditNode: builder.mutation<ApiAdminCreateNodeResponseType, ApiAdminEditNodeRequestType>({
       query: (props) => ({
-        url: `/edit-node`,
+        url: `/admin/edit-node`,
         method: "PUT",
         body: props
       })
