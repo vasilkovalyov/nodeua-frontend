@@ -10,6 +10,7 @@ export const AppRoutes = {
   userActiveNodes: "/active-nodes",
   anyRoute: "*",
   notFound: "/404",
+  serverNotWorking: "/500",
   admin: "/admin",
   adminNodes: "/admin/nodes",
   adminUsers: "/admin/users",

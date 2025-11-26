@@ -48,44 +48,52 @@ type ServerSideFetchOptions = {
 
 export interface FetchResult<T> {
   success: boolean;
-  data: T;
+  data: T | null;
   error?: string;
   status: number;
 }
 
 export async function serverSideFetch<T>(url: string, options?: ServerSideFetchOptions): Promise<FetchResult<T>> {
-  let cookieHeader: string = "";
-  const usingCookies = options?.useCookies !== false ? true : false;
+  try {
+    let cookieHeader: string = "";
+    const usingCookies = options?.useCookies !== false ? true : false;
 
-  if (usingCookies) {
-    const cookieStore = await cookies();
-    cookieHeader = cookieStore.toString();
-  }
-
-  const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
-  const res = await fetch(`${basePath}${url}`, {
-    ...options,
-    credentials: "include",
-    headers: {
-      ...options?.headers,
-      Cookie: cookieHeader
+    if (usingCookies) {
+      const cookieStore = await cookies();
+      cookieHeader = cookieStore.toString();
     }
-  });
 
-  const responseStatus = res.status;
+    const basePath = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api`;
+    const res = await fetch(`${basePath}${url}`, {
+      ...options,
+      credentials: "include",
+      headers: {
+        ...options?.headers,
+        Cookie: cookieHeader
+      }
+    });
 
-  if (!res.ok) {
-    const text = await res.text();
-    const textMessage = text || res.statusText;
+    const responseStatus = res.status;
+
+    if (!res.ok) {
+      const text = await res.text();
+      const textMessage = text || res.statusText;
+      return {
+        success: false,
+        status: responseStatus,
+        error: textMessage,
+        data: null
+      };
+    }
+
+    const data: T = await res.json();
+
+    return { success: true, status: responseStatus, data };
+  } catch {
     return {
       success: false,
-      status: responseStatus,
-      error: textMessage,
-      data: null as T
+      status: 500,
+      data: null
     };
   }
-
-  const data: T = await res.json();
-
-  return { success: true, status: responseStatus, data };
 }

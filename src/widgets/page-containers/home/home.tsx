@@ -4,7 +4,7 @@ import BlockNodes from "./ui/block-nodes/block-nodes";
 import { NodesList } from "./ui/block-nodes/block-nodes.type";
 
 type HomePageContainerProps = {
-  nodes: NodesList;
+  nodes: NodesList | null;
 };
 
 const HomePageContainer: FC<HomePageContainerProps> = ({ nodes }) => {

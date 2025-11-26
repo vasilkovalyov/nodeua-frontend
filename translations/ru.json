@@ -135,7 +135,8 @@
   "search_nodes": "Введите идентификатор покупки ноды",
   "node": "Нода",
   "user": "Пользователь",
-  "active_global": "Active",
-  "expired_global": "Expired",
-  "status_global": "Статус"
+  "active_global": "Активен",
+  "expired_global": "Истек",
+  "status_global": "Статус",
+  "server_not_response": "Сервер не отвечает"
 }

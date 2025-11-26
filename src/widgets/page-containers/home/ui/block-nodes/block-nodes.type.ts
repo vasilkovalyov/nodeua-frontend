@@ -5,5 +5,5 @@ export type NodeCategoryType = "active" | "expired";
 export type NodesList = Record<NodeCategoryType, NodeType[]>;
 
 export type BlockNodesProps = {
-  nodesList: NodesList;
+  nodesList: NodesList | null;
 };

@@ -138,5 +138,6 @@
   "user": "Користувач",
   "active_global": "Активний",
   "expired_global": "Минув",
-  "status_global": "Статус"
+  "status_global": "Статус",
+  "server_not_response": "Сервер не відповідає"
 }

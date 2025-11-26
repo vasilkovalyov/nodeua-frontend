@@ -25,12 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage(): Promise<ReactElement> {
-  const { success, data } = await serverSideFetch<NodesList>("/nodes", {
+  const { status, data } = await serverSideFetch<NodesList>("/nodes", {
     next: { revalidate: 60 }
   });
 
-  if (!success) {
-    redirect(AppRoutes.notFound);
+  if (status === 500) {
+    redirect(AppRoutes.serverNotWorking);
   }
 
   return <HomePageContainer nodes={data} />;

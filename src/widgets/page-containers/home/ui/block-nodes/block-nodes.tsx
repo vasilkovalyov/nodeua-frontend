@@ -8,6 +8,10 @@ import { BlockNodesProps } from "./block-nodes.type";
 const BlockNodes: FC<BlockNodesProps> = async ({ nodesList }) => {
   const t = await getTranslations();
 
+  if (nodesList === null) {
+    return null;
+  }
+
   return (
     <Stack gap="40px">
       {Object.entries(nodesList).map(([category, nodes]) => (
