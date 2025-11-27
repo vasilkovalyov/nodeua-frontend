@@ -1,13 +1,14 @@
 import { ReactElement } from "react";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { AppRoutes } from "@/src/shared/routes";
 import { Link } from "@/app/routing";
+import { GenerateMetadataProps } from "@/app/types/matadata.type";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
+export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   return {

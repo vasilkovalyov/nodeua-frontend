@@ -1,11 +1,12 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 import CartPageContainer from "@/src/widgets/page-containers/cart/cart";
+import { GenerateMetadataProps } from "@/app/types/matadata.type";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
+export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   return {

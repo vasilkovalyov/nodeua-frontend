@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 import { Typography } from "@mui/material";
 
@@ -12,15 +12,14 @@ import { LOCALES } from "@/app/constants/languages";
 import { serverSideFetch } from "@/app/api/server-side-api";
 import RESPONSE_STATUS from "@/src/shared/constant/response-status";
 import { PageProps } from "@/app/types/page.type";
-
-export const dynamic = "force-static";
+import { GenerateMetadataProps } from "@/app/types/matadata.type";
 
 export async function generateStaticParams(): Promise<{ locale: string }[]> {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
+export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   return {

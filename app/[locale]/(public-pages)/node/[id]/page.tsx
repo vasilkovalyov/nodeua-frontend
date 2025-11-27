@@ -1,9 +1,7 @@
 import { ReactElement } from "react";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getLocale, getTranslations } from "next-intl/server";
-
-import { Typography } from "@mui/material";
+import { getTranslations } from "next-intl/server";
 
 import { serverSideFetch } from "@/app/api/server-side-api";
 import { AppRoutes } from "@/src/shared/routes";
@@ -14,10 +12,9 @@ import { GenerateMetadataProps } from "@/app/types/matadata.type";
 import { NodeSingleContainerProps } from "@/src/widgets/page-containers/node-single/node-single.type";
 
 export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
-  const locale = await getLocale();
+  const { id, locale } = await params;
   const t = await getTranslations({ locale });
-  const res = await params;
-  const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${res.id}`, {
+  const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }
   });
 
@@ -31,7 +28,6 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
 
 export default async function NodePage({ params }: PageProps): Promise<ReactElement | null> {
   const { id, locale } = await params;
-  const t = await getTranslations({ locale });
   const { success, status, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }
   });
@@ -41,7 +37,7 @@ export default async function NodePage({ params }: PageProps): Promise<ReactElem
   }
 
   if (!success || !data) {
-    return <Typography>{t("error_server_response")}</Typography>;
+    redirect(AppRoutes.notFound);
   }
 
   return <NodeSingleContainer {...data} locale={locale} />;
