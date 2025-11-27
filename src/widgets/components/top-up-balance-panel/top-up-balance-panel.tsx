@@ -3,9 +3,8 @@
 import { FC, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { Button, Stack, Typography, TextField, InputAdornment } from "@mui/material";
+import { Button, Stack, Typography, TextField, InputAdornment, Alert } from "@mui/material";
 
-import { usePathname } from "@/app/routing";
 import { FormHeading } from "@/src/shared/ui";
 import { useAppSelector } from "@/app/store/store";
 import { selectUserState } from "@/app/store/slices/user/user.selectors";
@@ -18,12 +17,12 @@ import TopUpAmountList from "./ui/top-up-amount-list/top-up-amount-list";
 import TopUpBalanceInfo from "./ui/top-up-balance-info/top-up-balance-info";
 import { ErrorType } from "@/src/shared/types/error";
 import { getCartTotalAmountState } from "@/app/store/slices/cart/cart.selectors";
+import { PAYMENT_FEE_PERCENT } from "@/src/shared/constant/payment";
 
 const AMOUNT_LIST: number[] = [5, 10, 25, 50, 100, 250];
 
 const TopUpBalancePanel: FC = () => {
   const t = useTranslations();
-  const pathname = usePathname();
   const { onCloseDialogByName } = useDialog();
   const user = useAppSelector(selectUserState);
   const cartTotalAmount = useAppSelector(getCartTotalAmountState);
@@ -60,14 +59,12 @@ const TopUpBalancePanel: FC = () => {
 
   function onHandleTopUpBalance(): void {
     paymentInvoice({
-      amount: amountValue,
-      success_url: pathname,
-      cancel_url: pathname
+      amount: amountValue
     })
       .unwrap()
       .then((props) => {
-        console.log("props", props);
-        // window.location.href = props.payment_url;
+        // console.log("props", props);
+        window.location.href = props.invoice_url;
       })
       .catch((e: ErrorType) => {
         setErrorMessage(e.data.message);
@@ -81,6 +78,7 @@ const TopUpBalancePanel: FC = () => {
   return (
     <Stack gap="20px">
       <FormHeading titleTranslationKey="top_up_balance" subTitleTranslationKey="top_up_balance_sub_title" />
+      <Typography variant="body2">{t("payment_fee_info", { percentage_amount: PAYMENT_FEE_PERCENT })}</Typography>
       <TopUpBalanceInfo balance={userBalance} afterTopUpBalance={afterTopUpBalance} />
       <Stack gap="10px">
         <Typography variant="body2">{t("amount")}</Typography>
@@ -105,7 +103,7 @@ const TopUpBalancePanel: FC = () => {
           {t("cancel_button_text")}
         </Button>
       </Stack>
-      {errorMessage}
+      {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
     </Stack>
   );
 };

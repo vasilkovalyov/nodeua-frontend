@@ -140,5 +140,7 @@
   "expired_global": "Минув",
   "status_global": "Статус",
   "server_not_response": "Сервер не відповідає",
-  "error_server_response": "Помилка. Щось пішло не так!"
+  "error_server_response": "Помилка. Щось пішло не так!",
+  "payment_fee_info": "При переказі коштів стягується комісія у розмірі {percentage_amount}%. Будь ласка, враховуйте це при здійсненні переказу.",
+  "payment_with_fee": "Оплата з комісією"
 }

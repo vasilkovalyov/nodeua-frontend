@@ -139,5 +139,7 @@
   "expired_global": "Expired",
   "status_global": "Status",
   "server_not_response": "Server not response",
-  "error_server_response": "Error. Something went wrong!"
+  "error_server_response": "Error. Something went wrong!",
+  "payment_fee_info": "When transferring funds, a fee of {percentage_amount}% applies. Please take this into account when making the transfer.",
+  "payment_with_fee": "Payment with fee"
 }

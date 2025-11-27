@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Box, Stack, Paper, Typography } from "@mui/material";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
+import { withPaymentFee } from "@/src/shared/utils/payment";
 
 type TopUpBalanceInfoProps = {
   balance: number;
@@ -24,6 +25,10 @@ const TopUpBalanceInfo: FC<TopUpBalanceInfoProps> = ({ balance, afterTopUpBalanc
           <Box marginInlineEnd="40px">
             <Typography variant="body2">{t("current")}</Typography>
             <Typography variant="body1">{getFormatedCurrency(balance)}</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">{t("payment_with_fee")}</Typography>
+            <Typography variant="body1">{getFormatedCurrency(withPaymentFee(afterTopUpBalance))}</Typography>
           </Box>
           <Box>
             <Typography variant="body2">{t("after_top_up")}</Typography>

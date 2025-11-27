@@ -139,5 +139,7 @@
   "expired_global": "Истек",
   "status_global": "Статус",
   "server_not_response": "Сервер не отвечает",
-  "error_server_response": "Ошибка. Что-то пошло не так!"
+  "error_server_response": "Ошибка. Что-то пошло не так!",
+  "payment_fee_info": "При переводе денежных средств взимается комиссия в размере {percentage_amount}%. Пожалуйста, учитывайте это при совершении перевода.",
+  "payment_with_fee": "Оплата с комиссией"
 }

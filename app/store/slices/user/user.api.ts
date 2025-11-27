@@ -49,15 +49,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: props
       })
-      // onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
-      //   try {
-      //     const response = await queryFulfilled;
-      //     const balance = response.data.balance;
-      //     dispatch(setUserBalance(balance));
-      //   } catch (e) {
-      //     console.log(e);
-      //   }
-      // }
     }),
     buyNode: builder.mutation<{ balance: number }, NodePaymentApiRequest>({
       query: (props) => ({
