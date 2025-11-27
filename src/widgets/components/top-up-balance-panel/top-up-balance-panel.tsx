@@ -17,7 +17,7 @@ import useDialog from "@/src/shared/hooks/use-dialog";
 import TopUpAmountList from "./ui/top-up-amount-list/top-up-amount-list";
 import TopUpBalanceInfo from "./ui/top-up-balance-info/top-up-balance-info";
 import { ErrorType } from "@/src/shared/types/error";
-import { getCartState } from "@/app/store/slices/cart/cart.selectors";
+import { getCartTotalAmountState } from "@/app/store/slices/cart/cart.selectors";
 
 const AMOUNT_LIST: number[] = [5, 10, 25, 50, 100, 250];
 
@@ -26,7 +26,7 @@ const TopUpBalancePanel: FC = () => {
   const pathname = usePathname();
   const { onCloseDialogByName } = useDialog();
   const user = useAppSelector(selectUserState);
-  const { totalAmount: cartTotalAmount } = useAppSelector(getCartState);
+  const cartTotalAmount = useAppSelector(getCartTotalAmountState);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 

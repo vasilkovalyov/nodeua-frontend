@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Button, Divider, List, Stack, Typography } from "@mui/material";
 
 import { useAppSelector } from "@/app/store/store";
-import { getCartState } from "@/app/store/slices/cart/cart.selectors";
+import { getCartTotalAmountState, getCartNodesState } from "@/app/store/slices/cart/cart.selectors";
 import { CartNodeType } from "@/app/store/slices/cart/cart.type";
 import { selectUserState } from "@/app/store/slices/user/user.selectors";
 
@@ -33,7 +33,8 @@ function getNodesForPayment(nodes: CartNodeType[]): NodePaymentCartType[] {
 
 const CartOrder: FC = () => {
   const t = useTranslations();
-  const { nodes, totalAmount: cartTotalAmount } = useAppSelector(getCartState);
+  const nodes = useAppSelector(getCartNodesState);
+  const cartTotalAmount = useAppSelector(getCartTotalAmountState);
   const { showSnackbar } = useSnackbar();
   const [buyNode, { isLoading }] = useBuyNodeMutation();
 

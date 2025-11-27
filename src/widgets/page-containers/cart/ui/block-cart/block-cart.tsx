@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/app/routing";
 import { Box, Button, Paper, Skeleton, Stack, Typography } from "@mui/material";
 import { useAppSelector } from "@/app/store/store";
-import { getCartState } from "@/app/store/slices/cart/cart.selectors";
+import { getCartLoadingState, getCartNodesState } from "@/app/store/slices/cart/cart.selectors";
 import { AppRoutes } from "@/src/shared/routes";
 import BlockCartTemplate from "./ui/block-cart-template/block-cart-template";
 
@@ -15,7 +15,8 @@ const CartOrder = lazy(() => import("../../../../components/cart-order/cart-orde
 
 const BlockCart: FC = () => {
   const t = useTranslations();
-  const { nodes, isLoading: isLoadingCart } = useAppSelector(getCartState);
+  const nodes = useAppSelector(getCartNodesState);
+  const isLoadingCart = useAppSelector(getCartLoadingState);
 
   if (isLoadingCart) {
     return (
