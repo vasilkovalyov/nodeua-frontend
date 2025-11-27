@@ -138,5 +138,6 @@
   "active_global": "Активен",
   "expired_global": "Истек",
   "status_global": "Статус",
-  "server_not_response": "Сервер не отвечает"
+  "server_not_response": "Сервер не отвечает",
+  "error_server_response": "Ошибка. Что-то пошло не так!"
 }

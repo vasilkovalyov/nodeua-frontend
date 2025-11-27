@@ -1,28 +1,21 @@
 import { FC, ReactElement } from "react";
 
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 
 import { PageTitle } from "@/src/shared/ui";
-import { serverSideFetch } from "@/app/api/server-side-api";
 
-import AdminTableNodes from "./ui/admin-table-users/admin-table-users";
-import { AdminUsersApiResponseProps } from "./types/api.type";
+import AdminTableUsers from "./ui/admin-table-users/admin-table-users";
+import { AdminTableUserProps } from "./types/user.type";
 
-const AdminUsersPageContainer: FC = async (): Promise<ReactElement> => {
-  const { success, data } = await serverSideFetch<AdminUsersApiResponseProps>("/admin/users");
+type AdminUsersPageContainerProps = {
+  users: AdminTableUserProps[];
+};
 
-  if (!success) {
-    return (
-      <Box>
-        <Typography>Error. Something went wrong!</Typography>
-      </Box>
-    );
-  }
-
+const AdminUsersPageContainer: FC<AdminUsersPageContainerProps> = async ({ users }): Promise<ReactElement | null> => {
   return (
     <Stack direction="column" gap="20px">
       <PageTitle titleTranslationKey="users" />
-      <AdminTableNodes users={data.users} />
+      <AdminTableUsers users={users} />
     </Stack>
   );
 };

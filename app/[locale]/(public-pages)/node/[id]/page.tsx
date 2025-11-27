@@ -3,9 +3,12 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { Typography } from "@mui/material";
+
 import { serverSideFetch } from "@/app/api/server-side-api";
 import { AppRoutes } from "@/src/shared/routes";
 import { PageProps } from "@/app/types/page.type";
+import RESPONSE_STATUS from "@/src/shared/constant/response-status";
 import NodeSingleContainer from "@/src/widgets/page-containers/node-single/node-single";
 import { GenerateMetadataProps } from "@/app/types/matadata.type";
 import { NodeSingleContainerProps } from "@/src/widgets/page-containers/node-single/node-single.type";
@@ -26,14 +29,19 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
   };
 }
 
-export default async function NodePage({ params }: PageProps): Promise<ReactElement> {
+export default async function NodePage({ params }: PageProps): Promise<ReactElement | null> {
   const { id, locale } = await params;
-  const { success, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
+  const t = await getTranslations({ locale });
+  const { success, status, data } = await serverSideFetch<NodeSingleContainerProps>(`/node/${id}`, {
     next: { revalidate: 60 }
   });
 
-  if (!success) {
-    redirect(AppRoutes.notFound);
+  if (status === RESPONSE_STATUS.SERVER_ERROR) {
+    redirect(AppRoutes.serverNotWorking);
+  }
+
+  if (!success || !data) {
+    return <Typography>{t("error_server_response")}</Typography>;
   }
 
   return <NodeSingleContainer {...data} locale={locale} />;

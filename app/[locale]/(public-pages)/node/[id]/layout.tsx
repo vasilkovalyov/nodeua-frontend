@@ -15,7 +15,7 @@ export async function generateStaticParams(): Promise<LayoutLocaleParamsProps[]>
     useCookies: false
   });
 
-  if (!success) return [];
+  if (!success || !data) return [];
 
   return getStaticParams(data);
 }

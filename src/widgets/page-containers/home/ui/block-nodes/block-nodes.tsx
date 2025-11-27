@@ -1,13 +1,12 @@
 import React, { FC } from "react";
-import { getTranslations } from "next-intl/server";
 import { Stack, Typography } from "@mui/material";
 
 import { CardList, NodeCard } from "@/src/shared/ui";
 import { BlockNodesProps } from "./block-nodes.type";
+import { useTranslations } from "next-intl";
 
-const BlockNodes: FC<BlockNodesProps> = async ({ nodesList }) => {
-  const t = await getTranslations();
-
+const BlockNodes: FC<BlockNodesProps> = ({ nodesList }) => {
+  const t = useTranslations();
   if (nodesList === null) {
     return null;
   }

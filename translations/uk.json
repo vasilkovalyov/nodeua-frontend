@@ -139,5 +139,6 @@
   "active_global": "Активний",
   "expired_global": "Минув",
   "status_global": "Статус",
-  "server_not_response": "Сервер не відповідає"
+  "server_not_response": "Сервер не відповідає",
+  "error_server_response": "Помилка. Щось пішло не так!"
 }

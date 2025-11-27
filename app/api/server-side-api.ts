@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import RESPONSE_STATUS from "@/src/shared/constant/response-status";
 
 type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
@@ -48,7 +49,7 @@ type ServerSideFetchOptions = {
 
 export interface FetchResult<T> {
   success: boolean;
-  data: T | null;
+  data?: T;
   error?: string;
   status: number;
 }
@@ -81,8 +82,7 @@ export async function serverSideFetch<T>(url: string, options?: ServerSideFetchO
       return {
         success: false,
         status: responseStatus,
-        error: textMessage,
-        data: null
+        error: textMessage
       };
     }
 
@@ -92,8 +92,7 @@ export async function serverSideFetch<T>(url: string, options?: ServerSideFetchO
   } catch {
     return {
       success: false,
-      status: 500,
-      data: null
+      status: RESPONSE_STATUS.SERVER_ERROR
     };
   }
 }

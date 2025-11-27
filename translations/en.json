@@ -138,5 +138,6 @@
   "active_global": "Active",
   "expired_global": "Expired",
   "status_global": "Status",
-  "server_not_response": "Server not response"
+  "server_not_response": "Server not response",
+  "error_server_response": "Error. Something went wrong!"
 }
