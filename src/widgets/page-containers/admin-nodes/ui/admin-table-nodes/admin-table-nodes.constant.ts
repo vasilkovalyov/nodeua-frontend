@@ -10,8 +10,5 @@ export const ADMIN_TABLE_NODES_HEAD_CELL: TableHeadCellProps[] = [
   {
     translationKey: "price"
   },
-  {
-    translationKey: "cart_table_head_expiration_date"
-  },
   {}
 ];

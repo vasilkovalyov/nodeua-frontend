@@ -63,16 +63,9 @@ export function useAdminNode({ methodType }: UseAdminNodeProps): UseAdminNodeRet
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     type: AdminNodeCreateFieldName
   ): void {
-    if (type === "expiration_date") {
-      onHandleChangeDate(e);
-    }
     if (type === "max_duration_months") {
       onHandleChangeMonths(e);
     }
-  }
-
-  function onHandleChangeDate(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    console.log(e.currentTarget.value);
   }
 
   function onHandleChangeMonths(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {

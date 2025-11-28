@@ -5,9 +5,8 @@ export type NodeType = {
   price: number;
   guide: boolean;
   is_reneweble: boolean;
-  is_expired: boolean;
+  is_active: boolean;
   max_duration_months: number;
-  max_duration_days: number;
   priority: number;
   ip_node: string;
   id_node: string;

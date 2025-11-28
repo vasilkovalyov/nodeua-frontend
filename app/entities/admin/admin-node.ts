@@ -14,5 +14,4 @@ export type AdminNodeType = {
   github_link?: string;
   telegram_link?: string;
   guide_link?: string;
-  expiration_date: string;
 };

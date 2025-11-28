@@ -16,11 +16,10 @@ import { CartNodeType } from "@/app/store/slices/cart/cart.type";
 import LocalStorageCartService from "@/src/shared/services/local-storage-cart";
 
 type AddNodeToCartProps = {
-  isExpired: boolean;
   node: CartNodeType;
 };
 
-const AddNodeToCart: FC<AddNodeToCartProps> = ({ isExpired, node }) => {
+const AddNodeToCart: FC<AddNodeToCartProps> = ({ node }) => {
   const { isAuth } = useAuth();
   const t = useTranslations();
   const dispatch = useDispatch();
@@ -33,7 +32,6 @@ const AddNodeToCart: FC<AddNodeToCartProps> = ({ isExpired, node }) => {
   }, []);
 
   function onHandleClick(): void {
-    if (isExpired) return;
     if (!isAuth) {
       router.push(AppRoutes.login);
       return;
@@ -43,8 +41,8 @@ const AddNodeToCart: FC<AddNodeToCartProps> = ({ isExpired, node }) => {
   }
 
   return (
-    <Button variant="contained" size="small" onClick={onHandleClick} disabled={isDisable || isExpired}>
-      {isDisable ? <CheckBoxIcon /> : <>{isExpired ? t("expired") : t("add_cart")}</>}
+    <Button variant="contained" size="small" onClick={onHandleClick} disabled={isDisable}>
+      {isDisable ? <CheckBoxIcon /> : <>{t("add_cart")}</>}
     </Button>
   );
 };

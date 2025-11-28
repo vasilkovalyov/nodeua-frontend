@@ -17,12 +17,6 @@ const fourColResponsive = {
   xl: 3
 } as const;
 
-const fiveColResponsive = {
-  xs: 12,
-  sm: 6,
-  xl: 2
-} as const;
-
 export const ADMIN_NODE_FORM_FIELDS: AdminNodeCreateFieldProps[] = [
   {
     name: "name",
@@ -43,21 +37,14 @@ export const ADMIN_NODE_FORM_FIELDS: AdminNodeCreateFieldProps[] = [
     type: "text",
     labelTranslationKey: "price_label",
     multiline: false,
-    gridNumber: fiveColResponsive
+    gridNumber: fourColResponsive
   },
   {
     name: "max_duration_months",
     type: "number",
     labelTranslationKey: "max_duration_months_label",
     multiline: false,
-    gridNumber: fiveColResponsive
-  },
-  {
-    name: "expiration_date",
-    type: "date",
-    labelTranslationKey: "expiration_date_label",
-    multiline: false,
-    gridNumber: fiveColResponsive
+    gridNumber: fourColResponsive
   },
   {
     name: "ip_node",
@@ -154,6 +141,5 @@ export const adminNodeDefaultValue: AdminNodeCreateFormProps = {
   twitter_link: "",
   github_link: "",
   telegram_link: "",
-  guide_link: "",
-  expiration_date: ""
+  guide_link: ""
 };

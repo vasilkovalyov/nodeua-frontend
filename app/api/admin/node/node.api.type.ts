@@ -13,7 +13,6 @@ export type ApiAdminEditNodeResponseType = {
   price: number;
   link: string;
   max_duration_months: number;
-  max_duration_days: number;
   ip_node: string;
   id_node: string;
   key_node: string;
@@ -28,5 +27,4 @@ export type ApiAdminEditNodeResponseType = {
     telegram_link: string;
     guide_link: string;
   };
-  expiration_date: string;
 };

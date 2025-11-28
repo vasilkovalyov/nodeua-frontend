@@ -2,20 +2,18 @@
 
 import { FC } from "react";
 import Image from "next/image";
-import dayjs from "dayjs";
 
 import { Link } from "@/app/routing";
-import { TableCell, Typography, Stack, Button } from "@mui/material";
+import { TableCell, Typography, Button } from "@mui/material";
 
 import { getFormatedCurrency } from "@/src/shared/config/methods";
-import { DATES_FORMAT } from "@/src/shared/config/dates";
 import { AdminNodeType } from "@/app/entities/admin/admin-node";
 import { useTranslations } from "next-intl";
 import { AppRoutes } from "@/src/shared/routes";
 
 type TableNodesRowProps = AdminNodeType;
 
-const AdminTableNodesRow: FC<TableNodesRowProps> = ({ _id, expiration_date, image, name, price }) => {
+const AdminTableNodesRow: FC<TableNodesRowProps> = ({ _id, image, name, price }) => {
   const t = useTranslations();
 
   return (
@@ -32,13 +30,6 @@ const AdminTableNodesRow: FC<TableNodesRowProps> = ({ _id, expiration_date, imag
         <Typography variant="body2" fontWeight={600}>
           {getFormatedCurrency(price)}
         </Typography>
-      </TableCell>
-      <TableCell>
-        <Stack direction="row" gap="10px" alignItems="center">
-          <Typography variant="body2" fontWeight={600}>
-            {dayjs(expiration_date).format(DATES_FORMAT.dateTextAndTime)}
-          </Typography>
-        </Stack>
       </TableCell>
       <TableCell>
         <Button component={Link} href={`${AppRoutes.adminNodes}/${_id}`} variant="contained">

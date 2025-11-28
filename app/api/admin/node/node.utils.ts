@@ -2,19 +2,7 @@ import { AdminNodeType } from "@/app/entities/admin/admin-node";
 import { ApiAdminEditNodeResponseType } from "./node.api.type";
 
 export function adaptApiAdminEditNodeResponseType(props: ApiAdminEditNodeResponseType): AdminNodeType {
-  const {
-    _id,
-    name,
-    image,
-    price,
-    ip_node,
-    id_node,
-    key_node,
-    max_duration_months,
-    expiration_date,
-    link,
-    description
-  } = props;
+  const { _id, name, image, price, ip_node, id_node, key_node, max_duration_months, link, description } = props;
   return {
     _id: _id,
     name: name,
@@ -30,7 +18,6 @@ export function adaptApiAdminEditNodeResponseType(props: ApiAdminEditNodeRespons
     twitter_link: description.twitter_link,
     github_link: description.github_link,
     telegram_link: description.telegram_link,
-    guide_link: description.guide_link,
-    expiration_date: expiration_date
+    guide_link: description.guide_link
   };
 }

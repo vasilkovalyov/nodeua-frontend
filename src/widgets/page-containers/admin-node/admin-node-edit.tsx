@@ -1,11 +1,9 @@
 "use client";
 
 import { FC, useEffect } from "react";
-import dayjs from "dayjs";
 
 import { Stack } from "@mui/material";
 import { AdminNodeType } from "@/app/entities/admin/admin-node";
-import { DATES_FORMAT } from "@/src/shared/config/dates";
 import { PageTitle, RootForm } from "@/src/shared/ui";
 
 import { AdminNodeFormType } from "./admin-node.types";
@@ -43,8 +41,6 @@ const AdminNodeEditPageContainer: FC<AdminNodeEditPageContainerProps> = ({ node,
     setValue("github_link", nodeProps.github_link);
     setValue("telegram_link", nodeProps.telegram_link);
     setValue("guide_link", nodeProps.guide_link);
-    const formatDate = dayjs(nodeProps.expiration_date).format(DATES_FORMAT.base);
-    setValue("expiration_date", formatDate);
   }
 
   return (

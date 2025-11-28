@@ -22,7 +22,7 @@ type SocialLink = {
 const NodeSingleContainer: FC<NodeSingleContainerProps> = async ({ locale, ...rest }) => {
   const t = await getTranslations({ locale });
 
-  const { name, price, is_expired, description, image } = rest;
+  const { name, price, is_active, description, image } = rest;
 
   const LINKS: SocialLink[] = [
     {
@@ -58,14 +58,15 @@ const NodeSingleContainer: FC<NodeSingleContainerProps> = async ({ locale, ...re
           <Typography>
             {t("price")}: {getFormatedCurrency(price)}
           </Typography>
-          <AddNodeToCart
-            isExpired={is_expired}
-            node={{
-              ...rest,
-              quantity: 1,
-              duration: 1
-            }}
-          />
+          {is_active && (
+            <AddNodeToCart
+              node={{
+                ...rest,
+                quantity: 1,
+                duration: 1
+              }}
+            />
+          )}
         </Stack>
         <Box borderRadius="50%" overflow="hidden">
           <Picture

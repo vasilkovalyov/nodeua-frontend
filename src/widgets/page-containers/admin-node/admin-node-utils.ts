@@ -4,8 +4,7 @@ import { AdminNodeCreateFormProps } from "./admin-node.types";
 export function adaptCreateNodePropsToApiRequest(props: AdminNodeCreateFormProps): ApiAdminCreateNodeRequestType {
   return {
     ...props,
-    price: parseFloat(props.price),
-    expiration_date: new Date(props.expiration_date).toISOString()
+    price: parseFloat(props.price)
   };
 }
 
@@ -16,7 +15,6 @@ export function adaptEditNodePropsToApiRequest(
   return {
     ...props,
     _id: id,
-    price: parseFloat(props.price),
-    expiration_date: new Date(props.expiration_date).toISOString()
+    price: parseFloat(props.price)
   };
 }

@@ -14,6 +14,5 @@ export default yup.object().shape({
   twitter_link: yup.string(),
   github_link: yup.string(),
   telegram_link: yup.string(),
-  guide_link: yup.string(),
-  expiration_date: yup.string().required("validation_required_field")
+  guide_link: yup.string()
 });

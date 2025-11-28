@@ -4,18 +4,26 @@ import dayjs from "dayjs";
 
 import { Button, TableCell, Typography, Stack } from "@mui/material";
 import KeyIcon from "@mui/icons-material/Key";
+import { useTranslations } from "next-intl";
 
 import { BuyedNodeType } from "@/app/entities/node";
 import { getFormatedCurrency } from "@/src/shared/config/methods";
 import { CopyClipboard } from "@/src/widgets/components";
 import { DATES_FORMAT } from "@/src/shared/config/dates";
+import { getDaysCountBetweenDates } from "@/src/shared/utils/common";
 
 type TableNodesRowProps = BuyedNodeType & {
   type: "active" | "inactive";
   onHandleShowKeyNode: (keyNode: string) => void;
 };
 
+const DAYS_COUNT_NOTIFIED = 10;
+
 const TableNodesRow: FC<TableNodesRowProps> = ({ _id, node, type, expiration_date, onHandleShowKeyNode }) => {
+  const nowDate = new Date();
+  const t = useTranslations();
+  const daysCount = getDaysCountBetweenDates(nowDate, new Date(expiration_date));
+
   return (
     <>
       <TableCell
@@ -64,9 +72,15 @@ const TableNodesRow: FC<TableNodesRowProps> = ({ _id, node, type, expiration_dat
       >
         {type === "active" && (
           <Stack direction="row" gap="10px" alignItems="center">
-            <Typography variant="body2" fontWeight={600}>
-              {dayjs(expiration_date).format(DATES_FORMAT.dateTextAndTime)}
-            </Typography>
+            {daysCount > DAYS_COUNT_NOTIFIED ? (
+              <Typography variant="body2" fontWeight={600}>
+                {dayjs(expiration_date).format(DATES_FORMAT.dateTextAndTime)}
+              </Typography>
+            ) : (
+              <Typography variant="body2" color="error">
+                {daysCount} {daysCount < 2 ? t("day") : t("days_left")} {t("expiration_time_left")}
+              </Typography>
+            )}
           </Stack>
         )}
       </TableCell>
